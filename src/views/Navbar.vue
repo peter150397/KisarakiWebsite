@@ -1,8 +1,8 @@
 <template>
     <nav>
-        <img src="@/assets/NavbarImg/logo.png" alt="" class="nav-logo">
+        <img src="@/assets/NavbarImg/logo.png" alt="" class="nav-logo" @click="backToHome">
         <div class="nav-link-group">
-            <router-link to="/home">關於我們</router-link>
+            <router-link to="/AboutUs">關於我們</router-link>
             <router-link to="/">最新消息</router-link>
             <router-link to="/">強檔產品</router-link>
             <router-link to="/">常見問題</router-link>
@@ -20,7 +20,11 @@
 
 <script>
 export default {
-
+    methods: {
+        backToHome() {
+            this.$router.push('/')
+        }
+    }
 }
 </script>
 
@@ -33,7 +37,7 @@ a {
 }
 nav {
     display: flex;
-    padding: 1rem 0rem;
+    padding: 2rem 0rem;
     justify-content: center;
     align-items: center;
 
@@ -46,6 +50,8 @@ nav {
     height: 40px;
     position: absolute;
     left: 10rem;
+
+    cursor: pointer;
 }
 
 .nav-link-group {
@@ -66,6 +72,8 @@ a[data-noBorder] {
 
 .nav-link-group :hover{
     color: #FDCE00;
+
+    transition-duration: .3s;
 }
 
 .nav-icon-group {

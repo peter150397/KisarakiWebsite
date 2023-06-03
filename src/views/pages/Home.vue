@@ -280,7 +280,7 @@ export default {
 
 .CarouselImgGroup {
     --Carouselslide: 0%;
-    height: 500px;
+    height: 600px;
     position: relative;
     left: 18%;
 
@@ -513,6 +513,8 @@ export default {
     background-color: #FDF1DA;
     border-radius: 20px;
     padding: 1.5rem;
+
+    box-shadow: 0px 5px 10px #E29D19;
 }
 
 .newInfoCardImgContainer {

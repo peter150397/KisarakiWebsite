@@ -1,0 +1,110 @@
+<template>
+  <div>
+    <footer>
+        <div class="corporationInfo">
+            <img src="@/assets/FooterImg/logo.png" alt="" class="FooterLogo">
+            <div class="contactInfoGroup">
+                <p>電話：08-771 0088</p>
+                <p>傳真：08-771 1122</p>
+                <p>地址：911屏東縣竹田鄉糶糴村南進路11號</p>
+                <p>電子郵件：kisaraki@flno1.com.tw , rja@flno1.com.tw</p>
+            </div>
+            <p>© 2023 如記食品有限公司 All rights reserved.</p>
+            <div class="FooterIconGroup">
+                <img src="@/assets/FooterImg/youtube.png" alt="" class="FooterIcon">
+                <img src="@/assets/FooterImg/facebook.png" alt="" class="FooterIcon">
+                <img src="@/assets/FooterImg/line.png" alt="" class="FooterIcon">
+                <img src="@/assets/FooterImg/instagram.png" alt="" class="FooterIcon">
+            </div>
+        </div>
+        <div class="linkGroup">
+            <div class="linkItem">
+                <h3 class="linkTitle">我們的理念</h3>
+                <router-link to="/">關於如記</router-link>
+                <router-link to="/">相關媒體報導</router-link>
+                <router-link to="/">人才招募</router-link>
+            </div>
+            <div class="linkItem">
+                <h3 class="linkTitle">商業服務</h3>
+                <router-link to="/">企業採購</router-link>
+                <router-link to="/">業務用型錄</router-link>
+                <router-link to="/">服務據點</router-link>
+                <router-link to="/">Global Site</router-link>
+            </div>
+            <div class="linkItem">
+                <h3 class="linkTitle">會員相關</h3>
+                <router-link to="/">訂單管理</router-link>
+                <router-link to="/">會員權益與等級</router-link>
+                <router-link to="/">會員條款</router-link>
+                <router-link to="/">隱私權聲明</router-link>
+            </div>
+            <div class="linkItem">
+                <h3 class="linkTitle">常見問題</h3>
+                <router-link to="/">產品相關</router-link>
+                <router-link to="/">購物相關</router-link>
+                <router-link to="/">會員相關</router-link>
+                <router-link to="/">網站操作</router-link>
+                <router-link to="/">聯絡我們</router-link>
+            </div>
+        </div>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped>
+footer{
+    background-color: #B4B4B4;
+    color: white;
+    padding: 2rem 15%;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 14px;
+}
+.corporationInfo{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+.FooterLogo{
+    height: 50px;
+}
+.FooterIconGroup{
+    display: flex;
+    gap: 20px;
+}
+
+.FooterIcon{
+    height: 30px;
+}
+
+.linkGroup{
+    display: flex;
+    gap: 2rem;
+}
+.linkItem{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+.linkItem > h3{
+    margin-bottom: .5rem;
+}
+
+.linkItem > a{
+    text-decoration: none;
+    color: white;
+    padding-left: 10px;
+    border-left: solid 1px white;
+    margin-left: 10px;
+}
+</style>
