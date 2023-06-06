@@ -43,7 +43,7 @@ export default {
 
   margin: 2rem 0;
 
-  height: 40px;
+  height: 37px;
 }
 .line{
   height: 50%;

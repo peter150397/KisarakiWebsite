@@ -544,6 +544,6 @@ export default {
 
 .newInfoCardcontent {
     width: 300px;
-    font-size: 16px;
     line-height: 24px;
-}</style>
+}
+</style>

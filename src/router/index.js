@@ -51,6 +51,45 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/NewInfo',
+    name: '',
+    component: () => import('../views/pages/NewInfo/NewInfo.vue'),
+    children:[
+      {
+        path: '/',
+        name: '最新消息',
+        component: () => import('../views/pages/NewInfo/AllInfo.vue'),
+      },
+      {
+        path: '/NewInfo/NewProduct',
+        name: '新品上市',
+        component: () => import('../views/pages/NewInfo/NewProduct.vue'),
+      },
+      {
+        path: '/NewInfo/RelateInfo',
+        name: '如記消息',
+        component: () => import('../views/pages/NewInfo/RelateInfo.vue'),
+      },
+      {
+        path: '/NewInfo/ProductRelate',
+        name: '產品相關',
+        component: () => import('../views/pages/NewInfo/ProductRelate.vue'),
+      },
+    ]
+  },
+  {
+    path: '/Product',
+    name: '',
+    component: () => import('../views/pages/Product/Product.vue'),
+    children:[
+      {
+        path: '/',
+        name: '強檔產品',
+        component: () => import('../views/pages/Product/Overview.vue'),
+      },
+    ]
+  },
 ]
 
 const router = new VueRouter({

@@ -4,8 +4,8 @@
             <img src="@/assets/NavbarImg/logo.png" alt="" class="nav-logo" @click="backToHome">
             <div class="nav-link-group">
                 <router-link to="/AboutUs">關於我們</router-link>
-                <router-link to="/">最新消息</router-link>
-                <router-link to="/">強檔產品</router-link>
+                <router-link to="/NewInfo">最新消息</router-link>
+                <router-link to="/Product">強檔產品</router-link>
                 <router-link to="/">常見問題</router-link>
                 <router-link to="/" data-noBorder>聯絡我們</router-link>
             </div>
