@@ -8,9 +8,9 @@
         <div class="line"></div>
         <router-link to="/AboutUs/FactoryIntro" class="link">工廠介紹</router-link>
         <div class="line"></div>
-        <router-link to="/AboutUs" class="link">經營理念</router-link>
+        <router-link to="/AboutUs/Philosophy" class="link">經營理念</router-link>
         <div class="line"></div>
-        <router-link to="/AboutUs" class="link">品牌責任險</router-link>
+        <router-link to="/AboutUs/Certification" class="link">認證標章</router-link>
     </div>
     <img src="@/assets/AboutUsImg/AboutUsImg.png" alt="" class="img">
     <router-view class="aboutUsRouterView"></router-view>
@@ -19,7 +19,9 @@
 
 <script>
 export default {
-
+  mounted() {
+    this.$store.commit('UPDATEFIRSTBREADCRUMB' , this.$router.currentRoute);
+  }
 }
 </script>
 

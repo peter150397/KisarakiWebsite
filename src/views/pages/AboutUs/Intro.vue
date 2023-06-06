@@ -10,7 +10,9 @@
 
 <script>
 export default {
-
+  mounted() {
+    this.$store.commit('UPDATESECONDBREADCRUMB' , '');
+  }
 }
 </script>
 

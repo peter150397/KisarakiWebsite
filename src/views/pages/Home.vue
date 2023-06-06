@@ -8,12 +8,6 @@
             <div class="CarouselImgGroup">
                 <img :src="img" alt="" class="CarouselImg" :id="'CarouselImg' + index" v-for="(img, index) in Carousel"
                     :key="img">
-
-                <!-- <img src="@/assets/img/Carousel-img/Carousel 1.png" alt="" class="CarouselImg">
-                <img src="@/assets/img/Carousel-img/Carousel 2.png" alt="" class="CarouselImg">
-                <img src="@/assets/img/Carousel-img/Carousel 3.png" alt="" class="CarouselImg">
-                <img src="@/assets/img/Carousel-img/Carousel 4.png" alt="" class="CarouselImg">
-                <img src="@/assets/img/Carousel-img/Carousel 5.png" alt="" class="CarouselImg"> -->
             </div>
         </div>
         <div class="CarouselIndexGroup">
@@ -235,6 +229,9 @@ export default {
         $(`#CarouselIndexitem0`).css({ 'width': '40px', 'background-color': '#00A353' })
 
         $(`#aboutUsVideoIndexItem0`).css({ 'width': '40px', 'background-color': '#F5D18C' })
+
+        this.$store.commit('UPDATEFIRSTBREADCRUMB' , '')
+        this.$store.commit('UPDATESECONDBREADCRUMB' , '')
     }
 }
 </script>

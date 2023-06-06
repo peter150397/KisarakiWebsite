@@ -1,21 +1,34 @@
 <template>
-    <nav>
-        <img src="@/assets/NavbarImg/logo.png" alt="" class="nav-logo" @click="backToHome">
-        <div class="nav-link-group">
-            <router-link to="/AboutUs">關於我們</router-link>
-            <router-link to="/">最新消息</router-link>
-            <router-link to="/">強檔產品</router-link>
-            <router-link to="/">常見問題</router-link>
-            <router-link to="/" data-noBorder>聯絡我們</router-link>
-        </div>
-        <div class="nav-icon-group">
-            <div class="nav-onlineStore">
-                <img src="@/assets/NavbarImg/shopping-bag.png"><a href="#">線上商城</a>
+    <div>
+        <nav>
+            <img src="@/assets/NavbarImg/logo.png" alt="" class="nav-logo" @click="backToHome">
+            <div class="nav-link-group">
+                <router-link to="/AboutUs">關於我們</router-link>
+                <router-link to="/">最新消息</router-link>
+                <router-link to="/">強檔產品</router-link>
+                <router-link to="/">常見問題</router-link>
+                <router-link to="/" data-noBorder>聯絡我們</router-link>
             </div>
-            <img src="@/assets/NavbarImg/bell.png" alt="" class="nav-icon">
-            <img src="@/assets/NavbarImg/user.png" alt="" class="nav-icon">
+            <div class="nav-icon-group">
+                <div class="nav-onlineStore">
+                    <img src="@/assets/NavbarImg/shopping-bag.png"><a href="#">線上商城</a>
+                </div>
+                <img src="@/assets/NavbarImg/bell.png" alt="" class="nav-icon">
+                <img src="@/assets/NavbarImg/user.png" alt="" class="nav-icon">
+            </div>
+        </nav>
+        <div class="BreadcrumbContainer BreadcrumbMain"  v-if="$store.state.currentFirstBreadcrumb">
+            <img src="@/assets/NavbarImg/home-img.png" alt="" class="BreadcrumbHomeIcon" @click="backToHome">
+            <div class="firstBreadcrumb BreadcrumbContainer">
+                <img src="@/assets/NavbarImg/arrow.png" alt="" class="BreadcrumbArrowIcon">
+                <router-link :to="currentFirstBreadcrumb.path" class="BreadcrumbLink">{{ currentFirstBreadcrumb.name }}</router-link>
+            </div>
+            <div class="secondBreadcrumb BreadcrumbContainer" v-if="$store.state.currentSecondBreadcrumb">
+                <img src="@/assets/NavbarImg/arrow.png" alt="" class="BreadcrumbArrowIcon">
+                <router-link :to="currentSecondBreadcrumb.path" class="BreadcrumbLink">{{ currentSecondBreadcrumb.name }}</router-link>
+            </div>
         </div>
-    </nav>
+    </div>
 </template>
 
 <script>
@@ -24,7 +37,15 @@ export default {
         backToHome() {
             this.$router.push('/')
         }
-    }
+    },
+    computed: {
+        currentFirstBreadcrumb() {
+            return this.$store.state.currentFirstBreadcrumb
+        },
+        currentSecondBreadcrumb() {
+            return this.$store.state.currentSecondBreadcrumb
+        }
+    },
 }
 </script>
 
@@ -35,6 +56,7 @@ a {
 
     font-weight: bold;
 }
+
 nav {
     display: flex;
     padding: 2rem 0rem;
@@ -59,18 +81,19 @@ nav {
     align-items: center;
 }
 
-.nav-link-group> * {
+.nav-link-group>* {
     padding: 0 1.5rem;
     font-size: 18px;
     line-height: 22px;
     border-right: solid black 1px;
 }
+
 a[data-noBorder] {
     border: none;
 }
 
 
-.nav-link-group :hover{
+.nav-link-group :hover {
     color: #FDCE00;
 
     transition-duration: .3s;
@@ -110,4 +133,23 @@ a[data-noBorder] {
 
 .nav-icon {
     height: 30px;
-}</style>
+}
+.BreadcrumbMain{
+    margin: 1rem 0 0 10rem;
+}
+.BreadcrumbContainer{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.BreadcrumbHomeIcon{
+    height: 20px;
+    cursor: pointer;
+}
+.BreadcrumbArrowIcon{
+    height: 15px;
+}
+.BreadcrumbLink{
+    font-size: 14px;
+}
+</style>
