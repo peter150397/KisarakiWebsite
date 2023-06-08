@@ -1,29 +1,87 @@
 <template>
     <div class="productContainer">
-        <h1 class="aboutUsTitle">強檔產品</h1>
+        <div>
+            <h1 class="aboutUsTitle">強檔產品</h1>
+        </div>
         <div class="linkGroup">
-            <router-link to="/AboutUs/Story" class="link">米血製品</router-link>
+            <div class="linkItem" @mouseenter="getActive(0)" @mouseleave="getUnactive(0)">
+                <router-link to="/Product/RiceBloodCake" class="link">米血製品</router-link>
+                <div class="subLinkGroup">
+                    <router-link to="/Product/RiceBloodCake/FamilySize" class="subLink" noBorder>家庭包</router-link>
+                    <router-link to="/Product/RiceBloodCake/Kanto" class="subLink">關東煮</router-link>
+                    <router-link to="/Product/RiceBloodCake/BusinessSize" class="subLink">業務包</router-link>
+                </div>
+            </div>
             <div class="line"></div>
-            <router-link to="/AboutUs/History" class="link">魚漿製品</router-link>
+            <div class="linkItem" @mouseenter="getActive(1)" @mouseleave="getUnactive(1)">
+                <router-link to="/Product/FishPaste" class="link">魚漿製品</router-link>
+                <div class="subLinkGroup">
+                    <router-link to="/Product/FishPaste/Meatball" class="subLink" noBorder>丸子系列</router-link>
+                    <router-link to="/Product/FishPaste/BBQ" class="subLink">炭烤系列</router-link>
+                    <router-link to="/Product/FishPaste/Kanto" class="subLink">關東煮</router-link>
+                </div>
+            </div>
+            
             <div class="line"></div>
-            <router-link to="/AboutUs/FactoryIntro" class="link">調理食品</router-link>
+            <div class="linkItem" @mouseenter="getActive(2)" @mouseleave="getUnactive(2)">
+                <router-link to="/Product/MicrowaveFood" class="link">調理食品</router-link>
+                <div class="subLinkGroup">
+                    <router-link to="/Product/MicrowaveFood/Conditioning" class="subLink" noBorder>調理包</router-link>
+                    <router-link to="/Product/MicrowaveFood/Bowl" class="subLink">碗裝食品</router-link>
+                    <router-link to="/Product/MicrowaveFood/Special" class="subLink">特製系列</router-link>
+                </div>
+            </div>
+            
             <div class="line"></div>
-            <router-link to="/AboutUs/Philosophy" class="link">蔬菜製品</router-link>
+            <div class="linkItem" @mouseenter="getActive(3)" @mouseleave="getUnactive(3)">
+                <router-link to="/Product/Vegetable" class="link">蔬菜製品</router-link>
+                <div class="subLinkGroup">
+                    <router-link to="/Product/Vegetable/Kanto" class="subLink" noBorder>關東煮</router-link>
+                    <router-link to="/Product/Vegetable/Instant" class="subLink">即食蔬菜</router-link>
+                    <router-link to="/Product/Vegetable/Corn" class="subLink">冷凍玉米</router-link>
+                </div>
+            </div>
+            
             <div class="line"></div>
-            <router-link to="/AboutUs/Certification" class="link">香蕉</router-link>
+            <div class="linkItem" @mouseenter="getActive(4)" @mouseleave="getUnactive(4)">
+                <router-link to="/Product/Banana" class="link">香蕉</router-link>
+                <div class="subLinkGroup">
+                    <router-link to="/Product/Banana/Banana" class="subLink" noBorder>香蕉</router-link>
+                </div>
+            </div>
         </div>
-        <div class="subLinkGroup">
-            <p>123123123</p>
-        </div>
+        
         <router-view class="productRouterView"></router-view>
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            
+        }
+    },
+    methods: {
+        getActive(index){
+            const subLinkGroup = document.querySelectorAll('.subLinkGroup');
+            const link = document.querySelectorAll('.link');
+            
+            subLinkGroup[index].dataset.active = true;
+            link[index].dataset.active = true;
+        },
+        getUnactive(index) {
+            const subLinkGroup = document.querySelectorAll('.subLinkGroup');
+            const link = document.querySelectorAll('.link');
+
+            subLinkGroup[index].dataset.active = false;
+            link[index].dataset.active = false;
+        }
+    },
     mounted() {
         this.$store.commit('UPDATEFIRSTBREADCRUMB', this.$router.currentRoute);
-    }
+    },
+    
 }
 </script>
 
@@ -32,6 +90,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .aboutUsTitle {
@@ -60,30 +119,58 @@ export default {
 
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
-.link:hover {
+.linkItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+}
+.subLinkGroup{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 200vw;
+
+    background-color: #FFD86F;
+
+    position: absolute;
+    bottom: -41px;
+
+    opacity: 0;
+}
+.subLinkGroup[data-active="true"]{
+    opacity: 1;
+    z-index: 1;
+
+    transition-duration: .3s;
+}
+.link[data-active="true"]{
     background-color: #FFD86F;
     color: white;
 
-    transition-duration: .3s;
-    cursor: pointer;
-}
-.subLinkGroup{
-    width: 100vw;
-    margin-bottom: 2rem;
-
-    background-color: #FFD86F;
-    opacity: 0;
+    transition-duration: 300ms;
 }
 
-.linkGroup:hover + .subLinkGroup , .subLinkGroup:hover{  
-    opacity: 1;
+.subLink{
+    border-left: solid 1px black;
+    padding: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+.subLink:hover{
+    color: white;
     transition-duration: .3s;
+}
+.subLink[noBorder]{
+    border: none;
 }
 
 .productRouterView {
     width: 62.5%;
-    margin-bottom: 6rem;
+    margin: calc(2rem + 41px) 0 6rem;
 }
 </style>
