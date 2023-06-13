@@ -25,7 +25,7 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('UPDATESECONDBREADCRUMB' , this.$router.currentRoute)
+        this.$store.commit('GETCURRENGPAGEROUTE', { name: '產品相關', index: 1, path: '/NewInfo/ProductRelate' })
     }
 }
 </script>

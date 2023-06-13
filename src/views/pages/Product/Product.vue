@@ -4,84 +4,60 @@
             <h1 class="aboutUsTitle">強檔產品</h1>
         </div>
         <div class="linkGroup">
-            <div class="linkItem" @mouseenter="getActive(0)" @mouseleave="getUnactive(0)">
-                <router-link to="/Product/RiceBloodCake" class="link">米血製品</router-link>
-                <div class="subLinkGroup">
-                    <router-link to="/Product/RiceBloodCake/FamilySize" class="subLink" noBorder>家庭包</router-link>
-                    <router-link to="/Product/RiceBloodCake/Kanto" class="subLink">關東煮</router-link>
-                    <router-link to="/Product/RiceBloodCake/BusinessSize" class="subLink">業務包</router-link>
-                </div>
-            </div>
-            <div class="line"></div>
-            <div class="linkItem" @mouseenter="getActive(1)" @mouseleave="getUnactive(1)">
-                <router-link to="/Product/FishPaste" class="link">魚漿製品</router-link>
-                <div class="subLinkGroup">
-                    <router-link to="/Product/FishPaste/Meatball" class="subLink" noBorder>丸子系列</router-link>
-                    <router-link to="/Product/FishPaste/BBQ" class="subLink">炭烤系列</router-link>
-                    <router-link to="/Product/FishPaste/Kanto" class="subLink">關東煮</router-link>
-                </div>
-            </div>
-            
-            <div class="line"></div>
-            <div class="linkItem" @mouseenter="getActive(2)" @mouseleave="getUnactive(2)">
-                <router-link to="/Product/MicrowaveFood" class="link">調理食品</router-link>
-                <div class="subLinkGroup">
-                    <router-link to="/Product/MicrowaveFood/Conditioning" class="subLink" noBorder>調理包</router-link>
-                    <router-link to="/Product/MicrowaveFood/Bowl" class="subLink">碗裝食品</router-link>
-                    <router-link to="/Product/MicrowaveFood/Special" class="subLink">特製系列</router-link>
-                </div>
-            </div>
-            
-            <div class="line"></div>
-            <div class="linkItem" @mouseenter="getActive(3)" @mouseleave="getUnactive(3)">
-                <router-link to="/Product/Vegetable" class="link">蔬菜製品</router-link>
-                <div class="subLinkGroup">
-                    <router-link to="/Product/Vegetable/Kanto" class="subLink" noBorder>關東煮</router-link>
-                    <router-link to="/Product/Vegetable/Instant" class="subLink">即食蔬菜</router-link>
-                    <router-link to="/Product/Vegetable/Corn" class="subLink">冷凍玉米</router-link>
-                </div>
-            </div>
-            
-            <div class="line"></div>
-            <div class="linkItem" @mouseenter="getActive(4)" @mouseleave="getUnactive(4)">
-                <router-link to="/Product/Banana" class="link">香蕉</router-link>
-                <div class="subLinkGroup">
-                    <router-link to="/Product/Banana/Banana" class="subLink" noBorder>香蕉</router-link>
+            <div class="linkItem" @mouseenter="getActive(index)" @mouseleave="getUnactive(index, mainPage.name)"
+                v-for="(mainPage, index) in productNavbarData" :key="index" :class="{'removeAfter' : index == productNavbarData.length - 1}">
+                <p class="link" @click="changeMainPage(mainPage.name , index)" :id="'link' + index">{{ mainPage.name }}</p>
+                <div class="subLinkGroup" :id="'subLinkGroup' + index">
+                    <p to="/Product/RiceBloodCake/FamilySize" class="subLink" v-for="(subPage, subPageindex) in mainPage.subName" :key="subPage"
+                        @click="changeSubPage(mainPage.name , subPage )" :class="{'removeAfter' : subPageindex == mainPage.subName.length - 1}">{{ subPage }}</p>
                 </div>
             </div>
         </div>
-        
         <router-view class="productRouterView"></router-view>
     </div>
 </template>
 
 <script>
+import $ from "jquery";
+
 export default {
     data() {
         return {
-            
+            currentPage:'',
+        }
+    },
+    computed: {
+        productNavbarData() {
+            return this.$store.state.productNavbarData;
         }
     },
     methods: {
-        getActive(index){
-            const subLinkGroup = document.querySelectorAll('.subLinkGroup');
-            const link = document.querySelectorAll('.link');
+        getActive(index) {
+            $('#subLinkGroup' + index).addClass('subLinkGroupActive')
+            $('#link' + index).addClass('linkActive')
             
-            subLinkGroup[index].dataset.active = true;
-            link[index].dataset.active = true;
         },
-        getUnactive(index) {
-            const subLinkGroup = document.querySelectorAll('.subLinkGroup');
-            const link = document.querySelectorAll('.link');
+        getUnactive(index, item) {
+            if (this.$store.state.currentPage[1].name != item) {
+                $('#subLinkGroup' + index).removeClass('subLinkGroupActive')
+                $('#link' + index).removeClass('linkActive')
+            }
+        },
+        changeMainPage(MainPage , index) {
+            this.$router.push(`/Product/${MainPage}`)
 
-            subLinkGroup[index].dataset.active = false;
-            link[index].dataset.active = false;
+            $('.link').removeClass('linkActive')
+            $('#link' + index).addClass('linkActive')
+            $('.subLinkGroup').removeClass('subLinkGroupGetclick subLinkGroupActive')
+            $('#subLinkGroup' + index).addClass('subLinkGroupGetclick subLinkGroupActive')
+        },
+        changeSubPage(MainPage , SubPage = '' ) {
+            this.$router.push(`/Product/${MainPage}/${SubPage}`)
         }
     },
     mounted() {
-        this.$store.commit('UPDATEFIRSTBREADCRUMB', this.$router.currentRoute);
-    },
-    
+        this.$store.commit('GETCURRENGPAGEROUTE', { name: '強檔產品', index: 0, path: '/Product' })
+    }
 }
 </script>
 
@@ -99,17 +75,10 @@ export default {
 
 .linkGroup {
     display: flex;
-    gap: 10px;
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
-    height: 37px;
-}
-
-.line {
-    height: 50%;
-    width: 1px;
-    background-color: black;
+    height: 38px;
 }
 
 .link {
@@ -117,21 +86,44 @@ export default {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 
-    text-decoration: none;
     color: black;
+
+    text-decoration: none;
+
     cursor: pointer;
 }
+.linkActive {
+    background-color: #FFD86F;
+    color: white;
 
-.linkItem{
+    transition-duration: 300ms;
+}
+
+
+.linkItem {
     display: flex;
     flex-direction: column;
     align-items: center;
 
     position: relative;
 }
-.subLinkGroup{
+.linkItem:after{
+    content: "";
+    width: 1px;
+    height: 50%;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 25%;
+}
+.linkGroup > .removeAfter:after{
+    content: none;
+}
+
+.subLinkGroup {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 10px 0;
     width: 200vw;
 
@@ -142,31 +134,43 @@ export default {
 
     opacity: 0;
 }
-.subLinkGroup[data-active="true"]{
+
+.subLinkGroupActive{
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
 
     transition-duration: .3s;
 }
-.link[data-active="true"]{
-    background-color: #FFD86F;
-    color: white;
 
-    transition-duration: 300ms;
+.subLinkGroupGetclick{
+    z-index: 1;
 }
 
-.subLink{
-    border-left: solid 1px black;
+
+.subLink {
     padding: 0 10px;
     text-decoration: none;
-    color: black;
+
+    cursor: pointer;
+
+    position: relative;
 }
-.subLink:hover{
+
+.subLink:hover {
     color: white;
     transition-duration: .3s;
 }
-.subLink[noBorder]{
-    border: none;
+.subLink:after{
+    content: "";
+    width: 1px;
+    height: 80%;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 10%;
+}
+.subLinkGroup > .removeAfter:after{
+    content: none;
 }
 
 .productRouterView {

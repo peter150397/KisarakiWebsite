@@ -19,9 +19,7 @@
 
 <script>
 export default {
-  mounted() {
-    this.$store.commit('UPDATEFIRSTBREADCRUMB' , this.$router.currentRoute);
-  }
+  
 }
 </script>
 

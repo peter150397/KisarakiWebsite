@@ -74,7 +74,8 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('UPDATESECONDBREADCRUMB', '');
+        this.$store.commit('GETCURRENGPAGEROUTE', { name: '最新消息', index: 0, path: '/NewInfo' })
+        this.$store.commit('GETCURRENGPAGEROUTE', { name: '', index: 1, path: '' })
     }
 }
 </script>

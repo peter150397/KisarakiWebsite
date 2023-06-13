@@ -101,6 +101,9 @@ export default {
       'width': '35px',
       'background-color': '#00A353'
     })
+
+
+    this.$store.commit('GETCURRENGPAGEROUTE', { name: '', index: 1, path: '' })
   },
   beforeDestroy() {
     this.removeInterval()
@@ -192,7 +195,7 @@ export default {
   box-shadow: 3px 3px 6px #000000B3;
 }
 
-.productItem > p{
+.productItem>p {
   font-weight: bold;
   letter-spacing: 2px;
 }

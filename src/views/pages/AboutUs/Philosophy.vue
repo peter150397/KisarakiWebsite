@@ -20,8 +20,8 @@
 <script>
 export default {
   mounted() {
-        this.$store.commit('UPDATESECONDBREADCRUMB' , this.$router.currentRoute)
-    }
+    this.$store.commit('GETCURRENGPAGEROUTE' , {name: '經營理念' , index: 1 , path:'/AboutUs/Philosophy'})
+  }
 }
 </script>
 

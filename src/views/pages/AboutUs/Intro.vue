@@ -11,7 +11,8 @@
 <script>
 export default {
   mounted() {
-    this.$store.commit('UPDATESECONDBREADCRUMB' , '');
+    this.$store.commit('GETCURRENGPAGEROUTE' , {name: '關於我們' , index: 0 , path:'/AboutUs'})
+    this.$store.commit('GETCURRENGPAGEROUTE' , {name: '' , index: 1 , path:''})
   }
 }
 </script>

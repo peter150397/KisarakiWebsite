@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
+    <Breadcrumb></Breadcrumb>
     <router-view />
     <Footer></Footer>
   </div>
@@ -10,12 +11,14 @@
 <script>
 import Navbar from '@/views/Navbar.vue';
 import Footer from "@/views/Footer.vue";
+import Breadcrumb from "@/views/Breadcrumb.vue";
 
 export default {
   components: {
     Navbar,
     Footer,
-  }
+    Breadcrumb
+  },
 }
 
 </script>
@@ -34,5 +37,4 @@ h5,
 h6 {
   margin: 0;
 }
-
 </style>

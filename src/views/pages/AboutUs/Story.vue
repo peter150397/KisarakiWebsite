@@ -18,32 +18,34 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('UPDATESECONDBREADCRUMB' , this.$router.currentRoute)
+        this.$store.commit('GETCURRENGPAGEROUTE', { name: '品牌故事', index: 1, path: '/AboutUs/Story' })
     }
 }
 </script>
 
 <style scoped>
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.title{
+.title {
     color: #71CC86;
     letter-spacing: 2px;
     border-left: solid 1px #71CC86;
     border-right: solid 1px #71CC86;
     padding: 0 1.5rem;
 }
-.line{
+
+.line {
     width: 100%;
     height: 3px;
     background-color: #FFD86F;
     margin: 2rem 0;
 }
-.content{
+
+.content {
     font-size: 14px;
     color: gray;
 }
