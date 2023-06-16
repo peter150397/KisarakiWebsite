@@ -49,7 +49,7 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('GETCURRENGPAGEROUTE', { name: '新品上市', index: 1, path: '/NewInfo/NewProduct' })
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '新品上市', index: 1, path: '/NewInfo/NewProduct' })
     }
 }
 </script>

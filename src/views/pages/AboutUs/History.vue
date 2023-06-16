@@ -116,7 +116,7 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('GETCURRENGPAGEROUTE', { name: '歷史腳步', index: 1, path: '/AboutUs/History' })
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '歷史腳步', index: 1, path: '/AboutUs/History' })
     }
 }
 </script>

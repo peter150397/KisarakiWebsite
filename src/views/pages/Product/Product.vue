@@ -1,15 +1,23 @@
 <template>
     <div class="productContainer">
-        <div>
+        <div class="aboutUsTitleContainer">
             <h1 class="aboutUsTitle">強檔產品</h1>
+            <button class="searchButton">
+                <img src="@/assets/ProductImg/OverviewImg/search.png" alt="" class="searchImg">
+            </button>
+            <input type="text" placeholder="Search" class="aboutUsSearch">
         </div>
         <div class="linkGroup">
-            <div class="linkItem" @mouseenter="getActive(index)" @mouseleave="getUnactive(index, mainPage.name)"
-                v-for="(mainPage, index) in productNavbarData" :key="index" :class="{'removeAfter' : index == productNavbarData.length - 1}">
-                <p class="link" @click="changeMainPage(mainPage.name , index)" :id="'link' + index">{{ mainPage.name }}</p>
-                <div class="subLinkGroup" :id="'subLinkGroup' + index">
-                    <p to="/Product/RiceBloodCake/FamilySize" class="subLink" v-for="(subPage, subPageindex) in mainPage.subName" :key="subPage"
-                        @click="changeSubPage(mainPage.name , subPage )" :class="{'removeAfter' : subPageindex == mainPage.subName.length - 1}">{{ subPage }}</p>
+            <div class="linkItem" v-for="mainPage in productNavbarData" @mouseenter="hoverIn(mainPage.index)"
+                :key="mainPage.index" :class="{ 'removeAfter': mainPage.index == productNavbarData.length - 1 }">
+                <p class="link" @click="changeMainPage(mainPage.name)" :id="'link' + mainPage.index">{{
+                    mainPage.name }}</p>
+                <div class="subLinkGroup" :id="'subLinkGroup' + mainPage.index">
+                    <p to="/Product/RiceBloodCake/FamilySize" class="subLink"
+                        :id="mainPage.index + 'subLink' + subPage.index" v-for="subPage in mainPage.subName"
+                        :key="subPage.index"
+                        @click="changeSubPage(mainPage.name, subPage.name)"
+                        :class="{ 'removeAfter': subPage.index == mainPage.subName.length - 1 }">{{ subPage.name }}</p>
                 </div>
             </div>
         </div>
@@ -23,41 +31,70 @@ import $ from "jquery";
 export default {
     data() {
         return {
-            currentPage:'',
+
         }
     },
     computed: {
         productNavbarData() {
             return this.$store.state.productNavbarData;
+        },
+        currentPage() {
+            return this.$store.state.currentPage
         }
     },
     methods: {
-        getActive(index) {
-            $('#subLinkGroup' + index).addClass('subLinkGroupActive')
-            $('#link' + index).addClass('linkActive')
-            
+        hoverIn(index) {
+            $('.subLinkGroup').removeClass('subLinkGroupGetHover')
+            $(`#subLinkGroup${index}`).addClass('subLinkGroupGetHover')
         },
-        getUnactive(index, item) {
-            if (this.$store.state.currentPage[1].name != item) {
-                $('#subLinkGroup' + index).removeClass('subLinkGroupActive')
-                $('#link' + index).removeClass('linkActive')
-            }
-        },
-        changeMainPage(MainPage , index) {
-            this.$router.push(`/Product/${MainPage}`)
+        clickActive(MainPageIndex , SubPageIndex) {
+            $('.link').removeClass('linkActive');
+            $('.subLinkGroup').removeClass('subLinkGroupGetclick subLinkGroupActive');
+            $('.subLink').removeClass('subLinkActive')
 
-            $('.link').removeClass('linkActive')
-            $('#link' + index).addClass('linkActive')
-            $('.subLinkGroup').removeClass('subLinkGroupGetclick subLinkGroupActive')
-            $('#subLinkGroup' + index).addClass('subLinkGroupGetclick subLinkGroupActive')
+            $(`#link${MainPageIndex}`).addClass('linkActive');
+            $(`#subLinkGroup${MainPageIndex}`).addClass('subLinkGroupGetclick subLinkGroupActive');
+            $(`#${MainPageIndex}subLink${SubPageIndex}`).addClass('subLinkActive');
         },
-        changeSubPage(MainPage , SubPage = '' ) {
+        changeMainPage(MainPage) {
+            this.$router.push(`/Product/${MainPage}`);
+        },
+        changeSubPage(MainPage, SubPage) {
             this.$router.push(`/Product/${MainPage}/${SubPage}`)
         }
     },
+    watch: {
+        currentPage: {
+            handler(value) {
+                let currentMainPageIndex = NaN;
+                let currentSubPageIndex = NaN;
+
+                this.$store.state.productNavbarData.forEach(item => {
+                    if(item.name === value[1].name) {
+                        currentMainPageIndex = item.index
+
+                        if(value[2].name) {
+                            item.subName.forEach( subItem =>{
+                                if(subItem.name === value[2].name) {
+                                    currentSubPageIndex = subItem.index
+                                }
+                            })
+                        }
+                    }
+                });
+
+                this.clickActive(currentMainPageIndex , currentSubPageIndex)
+            },
+            deep: true,
+            immediate: true
+        }
+    },
+    // created() {
+    //     this.currentPage = this.$store.state.currentPage
+    // },
     mounted() {
-        this.$store.commit('GETCURRENGPAGEROUTE', { name: '強檔產品', index: 0, path: '/Product' })
-    }
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '強檔產品', index: 0, path: '/Product' })
+    },
 }
 </script>
 
@@ -68,9 +105,43 @@ export default {
     align-items: center;
     overflow: hidden;
 }
+.aboutUsTitleContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.aboutUsTitle {
     padding-top: 4rem;
+}
+.searchButton{
+    border: solid 1px black;
+    border-radius: 25px;
+    padding: 8px 138px 8px 12px;
+    background-color: transparent;
+
+    position: absolute;
+    right: 18.75%;
+
+    cursor: pointer;
+}
+.searchImg{
+    height: 20px;
+}
+.aboutUsSearch{
+    position: absolute;
+    right: 18.75%;
+    height: 36px;
+    width: 130px;
+    border: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 0;
+
+    font-size: 16px;
+
+    background-color: transparent;
+}
+.aboutUsSearch:focus{
+    outline: none;
 }
 
 .linkGroup {
@@ -92,13 +163,6 @@ export default {
 
     cursor: pointer;
 }
-.linkActive {
-    background-color: #FFD86F;
-    color: white;
-
-    transition-duration: 300ms;
-}
-
 
 .linkItem {
     display: flex;
@@ -107,7 +171,8 @@ export default {
 
     position: relative;
 }
-.linkItem:after{
+
+.linkItem:after {
     content: "";
     width: 1px;
     height: 50%;
@@ -116,8 +181,23 @@ export default {
     right: 0;
     top: 25%;
 }
-.linkGroup > .removeAfter:after{
+
+
+.linkGroup>.removeAfter:after {
     content: none;
+}
+
+.linkItem:hover .link {
+    background-color: #FFD86F;
+    color: white;
+
+    transition-duration: 300ms;
+}
+
+.linkItem:hover .subLinkGroup {
+    opacity: 1;
+
+    transition-duration: 300ms;
 }
 
 .subLinkGroup {
@@ -135,18 +215,6 @@ export default {
     opacity: 0;
 }
 
-.subLinkGroupActive{
-    opacity: 1;
-    z-index: 2;
-
-    transition-duration: .3s;
-}
-
-.subLinkGroupGetclick{
-    z-index: 1;
-}
-
-
 .subLink {
     padding: 0 10px;
     text-decoration: none;
@@ -160,7 +228,8 @@ export default {
     color: white;
     transition-duration: .3s;
 }
-.subLink:after{
+
+.subLink:after {
     content: "";
     width: 1px;
     height: 80%;
@@ -169,7 +238,8 @@ export default {
     right: 0;
     top: 10%;
 }
-.subLinkGroup > .removeAfter:after{
+
+.subLinkGroup>.removeAfter:after {
     content: none;
 }
 
@@ -177,4 +247,24 @@ export default {
     width: 62.5%;
     margin: calc(2rem + 41px) 0 6rem;
 }
-</style>
+
+.subLinkGroupActive {
+    opacity: 1;
+}
+
+.linkActive {
+    background-color: #FFD86F;
+    color: white;
+}
+
+.subLinkGroupGetclick {
+    z-index: 1;
+}
+
+.subLinkGroupGetHover {
+    z-index: 2;
+}
+
+.subLinkActive {
+    color: white;
+}</style>

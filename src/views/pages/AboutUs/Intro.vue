@@ -11,8 +11,10 @@
 <script>
 export default {
   mounted() {
-    this.$store.commit('GETCURRENGPAGEROUTE' , {name: '關於我們' , index: 0 , path:'/AboutUs'})
-    this.$store.commit('GETCURRENGPAGEROUTE' , {name: '' , index: 1 , path:''})
+    this.$store.commit('GETCURRENTPAGEROUTE' , {name: '關於我們' , index: 0 , path:'/AboutUs'})
+    this.$store.commit('GETCURRENTPAGEROUTE' , {name: '' , index: 1 , path:''})
+    this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 2, path: '' })
+    this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 3, path: '' })
   }
 }
 </script>

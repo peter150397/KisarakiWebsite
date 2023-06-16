@@ -49,7 +49,7 @@ nav {
 
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 3;
 
     background: linear-gradient(96deg, #D5FECB 0%, #6CF6C0 100%) no-repeat;
 }

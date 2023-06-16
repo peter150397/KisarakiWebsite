@@ -5,7 +5,7 @@
         <p class="MainPageImgText">{{ tempMainPage.titleContent }}</p>
       </div>
       <div class="MainPageLinkContainer">
-        <div class="MainPageLink" v-for="item in tempMainPage.item" :key="item.img">
+        <div class="MainPageLink" v-for="item in tempMainPage.item" :key="item.img" @click="changeSubPage(tempMainPage.name , item.name)">
           <div class="MainPageLinkImgContainer">
             <img :src="item.img" alt="" class="MainPageLinkImg">
           </div>
@@ -25,32 +25,45 @@ import $ from "jquery";
 export default {
   data() {
     return {
-
+      tempMainPage: {},
     }
   },
   computed: {
     currentMainPage() {
-      this.$store.commit('GETCURRENGPAGEROUTE', { name: this.$route.params.MainPage, index: 1, path: `/Product/${this.$route.params.MainPage}` })
-
       return this.$route.params.MainPage
     },
-    tempMainPage() {
-      const vm = this;
-      let tempMainPage = {};
-
-      vm.$store.state.productMainPageData.forEach(item => {
-        if (item.name === vm.currentMainPage) {
-          tempMainPage = item
-          $('.MainPageImgBigContainer').css({ '--backgroundImg': `url('${tempMainPage.titleBgImg}')` })
-        }
-      });
-
-      return tempMainPage
+    productMainPageData() {
+      return this.$store.state.productMainPageData
     }
   },
-  mounted() {
-    $('.MainPageImgBigContainer').css({ '--backgroundImg': `url('${this.tempMainPage.titleBgImg}')` })
+  methods: {
+    changeSubPage(MainPage, SubPage) {
+      this.$router.push(`/Product/${MainPage}/${SubPage}`)
+    }
   },
+  watch: {
+    currentMainPage: {
+      handler(MainPage) {
+        const vm = this;
+        vm.$store.commit('GETCURRENTPAGEROUTE', { name: MainPage, index: 1, path: `/Product/${MainPage}` })
+
+        vm.productMainPageData.forEach(item => {
+          if (item.name === vm.currentMainPage) {
+            vm.tempMainPage = item
+
+          }
+        });
+
+        $('.MainPageImgBigContainer').css({ '--backgroundImg': `url('${vm.tempMainPage.titleBgImg}')` })
+      },
+      immediate: true
+    },
+  },
+  mounted() {
+    this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 2, path: '' })
+    this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 3, path: '' })
+    $('.MainPageImgBigContainer').css({ '--backgroundImg': `url('${this.tempMainPage.titleBgImg}')` })
+  }
 }
 </script>
 
@@ -150,4 +163,5 @@ export default {
 .MainPageLinkTextContainer>button:hover {
   transform: scale(1.2, 1.2);
   transition-duration: .3s;
-}</style>
+}
+</style>

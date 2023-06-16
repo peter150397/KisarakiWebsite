@@ -87,100 +87,17 @@ const routes = [
         path: '/Product/:MainPage',
         name: '',
         component: () => import('../views/pages/Product/Productview-MainPage.vue'),
-        params:{
-          Page:'123'
-        }
       },
       {
         path: '/Product/:MainPage/:SubPage',
         name: '',
         component: () => import('../views/pages/Product/Productview-SubPage.vue'),
       },
-      // {
-      //   path: '/Product/RiceBloodCake',
-      //   name: '米血製品',
-      //   component: () => import('../views/pages/Product/RiceBloodCake/RiceBloodCake.vue'),
-      // },
-      // {
-      //   path: '/Product/RiceBloodCake/FamilySize',
-      //   name: '家庭包',
-      //   component: () => import('../views/pages/Product/RiceBloodCake/FamilySize.vue'),
-      // },
-      // {
-      //   path: '/Product/RiceBloodCake/Kanto',
-      //   name: '米血關東煮',
-      //   component: () => import('../views/pages/Product/RiceBloodCake/Kanto.vue'),
-      // },
-      // {
-      //   path: '/Product/RiceBloodCake/BusinessSize',
-      //   name: '業務包',
-      //   component: () => import('../views/pages/Product/RiceBloodCake/BusinessSize.vue'),
-      // },
-      // {
-      //   path: '/Product/FishPaste',
-      //   name: '魚漿製品',
-      //   component: () => import('../views/pages/Product/FishPaste/FishPaste.vue'),
-      // },
-      // {
-      //   path: '/Product/FishPaste/Meatball',
-      //   name: '丸子系列',
-      //   component: () => import('../views/pages/Product/FishPaste/Meatball.vue'),
-      // },
-      // {
-      //   path: '/Product/FishPaste/BBQ',
-      //   name: '炭烤系列',
-      //   component: () => import('../views/pages/Product/FishPaste/BBQ.vue'),
-      // },
-      // {
-      //   path: '/Product/FishPaste/Kanto',
-      //   name: '魚漿關東煮',
-      //   component: () => import('../views/pages/Product/FishPaste/Kanto.vue'),
-      // },
-      // {
-      //   path: '/Product/MicrowaveFood',
-      //   name: '調理食品',
-      //   component: () => import('../views/pages/Product/MicrowaveFood/MicrowaveFood.vue'),
-      // },
-      // {
-      //   path: '/Product/MicrowaveFood/Conditioning',
-      //   name: '調理包',
-      //   component: () => import('../views/pages/Product/MicrowaveFood/Conditioning.vue'),
-      // },
-      // {
-      //   path: '/Product/MicrowaveFood/Bowl',
-      //   name: '碗裝食品',
-      //   component: () => import('../views/pages/Product/MicrowaveFood/Bowl.vue'),
-      // },
-      // {
-      //   path: '/Product/MicrowaveFood/Special',
-      //   name: '特製系列',
-      //   component: () => import('../views/pages/Product/MicrowaveFood/Special.vue'),
-      // },
-      // {
-      //   path: '/Product/Vegetable',
-      //   name: '蔬菜製品',
-      //   component: () => import('../views/pages/Product/Vegetable/Vegetable.vue'),
-      // },
-      // {
-      //   path: '/Product/Vegetable/Kanto',
-      //   name: '蔬菜關東煮',
-      //   component: () => import('../views/pages/Product/Vegetable/Kanto.vue'),
-      // },
-      // {
-      //   path: '/Product/Vegetable/Instant',
-      //   name: '即食蔬菜',
-      //   component: () => import('../views/pages/Product/Vegetable/Instant.vue'),
-      // },
-      // {
-      //   path: '/Product/Vegetable/Corn',
-      //   name: '冷凍玉米',
-      //   component: () => import('../views/pages/Product/Vegetable/Corn.vue'),
-      // },
-      // {
-      //   path: '/Product/Banana',
-      //   name: '香蕉',
-      //   component: () => import('../views/pages/Product/Banana/Banana.vue'),
-      // },
+      {
+        path: '/Product/:MainPage/:SubPage/:Product',
+        name: '',
+        component: () => import('../views/pages/Product/Productview-Item.vue'),
+      },
     ]
   },
 ]

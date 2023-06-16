@@ -18,7 +18,7 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('GETCURRENGPAGEROUTE', { name: '工廠介紹', index: 1, path: '/AboutUs/FactoryIntro' })
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '工廠介紹', index: 1, path: '/AboutUs/FactoryIntro' })
     }
 }
 </script>

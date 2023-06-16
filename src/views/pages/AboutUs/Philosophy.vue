@@ -20,7 +20,7 @@
 <script>
 export default {
   mounted() {
-    this.$store.commit('GETCURRENGPAGEROUTE' , {name: '經營理念' , index: 1 , path:'/AboutUs/Philosophy'})
+    this.$store.commit('GETCURRENTPAGEROUTE' , {name: '經營理念' , index: 1 , path:'/AboutUs/Philosophy'})
   }
 }
 </script>

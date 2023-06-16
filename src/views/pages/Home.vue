@@ -230,7 +230,7 @@ export default {
 
         $(`#aboutUsVideoIndexItem0`).css({ 'width': '40px', 'background-color': '#F5D18C' })
 
-        this.$store.commit('GETCURRENGPAGEROUTE' , {name: '' , index: 0 , path:''})
+        this.$store.commit('GETCURRENTPAGEROUTE' , {name: '' , index: 0 , path:''})
     }
 }
 </script>

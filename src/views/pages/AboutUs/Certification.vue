@@ -11,7 +11,7 @@
 <script>
 export default {
     mounted() {
-        this.$store.commit('GETCURRENGPAGEROUTE', { name: '認證標章', index: 1, path: '/AboutUs/Certification' })
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '認證標章', index: 1, path: '/AboutUs/Certification' })
     }
 }
 </script>
