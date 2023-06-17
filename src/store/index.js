@@ -225,7 +225,10 @@ export default new Vuex.Store({
         subTitle:'本產品使用真空包裝高溫殺菌，品質安全衛生',
         productImg: {
           CarouselImg: [
-            require('@/assets/ProductImg/ProductDataImg/RiceBloodCake(small).png'),
+            require('@/assets/ProductImg/ProductDataImg/(small)RiceBloodCakeCarousel1.png'),
+            require('@/assets/ProductImg/ProductDataImg/(small)RiceBloodCakeCarousel2.png'),
+            require('@/assets/ProductImg/ProductDataImg/(small)RiceBloodCakeCarousel3.png'),
+            require('@/assets/ProductImg/ProductDataImg/(small)RiceBloodCakeCarousel1.png'),
           ],
           contentImg: require('@/assets/ProductImg/ProductDataImg/RiceBloodCake-content.png'),
         },
