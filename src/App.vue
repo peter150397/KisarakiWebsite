@@ -23,6 +23,10 @@ export default {
 
 </script>
 <style>
+*{
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: '微軟正黑體';

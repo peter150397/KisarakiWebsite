@@ -5,8 +5,8 @@
             <router-link to="/AboutUs">關於我們</router-link>
             <router-link to="/NewInfo">最新消息</router-link>
             <router-link to="/Product">強檔產品</router-link>
-            <router-link to="/">常見問題</router-link>
-            <router-link to="/" data-noBorder>聯絡我們</router-link>
+            <router-link to="/Q&A">常見問題</router-link>
+            <router-link to="/Contact" data-noBorder>聯絡我們</router-link>
         </div>
         <div class="nav-icon-group">
             <div class="nav-onlineStore">

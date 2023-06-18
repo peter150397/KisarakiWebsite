@@ -100,6 +100,16 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/Q&A',
+    name: '常見問題',
+    component: () => import('../views/pages/Q&A.vue'),
+  },
+  {
+    path: '/Contact',
+    name: '聯絡我們',
+    component: () => import('../views/pages/Contact.vue'),
+  },
 ]
 
 const router = new VueRouter({

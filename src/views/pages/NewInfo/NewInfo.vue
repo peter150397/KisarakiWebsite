@@ -1,6 +1,6 @@
 <template>
     <div class="newInfoContainer">
-        <h1 class="aboutUsTitle">最新消息</h1>
+        <h1 class="newInfoTitle">最新消息</h1>
         <div class="linkGroup">
             <router-link to="/NewInfo/NewProduct" class="link">新品上市</router-link>
             <div class="line"></div>
@@ -25,7 +25,7 @@ export default {
     align-items: center;
 }
 
-.aboutUsTitle {
+.newInfoTitle {
     padding-top: 4rem;
 }
 

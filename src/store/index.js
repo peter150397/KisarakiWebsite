@@ -451,6 +451,43 @@ export default new Vuex.Store({
         storageConditions: '存放於室內陰涼處',
         productionPlace: '台灣屏東'
       },
+    ],
+    QA:[
+      {
+        category: 'contact',
+        title:'客服與聯絡資訊',
+        content:'聯絡電話：08-771-0088\n客服信箱：rja@flno1.com.tw\nLINE ID：＠405jczdl'
+      },
+      {
+        category: 'contact',
+        title:'營業時間',
+        content:'營業時間：週一至週五08:00-12:00 \ 13:00-17:00'
+      },
+      {
+        category: 'purchase',
+        title:'可以直接向如記食品訂購產品嗎？',
+        content:'如記食品產品皆於一般通路販售(如量販店、全聯、超商等)，或是您可以透過線上商城訂購\n來電諮詢: 08-771-0088#225'
+      },
+      {
+        category: 'purchase',
+        title:'配送方式有哪些?',
+        content:'目前皆以低溫車冷藏、冷凍宅配為主'
+      },
+      {
+        category: 'purchase',
+        title:'目前提供哪些付款方式？',
+        content:'1、刷卡\n2、貨到付款\n3、ATM轉帳'
+      },
+      {
+        category: 'purchase',
+        title:'出貨配送時間',
+        content:'週一至週五，客服人員在確認訂單後，會盡速處理商品配送，配合宅急便作業時間調整，周日、及國定例假日，宅急便公休無配送。'
+      },
+      {
+        category: 'purchase',
+        title:'離島是否無法配送呢?',
+        content:'離島運費因與本島運費不同，請來電(08)771-0088詢問運費方可下訂。'
+      }
     ]
   },
   getters: {
