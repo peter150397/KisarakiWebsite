@@ -5,7 +5,7 @@
             <button class="searchButton">
                 <img src="@/assets/ProductImg/OverviewImg/search.png" alt="" class="searchImg">
             </button>
-            <input type="text" placeholder="Search" class="aboutUsSearch">
+            <input type="text" placeholder="Search" class="aboutUsSearch" v-model="search" @keyup.enter="searchPage(search)">
         </div>
         <div class="linkGroup">
             <div class="linkItem" v-for="mainPage in productNavbarData" @mouseenter="hoverIn(mainPage.index)"
@@ -31,7 +31,7 @@ import $ from "jquery";
 export default {
     data() {
         return {
-
+            search:''
         }
     },
     computed: {
@@ -61,6 +61,10 @@ export default {
         },
         changeSubPage(MainPage, SubPage) {
             this.$router.push(`/Product/${MainPage}/${SubPage}`)
+        },
+        searchPage(search) {
+            this.$router.push(`/Search/${search}`);
+            this.search = '';
         }
     },
     watch: {
@@ -89,9 +93,6 @@ export default {
             immediate: true
         }
     },
-    // created() {
-    //     this.currentPage = this.$store.state.currentPage
-    // },
     mounted() {
         this.$store.commit('GETCURRENTPAGEROUTE', { name: '強檔產品', index: 0, path: '/Product' })
     },

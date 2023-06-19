@@ -11,10 +11,14 @@
             </div>
             <p>© 2023 如記食品有限公司 All rights reserved.</p>
             <div class="FooterIconGroup">
-                <img src="@/assets/FooterImg/youtube.png" alt="" class="FooterIcon">
-                <img src="@/assets/FooterImg/facebook.png" alt="" class="FooterIcon">
-                <img src="@/assets/FooterImg/line.png" alt="" class="FooterIcon">
-                <img src="@/assets/FooterImg/instagram.png" alt="" class="FooterIcon">
+                <a href="https://www.youtube.com/@kisaraki-food"><img src="@/assets/FooterImg/youtube.png" alt="" class="FooterIcon"></a>
+                <a href="https://www.facebook.com/kisaraki1982"><img src="@/assets/FooterImg/facebook.png" alt="" class="FooterIcon"></a>
+                <a href="https://line.me/R/ti/p/@405jczdl"><img src="@/assets/FooterImg/line.png" alt="" class="FooterIcon"></a>
+                <a href="https://www.instagram.com/kisaraki_food/"><img src="@/assets/FooterImg/instagram.png" alt="" class="FooterIcon"></a>
+                
+                
+                
+                
             </div>
         </div>
         <div class="linkGroup">
@@ -85,6 +89,7 @@ footer{
 
 .FooterIcon{
     height: 30px;
+    
 }
 
 .linkGroup{

@@ -5,7 +5,7 @@
         <p class="MainPageImgText">{{ tempMainPage.titleContent }}</p>
       </div>
       <div class="MainPageLinkContainer">
-        <div class="MainPageLink" v-for="item in tempMainPage.item" :key="item.img" @click="changeSubPage(tempMainPage.name , item.name)">
+        <div class="MainPageLink" v-for="item in tempMainPage.item" :key="item.img" @click="changeSubPage(item.path)">
           <div class="MainPageLinkImgContainer">
             <img :src="item.img" alt="" class="MainPageLinkImg">
           </div>
@@ -37,8 +37,8 @@ export default {
     }
   },
   methods: {
-    changeSubPage(MainPage, SubPage) {
-      this.$router.push(`/Product/${MainPage}/${SubPage}`)
+    changeSubPage(Page) {
+      this.$router.push(Page)
     }
   },
   watch: {
@@ -50,7 +50,6 @@ export default {
         vm.productMainPageData.forEach(item => {
           if (item.name === vm.currentMainPage) {
             vm.tempMainPage = item
-
           }
         });
 

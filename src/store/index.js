@@ -23,6 +23,56 @@ export default new Vuex.Store({
         path: ''
       }
     ],
+    newInfo:[
+      {
+        img: require('@/assets/NewInfoImg/info1.png'),
+        title: '特製沙茶醬汁 | 香滷米血黑輪 | 7-Eleven全國上架',
+        content: '各位還在等什麼~趕快到小七買起來~香滷米血黑輪在滷製過程添加特製的沙茶醬料，以提升香氣和風味，您可以期待著吸飽醬汁的米血柔軟口感和黑輪的彈牙口感的完美結合。',
+        category:'NewProduct'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info2.png'),
+        title: '全新口味!麻辣煮霸氣登場!!!',
+        content: '對於麻辣控我們帶來了一個令人興奮的消息!經過長時間的研發和精心調配我們推出了最新的創新產品『麻辣煮』。麻辣煮的獨特之處在於它融合了麻和辣的完美平衡選用了特級花椒和多種辛香料經過精心爆炒和煉製，無論你是喜歡辣的還是麻的都能滿足你的味蕾。',
+        category:'NewProduct'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info3.png'),
+        title: '7-11超商的關東煮御用米血糕品牌「如記米血糕」上市囉!',
+        content: '你知道平常在7-11超商買的關東煮米血糕是哪個品牌的嗎?將將將將~就是「如記米血糕」啦!如記米血糕不僅用料實在、製程嚴謹。而且口感非常Q彈軟嫩、耐煮性十足，古早好滋味讓你吃過一次就再也停不下來!',
+        category:'ProductRelate'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info4.png'),
+        title: '如記350g米血糕｜第二件五折｜',
+        content: '如記350g米血糕，第二件5折，真的超~划算!!還不快去買',
+        category:'ProductRelate'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info5.png'),
+        title: '｜經典美味台灣小吃｜#大腸肉羹麵線 升級大容量 在7-Evelen全新上架',
+        content: '｜經典美味台灣小吃｜#大腸肉羹麵線升級大容量，在7-Evelen全新上架，如記食品的大腸肉羹麵線深受消費者喜愛',
+        category:'NewProduct'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info6.png'),
+        title: '小七吃得到現蒸點心！【蒸系列】麻油米血、筒仔米糕、芋頭排骨酥湯!!7-ELEVEN溫暖上市',
+        content: '【麻油米血】香醇的麻油香氣，佐淡淡的米酒香味，搭配吸飽湯汁口感Q彈的米血糕，和湯頭的辛香薑片，使每一口都溫暖您的心！！',
+        category:'NewProduct'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info7.png'),
+        title: '如記食品～官方LINE好友招募中',
+        content: '加入如記食品官方LINE可隨時掌握第一手好康資訊，消息不漏接',
+        category:'RelateInfo'
+      },
+      {
+        img: require('@/assets/NewInfoImg/info8.png'),
+        title: '如記米血糕 換新包裝！！配方全新升級',
+        content: '＃如記米血糕，換新包裝啦!!全新包裝，升級新配方口感吃起來更軟Q!!',
+        category:'NewProduct'
+      },
+    ],
     productNavbarData: [
       {
         name: '米血製品',
@@ -204,17 +254,17 @@ export default new Vuex.Store({
           {
             name: '7-11裸蕉',
             img: require('@/assets/ProductImg/BananaImg/Banana1.png'),
-            path: '/Product/香蕉/7-11裸蕉'
+            path: '/Product/香蕉/香蕉/7-11裸蕉'
           },
           {
             name: '7-11雙蕉',
             img: require('@/assets/ProductImg/BananaImg/Banana2.png'),
-            path: '/Product/香蕉/7-11雙蕉'
+            path: '/Product/香蕉/香蕉/7-11雙蕉'
           },
           {
             name: '全聯袋蕉(600g)',
             img: require('@/assets/ProductImg/BananaImg/Banana3.png'),
-            path: '/Product/香蕉/全聯袋蕉(600g)'
+            path: '/Product/香蕉/香蕉/全聯袋蕉(600g)'
           },
         ]
       },

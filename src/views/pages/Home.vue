@@ -38,6 +38,7 @@
                         <br>
                         我們不斷追求進步，在創立後的三十年當中，發展多元多樣各式產品，包含冷藏調理食品、點心類食品、冷凍食品類及4℃鮮食類...多元多樣各式產品。
                     </p>
+                    <button @click="changePage('/AboutUs')">More</button>
                 </div>
                 <div class="aboutUsVideoIndexGroup">
                     <div class="aboutUsVideoIndexItem" id="aboutUsVideoIndexItem0" @click="aboutUsVideoCarouselByCircle(0)">
@@ -56,7 +57,7 @@
 
             <div class="productCover">
                 <div class="productContainer">
-                    <div class="productItem" v-for="item in Product" :key="item.name">
+                    <div class="productItem" v-for="item in Product" :key="item.name" @click="changePage(item.path)">
                         <img :src="item.img" alt="" class="productImg">
                         <p class="producttext">{{ item.name }}</p>
                     </div>
@@ -69,7 +70,7 @@
         <div class="newInfo">
             <h1 class="newInfoTitle">最新消息</h1>
             <div class="newInfoCardGroup">
-                <div class="newInfoCardItem">
+                <div class="newInfoCardItem" @click="changePage('/NewInfo')">
                     <div class="newInfoCardImgContainer">
                         <img src="@/assets/HomePageImg/newInfo-img/info1.png" alt="" class="newInfoCardImg">
                     </div>
@@ -77,7 +78,7 @@
                     <p class="newInfoCardcontent">
                         各位還在等什麼~趕快到小七買起來~香滷米血黑輪在滷製過程添加特製的沙茶醬料，以提升香氣和風味，您可以期待著吸飽醬汁的米血柔軟口感和黑輪的彈牙口感的完美結合。</p>
                 </div>
-                <div class="newInfoCardItem">
+                <div class="newInfoCardItem" @click="changePage('/NewInfo')">
                     <div class="newInfoCardImgContainer">
                         <img src="@/assets/HomePageImg/newInfo-img/info2.png" alt="" class="newInfoCardImg">
                     </div>
@@ -86,7 +87,7 @@
                         對於麻辣控我們帶來了一個令人興奮的消息!經過長時間的研發和精心調配我們推出了最新的創新產品『麻辣煮』。麻辣煮的獨特之處在於它融合了麻和辣的完美平衡選用了特級花椒和多種辛香料經過精心爆炒和煉製，無論你是喜歡辣的還是麻的都能滿足你的味蕾。
                     </p>
                 </div>
-                <div class="newInfoCardItem">
+                <div class="newInfoCardItem" @click="changePage('/NewInfo')">
                     <div class="newInfoCardImgContainer">
                         <img src="@/assets/HomePageImg/newInfo-img/info3.png" alt="" class="newInfoCardImg">
                     </div>
@@ -134,43 +135,53 @@ export default {
             Product: [
                 {
                     img: product1,
-                    name: "米血糕"
+                    name: "米血糕",
+                    path:'/Product/米血製品'
                 },
                 {
                     img: product2,
-                    name: "丸子系列"
+                    name: "丸子系列",
+                    path:'/Product/魚漿製品/丸子系列'
                 },
                 {
                     img: product3,
-                    name: "炭烤系列"
+                    name: "炭烤系列",
+                    path:'/Product/魚漿製品/炭烤系列'
                 },
                 {
                     img: product4,
-                    name: "關東煮"
+                    name: "關東煮",
+                    path:'/Product/魚漿製品/關東煮'
                 },
                 {
                     img: product5,
-                    name: "料理包"
+                    name: "料理包",
+                    path:'/Product/調理食品/調理包'
                 },
                 {
                     img: product6,
-                    name: "碗裝食品"
+                    name: "碗裝食品",
+                    path:'/Product/調理食品/碗裝食品'
                 },
                 {
                     img: product7,
-                    name: "特製食品"
+                    name: "特製食品",
+                    path:'/Product/調理食品/特製食品'
                 },
                 {
                     img: product8,
-                    name: "冷凍玉米"
+                    name: "冷凍玉米",
+                    path:'/Product/蔬菜製品/冷凍玉米'
                 },
                 {
                     img: product9,
-                    name: "即食蔬菜"
+                    name: "即食蔬菜",
+                    path:'/Product/蔬菜製品/即食蔬菜'
                 },
                 {
                     img: product10,
-                    name: "香蕉"
+                    name: "香蕉",
+                    path:'/Product/香蕉'
                 },
             ],
             currentCarouselIndex: 0,
@@ -208,6 +219,10 @@ export default {
         },
         nextProductCarouselImg() {
             $('.productContainer').css('--productCarouselslide', '106%')
+        },
+        changePage(page) {
+            this.$router.push(page);
+            $("html").scrollTop(0);
         }
     },
     watch: {
@@ -344,7 +359,7 @@ export default {
     position: relative;
     background-color: white;
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 3rem;
 
     box-shadow: 0px 3px 6px #808080;
 }
@@ -363,6 +378,21 @@ export default {
     margin-left: auto;
     font-size: 18px;
     font-weight: bold;
+}
+.aboutUstextContainer > button {
+    background-color: #F4DB82;
+    border: none;
+    border-radius: 20px;
+    padding: .2rem 1rem;
+    position: absolute;
+    right: 1.5rem;
+    bottom: .8rem;
+
+    cursor: pointer;
+}
+.aboutUstextContainer > button:hover{
+    transform: scale(1.2,1.2);
+    transition-duration: 300ms;
 }
 
 .aboutUsVideoContainer {
@@ -460,6 +490,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
 }
 
 .orangeArrowImg {
@@ -511,6 +543,8 @@ export default {
     padding: 1.5rem;
 
     box-shadow: 0px 5px 10px #E29D19;
+
+    cursor: pointer;
 }
 
 .newInfoCardImgContainer {

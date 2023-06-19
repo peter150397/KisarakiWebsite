@@ -17,61 +17,39 @@ const routes = [
       {
         path: '/',
         name: '',
-        component: () => import('../views/pages/AboutUs/Intro.vue'),
+        component: () => import('../views/pages/AboutUs/Children/Intro.vue'),
       },
       {
         path: '/AboutUs/Story',
         name: '品牌故事',
-        component: () => import('../views/pages/AboutUs/Story.vue'),
+        component: () => import('../views/pages/AboutUs/Children/Story.vue'),
       },
       {
         path: '/AboutUs/History',
         name: '歷史腳步',
-        component: () => import('../views/pages/AboutUs/History.vue'),
+        component: () => import('../views/pages/AboutUs/Children/History.vue'),
       },
       {
         path: '/AboutUs/FactoryIntro',
         name: '工廠介紹',
-        component: () => import('../views/pages/AboutUs/FactoryIntro.vue'),
+        component: () => import('../views/pages/AboutUs/Children/FactoryIntro.vue'),
       },
       {
         path: '/AboutUs/Philosophy',
         name: '經營理念',
-        component: () => import('../views/pages/AboutUs/Philosophy.vue'),
+        component: () => import('../views/pages/AboutUs/Children/Philosophy.vue'),
       },
       {
         path: '/AboutUs/Certification',
         name: '認證標章',
-        component: () => import('../views/pages/AboutUs/Certification.vue'),
+        component: () => import('../views/pages/AboutUs/Children/Certification.vue'),
       },
     ]
   },
   {
     path: '/NewInfo',
     name: '最新消息',
-    component: () => import('../views/pages/NewInfo/NewInfo.vue'),
-    children: [
-      {
-        path: '/',
-        name: '',
-        component: () => import('../views/pages/NewInfo/AllInfo.vue'),
-      },
-      {
-        path: '/NewInfo/NewProduct',
-        name: '新品上市',
-        component: () => import('../views/pages/NewInfo/NewProduct.vue'),
-      },
-      {
-        path: '/NewInfo/RelateInfo',
-        name: '如記消息',
-        component: () => import('../views/pages/NewInfo/RelateInfo.vue'),
-      },
-      {
-        path: '/NewInfo/ProductRelate',
-        name: '產品相關',
-        component: () => import('../views/pages/NewInfo/ProductRelate.vue'),
-      },
-    ]
+    component: () => import('../views/pages/NewInfo.vue'),
   },
   {
     path: '/Product',
@@ -81,22 +59,27 @@ const routes = [
       {
         path: '/',
         name: '',
-        component: () => import('../views/pages/Product/Overview.vue'),
+        component: () => import('../views/pages/Product/Children/Overview.vue'),
+      },
+      {
+        path: '/Search/:SearchPage',
+        name: '',
+        component: () => import('../views/pages/Product/Children/Productview-Search.vue'),
       },
       {
         path: '/Product/:MainPage',
         name: '',
-        component: () => import('../views/pages/Product/Productview-MainPage.vue'),
+        component: () => import('../views/pages/Product/Children/Productview-MainPage.vue'),
       },
       {
         path: '/Product/:MainPage/:SubPage',
         name: '',
-        component: () => import('../views/pages/Product/Productview-SubPage.vue'),
+        component: () => import('../views/pages/Product/Children/Productview-SubPage.vue'),
       },
       {
         path: '/Product/:MainPage/:SubPage/:Product',
         name: '',
-        component: () => import('../views/pages/Product/Productview-Item.vue'),
+        component: () => import('../views/pages/Product/Children/Productview-Item.vue'),
       },
     ]
   },

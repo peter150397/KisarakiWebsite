@@ -35,48 +35,52 @@
                             <tr>
                                 <td style="width: 2%;"><p>*</p></td>
                                 <td style="width: 20%;"><label for="buyerName">姓名</label></td>
-                                <td><input type="text" placeholder="請輸入姓名" id="buyerName"></td>
+                                <td><input name="buyerName" type="text" placeholder="請輸入姓名" id="buyerName" required></td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
-                                <td><label for="buyer">電話</label></td>
-                                <td><input type="text" placeholder="請輸入電話" id="buyer"></td>
-                            </tr>
-                            <tr>
-                                <td><p>*</p></td>
-                                <td><label for="buyer">手機</label></td>
-                                <td><input type="text" placeholder="請輸入手機" id="buyer"></td>
+                                <td><label for="buyerCell">手機</label></td>
+                                <td><input name="buyerCell" type="tel" placeholder="請輸入手機" id="buyerCell"></td>
                             </tr>
                             <tr>
                                 <td><p></p></td>
-                                <td><label for="buyer">統編</label></td>
-                                <td><input type="text" placeholder="請輸入統編" id="buyer"></td>
+                                <td><label for="buyerTel">電話</label></td>
+                                <td><input name="buyerTel" type="tel" placeholder="請輸入電話" id="buyerTel" required></td>
+                            </tr>
+                            <tr>
+                                <td><p></p></td>
+                                <td><label for="buyerComp">統編</label></td>
+                                <td><input name="buyerComp" type="text" placeholder="請輸入統編" id="buyerComp"></td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
-                                <td><label for="buyer">地址</label></td>
-                                <td><input type="text" placeholder="請輸入地址" id="buyer"></td>
+                                <td><label for="buyerAddr">地址</label></td>
+                                <td><input name="buyerAddr" type="text" placeholder="請輸入地址" id="buyerAddr" required></td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
-                                <td><label for="buyer">詢問主題</label></td>
+                                <td><label for="Topic">詢問主題</label></td>
                                 <td>
-                                    <select name="" id="">
+                                    <select name="topic" id="topic" required>
                                         <option value="">請選擇主題分類</option>
+                                        <option value="Cooperation">異業合作</option>
+                                        <option value="ProductProblem">產品問題</option>
+                                        <option value="Purchase">採購諮詢</option>
+                                        <option value="Other">其他問題</option>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
                                 <td><p>內容</p></td>
-                                <td><textarea name="" id=""></textarea></td>
+                                <td><textarea name="content" id="content" required></textarea></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <input type="submit" value="確認">
-                                    <input type="reset" value="取消">
+                                <td class="buttonGroup">
+                                    <input type="reset" value="取消" class="resetbutton button">
+                                    <input type="submit" value="確認" class="submitbutton button">
                                 </td>
                             </tr>
                         </table>
@@ -139,8 +143,8 @@ export default {
 
     background: url('@/assets/ContactImg/Bg1.png'), linear-gradient(323deg, #6CF6C0 0%, #D5FECB 100%);
     background-repeat: no-repeat;
-    background-position: 130% 130%;
-    background-size: 300px 300px, auto;
+    background-position: 170% 170%;
+    background-size: 380px 380px, auto;
 
     border-radius: 40px;
     box-shadow: 0px 3px 10px #47B286;
@@ -170,18 +174,81 @@ export default {
 }
 .formContainer > div{
     width: 48%;
+    height: 75%;
     position: absolute;
     right: 0;
     top: 12.5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 table{
     width: calc(100% - 3.5rem);
     border-collapse: collapse;
 }
+tr > td:first-child{
+    color: red;
+}
+tr > td:last-child > input , select{
+    height: 2rem;
+    padding: .3rem;
+    border: solid 1px #A0A0A0;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+tr > td:last-child > select , #buyerAddr{
+    display: block;
+    width: 100%;
+}
+
+tr:nth-child(7){
+    vertical-align: top;
+}
+td{
+    padding: .54rem 0;
+}
 textarea{
     width: 100%;
-    height: 150px;
+    min-height: 150px;
+    max-height: 250px;
     resize: vertical;
+
+    border: solid 1px #A0A0A0;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+}
+tr:last-child{
+    text-align: end;
+}
+
+tr:last-child > td:last-child > .submitbutton{
+    background-color: #71CC86;
+    color: white;
+    border: solid 1px #71CC86;
+
+    margin-left: 1rem;
+
+    padding: .3rem 1.3rem;
+    cursor: pointer;
+}
+tr:last-child > td:last-child > .submitbutton:hover{
+    background-color: #59a16a;
+    border: solid 1px #59a16a;
+
+    transition-duration: 300ms;
+}
+tr:last-child > td:last-child > .resetbutton{
+    background-color: transparent;
+    padding: .3rem 1.3rem;
+    cursor: pointer;
+}
+tr:last-child > td:last-child > .resetbutton:hover{
+    background-color: #A0A0A0;
+    color: white;
+    
+    transition-duration: 300ms;
 }
 </style>

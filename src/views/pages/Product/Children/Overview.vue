@@ -14,23 +14,23 @@
         <div class="CarouselIndexItem" id="CarouselIndexItem2" @click="indexImg(2)"></div>
       </div>
       <div class="productContainer">
-        <div class="productItem">
+        <div class="productItem" @click="changePage('米血製品')">
           <img src="@/assets/ProductImg/OverviewImg/1.png" alt="" class="productImg">
           <p>米血製品</p>
         </div>
-        <div class="productItem">
+        <div class="productItem" @click="changePage('魚漿製品')">
           <img src="@/assets/ProductImg/OverviewImg/2.png" alt="" class="productImg">
           <p>魚漿製品</p>
         </div>
-        <div class="productItem">
+        <div class="productItem" @click="changePage('調理食品')">
           <img src="@/assets/ProductImg/OverviewImg/3.png" alt="" class="productImg">
           <p>調理食品</p>
         </div>
-        <div class="productItem">
+        <div class="productItem" @click="changePage('蔬菜製品')">
           <img src="@/assets/ProductImg/OverviewImg/4.png" alt="" class="productImg">
           <p>蔬菜製品</p>
         </div>
-        <div class="productItem">
+        <div class="productItem" @click="changePage('香蕉')">
           <img src="@/assets/ProductImg/OverviewImg/5.png" alt="" class="productImg">
           <p>香蕉</p>
         </div>
@@ -69,6 +69,10 @@ export default {
       vm.CarouselIntervalId = setInterval(function () {
         vm.currentCarouselImgIndex += 1
       }, 5000)
+    },
+    changePage(page) {
+      this.$router.push(`/Product/${page}`);
+      $("html").scrollTop(0);
     }
   },
   watch: {

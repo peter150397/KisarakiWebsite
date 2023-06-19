@@ -19,7 +19,6 @@
                         <img src="@/assets/Q&AImg/plus.png" alt="" class="plusImg">
                     </div>
                     <p>{{ item.content }}</p>
-                    <!-- <p>{{ changeTohtml(index , item.content) }}</p> -->
                 </div>
             </div>
         </div>
@@ -58,9 +57,6 @@ export default {
         changeType(type) {
             this.currentQAType = type
         },
-        changeTohtml(index , content) {
-            return $(`#QAContent${index} > p`).html(content)
-        }
     },
     watch: {
         currentQAType: {
@@ -75,13 +71,22 @@ export default {
                         vm.currentQA.push(item);
                     }
                 });
+
+                if(type == 'contact'){
+                    this.$store.commit('GETCURRENTPAGEROUTE', { name: '如何聯絡我們', index: 1, path: '/Q&A' })
+                }else if (type == 'purchase') {
+                    this.$store.commit('GETCURRENTPAGEROUTE', { name: '哪裡購買如記產品', index: 1, path: '/Q&A' })
+                }else{
+                    this.$store.commit('GETCURRENTPAGEROUTE', { name: '所有問題', index: 1, path: '/Q&A' })
+                }
+
             },
             immediate: true
         }
     },
     mounted() {
         this.$store.commit('GETCURRENTPAGEROUTE', { name: '常見問題', index: 0, path: '/Q&A' })
-        this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 1, path: '' })
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '所有問題', index: 1, path: '/Q&A' })
         this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 2, path: '' })
         this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 3, path: '' })
     },
