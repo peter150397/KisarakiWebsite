@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="container">
-            <h2 class="title">老爸打主意 全家出力氣</h2>
+        <div class="columnCenterContainer">
+            <h2>老爸打主意 全家出力氣</h2>
             <div class="line"></div>
-            <p class="content">
+            <p>
                 1982年於鳳山開漳聖王廟附近市場展開鴨血糕的家庭式經營，五個兄弟和爸爸齊力打拼，並銷售到傳統市場。<br><br>
                 1998年在大發工業區成立『如記食品有限公司』以工廠型態製造，引進西德連續真空包裝機，將米血販售至各大通路。<br><br>
                 2004年開始與7-11合作，研發並生產冷凍包裝食品，包含魚漿及鮮食產品。<br><br>
@@ -24,29 +24,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.title {
-    color: #71CC86;
-    letter-spacing: 2px;
-    border-left: solid 1px #71CC86;
-    border-right: solid 1px #71CC86;
-    padding: 0 1.5rem;
-}
-
-.line {
-    width: 100%;
-    height: 3px;
-    background-color: #FFD86F;
-    margin: 2rem 0;
-}
-
-.content {
-    font-size: 14px;
-    color: gray;
-}
 </style>

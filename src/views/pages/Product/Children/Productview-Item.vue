@@ -12,7 +12,7 @@
                 <div class="CarouselContainer">
                     <div class="arrowContainer" @click="CarouselSlide(1)">
                         <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt=""
-                            class="CarouselArrow CarouselArrowLeft">
+                            class="arrow CarouselArrowLeft">
                     </div>
                     <div class="CarouselImgContainer">
                         <img :src="img" alt="" class="CarouselImg"
@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="arrowContainer" @click="CarouselSlide(-1)">
-                        <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow">
+                        <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="arrow">
                     </div>
                 </div>
             </div>
@@ -212,19 +212,13 @@ export default {
 }
 
 .buyNowButton {
-    background-color: #F4DB82;
-    border: none;
-    border-radius: 30px;
     padding: .6rem 1.5rem;
 
-    font-family: '微軟正黑體';
     font-size: 18px;
     font-weight: bold;
 
     position: absolute;
     bottom: 0;
-
-    cursor: pointer;
 }
 
 .CarouselContainer {
@@ -246,7 +240,7 @@ export default {
     cursor: pointer;
 }
 
-.CarouselContainer > .arrowContainer > .CarouselArrow {
+.arrow {
     height: 20px;
 }
 

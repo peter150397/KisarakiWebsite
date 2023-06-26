@@ -23,54 +23,61 @@ export default new Vuex.Store({
         path: ''
       }
     ],
-    newInfo:[
+    homeCarouselImg: [
+      require("@/assets/HomePageImg/Carousel-img/Carousel 1.png"),
+      require("@/assets/HomePageImg/Carousel-img/Carousel 2.png"),
+      require("@/assets/HomePageImg/Carousel-img/Carousel 3.png"),
+      require("@/assets/HomePageImg/Carousel-img/Carousel 4.png"),
+      require("@/assets/HomePageImg/Carousel-img/Carousel 5.png")
+    ],
+    newInfo: [
       {
         img: require('@/assets/NewInfoImg/info1.png'),
         title: '特製沙茶醬汁 | 香滷米血黑輪 | 7-Eleven全國上架',
         content: '各位還在等什麼~趕快到小七買起來~香滷米血黑輪在滷製過程添加特製的沙茶醬料，以提升香氣和風味，您可以期待著吸飽醬汁的米血柔軟口感和黑輪的彈牙口感的完美結合。',
-        category:'NewProduct'
+        category: 'NewProduct'
       },
       {
         img: require('@/assets/NewInfoImg/info2.png'),
         title: '全新口味!麻辣煮霸氣登場!!!',
         content: '對於麻辣控我們帶來了一個令人興奮的消息!經過長時間的研發和精心調配我們推出了最新的創新產品『麻辣煮』。麻辣煮的獨特之處在於它融合了麻和辣的完美平衡選用了特級花椒和多種辛香料經過精心爆炒和煉製，無論你是喜歡辣的還是麻的都能滿足你的味蕾。',
-        category:'NewProduct'
+        category: 'NewProduct'
       },
       {
         img: require('@/assets/NewInfoImg/info3.png'),
         title: '7-11超商的關東煮御用米血糕品牌「如記米血糕」上市囉!',
         content: '你知道平常在7-11超商買的關東煮米血糕是哪個品牌的嗎?將將將將~就是「如記米血糕」啦!如記米血糕不僅用料實在、製程嚴謹。而且口感非常Q彈軟嫩、耐煮性十足，古早好滋味讓你吃過一次就再也停不下來!',
-        category:'ProductRelate'
+        category: 'ProductRelate'
       },
       {
         img: require('@/assets/NewInfoImg/info4.png'),
         title: '如記350g米血糕｜第二件五折｜',
         content: '如記350g米血糕，第二件5折，真的超~划算!!還不快去買',
-        category:'ProductRelate'
+        category: 'ProductRelate'
       },
       {
         img: require('@/assets/NewInfoImg/info5.png'),
         title: '｜經典美味台灣小吃｜#大腸肉羹麵線 升級大容量 在7-Evelen全新上架',
         content: '｜經典美味台灣小吃｜#大腸肉羹麵線升級大容量，在7-Evelen全新上架，如記食品的大腸肉羹麵線深受消費者喜愛',
-        category:'NewProduct'
+        category: 'NewProduct'
       },
       {
         img: require('@/assets/NewInfoImg/info6.png'),
         title: '小七吃得到現蒸點心！【蒸系列】麻油米血、筒仔米糕、芋頭排骨酥湯!!7-ELEVEN溫暖上市',
         content: '【麻油米血】香醇的麻油香氣，佐淡淡的米酒香味，搭配吸飽湯汁口感Q彈的米血糕，和湯頭的辛香薑片，使每一口都溫暖您的心！！',
-        category:'NewProduct'
+        category: 'NewProduct'
       },
       {
         img: require('@/assets/NewInfoImg/info7.png'),
         title: '如記食品～官方LINE好友招募中',
         content: '加入如記食品官方LINE可隨時掌握第一手好康資訊，消息不漏接',
-        category:'RelateInfo'
+        category: 'RelateInfo'
       },
       {
         img: require('@/assets/NewInfoImg/info8.png'),
         title: '如記米血糕 換新包裝！！配方全新升級',
         content: '＃如記米血糕，換新包裝啦!!全新包裝，升級新配方口感吃起來更軟Q!!',
-        category:'NewProduct'
+        category: 'NewProduct'
       },
     ],
     productNavbarData: [
@@ -272,7 +279,7 @@ export default new Vuex.Store({
     productData: [
       {
         productName: '米血糕(小)',
-        subTitle:'本產品使用真空包裝高溫殺菌，品質安全衛生',
+        subTitle: '本產品使用真空包裝高溫殺菌，品質安全衛生',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/(small)RiceBloodCakeCarousel1.png'),
@@ -294,7 +301,7 @@ export default new Vuex.Store({
       },
       {
         productName: '米血糕(大)',
-        subTitle:'本產品使用真空包裝高溫殺菌，品質安全衛生',
+        subTitle: '本產品使用真空包裝高溫殺菌，品質安全衛生',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/RiceBloodCake(big).png'),
@@ -313,7 +320,7 @@ export default new Vuex.Store({
       },
       {
         productName: '米血糕關東煮',
-        subTitle:'使用優良檢驗合格豬血和優質白米製作，安心美味',
+        subTitle: '使用優良檢驗合格豬血和優質白米製作，安心美味',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/RiceBloodCake(kanto).png'),
@@ -332,7 +339,7 @@ export default new Vuex.Store({
       },
       {
         productName: '火鍋米血丁-麻丁',
-        subTitle:'使用優良檢驗合格豬血和優質白米製作，安心美味',
+        subTitle: '使用優良檢驗合格豬血和優質白米製作，安心美味',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/RiceBloodCake(Business).png'),
@@ -351,7 +358,7 @@ export default new Vuex.Store({
       },
       {
         productName: '虱目魚丸',
-        subTitle:'挑選加入富油脂的虱目魚，口感Q彈，Q嫩彈牙',
+        subTitle: '挑選加入富油脂的虱目魚，口感Q彈，Q嫩彈牙',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/FishBall.png'),
@@ -370,7 +377,7 @@ export default new Vuex.Store({
       },
       {
         productName: '黃金魚蛋',
-        subTitle:'嚴選上等魚漿製作，口感Ｑ彈脆口、咬勁十足',
+        subTitle: '嚴選上等魚漿製作，口感Ｑ彈脆口、咬勁十足',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/FishEgg.png'),
@@ -389,7 +396,7 @@ export default new Vuex.Store({
       },
       {
         productName: '麻婆豆腐',
-        subTitle:'滑嫩口感加上麻～辣～鮮～香的風味，滿足您的味蕾',
+        subTitle: '滑嫩口感加上麻～辣～鮮～香的風味，滿足您的味蕾',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/Tofu.png'),
@@ -408,7 +415,7 @@ export default new Vuex.Store({
       },
       {
         productName: '香菇雞湯',
-        subTitle:'香菇輕甜雞肉鮮嫩 湯頭入口濃郁回甘',
+        subTitle: '香菇輕甜雞肉鮮嫩 湯頭入口濃郁回甘',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/ChickenSoup.png'),
@@ -427,7 +434,7 @@ export default new Vuex.Store({
       },
       {
         productName: '黃金玉米棒',
-        subTitle:'新鮮封存 美味即食',
+        subTitle: '新鮮封存 美味即食',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/Corn.png'),
@@ -446,7 +453,7 @@ export default new Vuex.Store({
       },
       {
         productName: '7-11裸蕉',
-        subTitle:'香氣濃郁、營養健康',
+        subTitle: '香氣濃郁、營養健康',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/Banana1.png'),
@@ -465,7 +472,7 @@ export default new Vuex.Store({
       },
       {
         productName: '7-11雙蕉',
-        subTitle:'香氣濃郁、營養健康',
+        subTitle: '香氣濃郁、營養健康',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/Banana2.png'),
@@ -484,7 +491,7 @@ export default new Vuex.Store({
       },
       {
         productName: '全聯袋蕉',
-        subTitle:'香氣濃郁、營養健康',
+        subTitle: '香氣濃郁、營養健康',
         productImg: {
           CarouselImg: [
             require('@/assets/ProductImg/ProductDataImg/Banana3.png'),
@@ -502,41 +509,41 @@ export default new Vuex.Store({
         productionPlace: '台灣屏東'
       },
     ],
-    QA:[
+    QA: [
       {
         category: 'contact',
-        title:'客服與聯絡資訊',
-        content:'聯絡電話：08-771-0088\n客服信箱：rja@flno1.com.tw\nLINE ID：＠405jczdl'
+        title: '客服與聯絡資訊',
+        content: '聯絡電話：08-771-0088\n客服信箱：rja@flno1.com.tw\nLINE ID：＠405jczdl'
       },
       {
         category: 'contact',
-        title:'營業時間',
-        content:'營業時間：週一至週五08:00-12:00 \ 13:00-17:00'
+        title: '營業時間',
+        content: '營業時間：週一至週五08:00-12:00 \ 13:00-17:00'
       },
       {
         category: 'purchase',
-        title:'可以直接向如記食品訂購產品嗎？',
-        content:'如記食品產品皆於一般通路販售(如量販店、全聯、超商等)，或是您可以透過線上商城訂購\n來電諮詢: 08-771-0088#225'
+        title: '可以直接向如記食品訂購產品嗎？',
+        content: '如記食品產品皆於一般通路販售(如量販店、全聯、超商等)，或是您可以透過線上商城訂購\n來電諮詢: 08-771-0088#225'
       },
       {
         category: 'purchase',
-        title:'配送方式有哪些?',
-        content:'目前皆以低溫車冷藏、冷凍宅配為主'
+        title: '配送方式有哪些?',
+        content: '目前皆以低溫車冷藏、冷凍宅配為主'
       },
       {
         category: 'purchase',
-        title:'目前提供哪些付款方式？',
-        content:'1、刷卡\n2、貨到付款\n3、ATM轉帳'
+        title: '目前提供哪些付款方式？',
+        content: '1、刷卡\n2、貨到付款\n3、ATM轉帳'
       },
       {
         category: 'purchase',
-        title:'出貨配送時間',
-        content:'週一至週五，客服人員在確認訂單後，會盡速處理商品配送，配合宅急便作業時間調整，周日、及國定例假日，宅急便公休無配送。'
+        title: '出貨配送時間',
+        content: '週一至週五，客服人員在確認訂單後，會盡速處理商品配送，配合宅急便作業時間調整，周日、及國定例假日，宅急便公休無配送。'
       },
       {
         category: 'purchase',
-        title:'離島是否無法配送呢?',
-        content:'離島運費因與本島運費不同，請來電(08)771-0088詢問運費方可下訂。'
+        title: '離島是否無法配送呢?',
+        content: '離島運費因與本島運費不同，請來電(08)771-0088詢問運費方可下訂。'
       }
     ]
   },

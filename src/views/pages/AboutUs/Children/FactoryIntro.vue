@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="container">
-            <h2 class="title">通過政府CAS優良食品認證之食品加工廠</h2>
+        <div class="columnCenterContainer">
+            <h2>通過政府CAS優良食品認證之食品加工廠</h2>
             <div class="line"></div>
-            <p class="content">
+            <p>
                 如記食品有限公司創立於1982年，工廠座落於屏東縣竹田鄉，主要產品為米血糕，在創立後的三十年當中，發展多元多樣各式產品，包含冷藏調理食品、點心類食品、冷凍食品類及4℃鮮食類...多元多樣各式產品。
                 本公司與各大通路合作，包含7-11、全聯、好市多、家樂福及知名連鎖餐廳等，擁有超過230名員工，我們的廠房、品質管理及人才發展，皆是我們能夠滿足客戶要求的基石。
                 <br>
@@ -24,32 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.title {
-    color: #71CC86;
-    letter-spacing: 2px;
-    border-left: solid 1px #71CC86;
-    border-right: solid 1px #71CC86;
-    padding: 0 1.5rem;
-}
-
-.line {
-    width: 100%;
-    height: 3px;
-    background-color: #FFD86F;
-    margin: 2rem 0;
-}
-
-.content {
-    font-size: 16px;
-    line-height: 28px;
-
+p {
     text-indent: 1cm;
-
-    color: gray;
-}</style>
+}
+</style>

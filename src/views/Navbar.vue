@@ -6,11 +6,11 @@
             <router-link to="/NewInfo">最新消息</router-link>
             <router-link to="/Product">強檔產品</router-link>
             <router-link to="/Q&A">常見問題</router-link>
-            <router-link to="/Contact" data-noBorder>聯絡我們</router-link>
+            <router-link to="/Contact">聯絡我們</router-link>
         </div>
         <div class="nav-icon-group">
             <div class="nav-onlineStore">
-                <img src="@/assets/NavbarImg/shopping-bag.png"><a href="#">線上商城</a>
+                <a href="#"><img src="@/assets/NavbarImg/shopping-bag.png">線上商城</a>
             </div>
             <img src="@/assets/NavbarImg/bell.png" alt="" class="nav-icon">
             <img src="@/assets/NavbarImg/user.png" alt="" class="nav-icon">
@@ -34,18 +34,13 @@ export default {
 </script>
 
 <style scoped>
-a {
-    text-decoration: none;
-    color: black;
-
-    font-weight: bold;
-}
-
 nav {
     display: flex;
     padding: 2rem 0rem;
     justify-content: center;
     align-items: center;
+
+    width: 100%;
 
     position: sticky;
     top: 0;
@@ -73,22 +68,18 @@ nav {
     line-height: 22px;
     border-right: solid black 1px;
 }
-
-a[data-noBorder] {
+.nav-link-group>*:last-child{
     border: none;
 }
 
-
-.nav-link-group :hover {
+.nav-link-group >*:hover {
     color: #FDCE00;
-
     transition-duration: .3s;
 }
 
 .nav-icon-group {
     display: flex;
     gap: 20px;
-    justify-content: center;
     align-items: center;
 
     position: absolute;
@@ -98,23 +89,20 @@ a[data-noBorder] {
 .nav-onlineStore {
     padding: 0.1rem 1rem;
     border-radius: 50px;
-
+    background: linear-gradient(115deg, #E5985F 0%, #D32D2D 100%);
+}
+.nav-onlineStore > a{
     display: flex;
     gap: 5px;
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(115deg, #E5985F 0%, #D32D2D 100%);
-}
-
-.nav-onlineStore>img {
-    height: 18px;
-}
-
-.nav-onlineStore>a {
     font-size: 16px;
     line-height: 22px;
     color: white;
+}
+.nav-onlineStore > a > img {
+    height: 18px;
 }
 
 .nav-icon {

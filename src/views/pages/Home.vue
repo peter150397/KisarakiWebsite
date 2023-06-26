@@ -1,89 +1,101 @@
 <template>
     <div>
         <!-- Carousel -->
-        <div class="CarouselContainer">
-            <img src="@/assets/HomePageImg/arrow.png" alt="" class="prev arrowImg" @click="prevCarouselImg">
-            <img src="@/assets/HomePageImg/arrow.png" alt="" class="next arrowImg" @click="nextCarouselImg">
+        <div class="CarouselBg">
+            <div class="CarouselContainer">
+                <img src="@/assets/HomePageImg/arrow.png" alt="" class="titleArrowPrev CarouselArrow"
+                    @click="prevCarouselImg">
+                <img src="@/assets/HomePageImg/arrow.png" alt="" class="titleArrowNext CarouselArrow CarouselArrowRight"
+                    @click="nextCarouselImg">
 
-            <div class="CarouselImgGroup">
-                <img :src="img" alt="" class="CarouselImg" :id="'CarouselImg' + index" v-for="(img, index) in Carousel"
-                    :key="img">
+                <div class="CarouselImgGroup" style="--Carouselslide: 0%;">
+                    <img :src="img" alt="" class="CarouselImg" :id="'CarouselImg' + index" v-for="(img, index) in Carousel"
+                        :key="img">
+                </div>
+            </div>
+            <div class="CarouselIndexGroup">
+                <div class="titleCarouselIndex CarouselIndex" :id="'CarouselIndexitem' + index"
+                    v-for="(circle, index) in Carousel.length" :key="circle" @click="CarouselByIndex(index)"></div>
             </div>
         </div>
-        <div class="CarouselIndexGroup">
-            <div class="CarouselIndexitem" :id="'CarouselIndexitem' + index" v-for="(circle, index) in Carousel.length"
-                :key="circle" @click="CarouselByCircle(index)"></div>
-        </div>
+
 
         <!-- aboutUs -->
-        <div class="aboutUs">
-            <h1 class="aboutUsTitle">關於我們</h1>
-            <div class="aboutUsContent">
-                <img src="@/assets/HomePageImg/aboutUsLogo.jpg" alt="" class="aboutUsLogo">
+        <div class="aboutUsBg columnCenterContainer">
+            <div class="aboutUsContainer">
+                <h1>關於我們</h1>
+                <div>
+                    <img src="@/assets/HomePageImg/aboutUsLogo.jpg" alt="">
 
-                <div class="aboutUsVideoContainer">
-                    <iframe src="https://www.youtube.com/embed/Fuku5fH6VDI" title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen class="aboutUsVideo"></iframe>
-                    <iframe src="https://www.youtube.com/embed/tc61Y7okrVI" title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen class="aboutUsVideo"></iframe>
-                    <iframe src="https://www.youtube.com/embed/A0QY97rN-jc" title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen class="aboutUsVideo"></iframe>
-                </div>
-                <div class="aboutUstextContainer">
-                    <p class="aboutUstext">
-                        如記食品有限公司創立於1988年，工廠座落於屏東縣竹田鄉，主要產品為米血糕，目前也是國內唯一米血糕經CAS認證的廠商！<br>
-                        <br>
-                        我們不斷追求進步，在創立後的三十年當中，發展多元多樣各式產品，包含冷藏調理食品、點心類食品、冷凍食品類及4℃鮮食類...多元多樣各式產品。
-                    </p>
-                    <button @click="changePage('/AboutUs')">More</button>
-                </div>
-                <div class="aboutUsVideoIndexGroup">
-                    <div class="aboutUsVideoIndexItem" id="aboutUsVideoIndexItem0" @click="aboutUsVideoCarouselByCircle(0)">
+                    <div class="aboutUsVideoContainer">
+                        <iframe src="https://www.youtube.com/embed/Fuku5fH6VDI" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen class="aboutUsVideo" style="--aboutUsVideoCarouselSlide: 0;"></iframe>
+                        <iframe src="https://www.youtube.com/embed/tc61Y7okrVI" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen class="aboutUsVideo" style="--aboutUsVideoCarouselSlide: 0;"></iframe>
+                        <iframe src="https://www.youtube.com/embed/A0QY97rN-jc" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen class="aboutUsVideo" style="--aboutUsVideoCarouselSlide: 0;"></iframe>
                     </div>
-                    <div class="aboutUsVideoIndexItem" id="aboutUsVideoIndexItem1" @click="aboutUsVideoCarouselByCircle(1)">
+                    <div class="aboutUsTextContainer columnCenterContainer">
+                        <p>
+                            如記食品有限公司創立於1988年，工廠座落於屏東縣竹田鄉，主要產品為米血糕，目前也是國內唯一米血糕經CAS認證的廠商！<br>
+                            <br>
+                            我們不斷追求進步，在創立後的三十年當中，發展多元多樣各式產品，包含冷藏調理食品、點心類食品、冷凍食品類及4℃鮮食類...多元多樣各式產品。
+                        </p>
+                        <button @click="changePage('/AboutUs')">More</button>
                     </div>
-                    <div class="aboutUsVideoIndexItem" id="aboutUsVideoIndexItem2" @click="aboutUsVideoCarouselByCircle(2)">
+                    <div class="aboutUsVideoIndexGroup">
+                        <div class="aboutUsCarouselIndex CarouselIndex" id="aboutUsVideoIndexItem0"
+                            @click="aboutUsVideoCarouselByIndex(0)">
+                        </div>
+                        <div class="aboutUsCarouselIndex CarouselIndex" id="aboutUsVideoIndexItem1"
+                            @click="aboutUsVideoCarouselByIndex(1)">
+                        </div>
+                        <div class="aboutUsCarouselIndex CarouselIndex" id="aboutUsVideoIndexItem2"
+                            @click="aboutUsVideoCarouselByIndex(2)">
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- product -->
         <div class="product">
-            <h2 class="productTitle">強檔產品</h2>
-            <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="orangeArrowImg" @click="prevProductCarouselImg">
+            <h2>強檔產品</h2>
+            <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="CarouselArrow productArrow"
+                @click="prevProductCarouselImg">
 
             <div class="productCover">
-                <div class="productContainer">
-                    <div class="productItem" v-for="item in Product" :key="item.name" @click="changePage(item.path)">
-                        <img :src="item.img" alt="" class="productImg">
-                        <p class="producttext">{{ item.name }}</p>
-                    </div>
+                <div class="productItem" v-for="(item, index) in Product" :key="index"
+                    @click="changePage('/Product', '/' + item.category.mainCategory, '/' + item.category.subCategory, '/' + item.productName)"
+                    style="--productCarouselSlide: 0%;">
+                    <img :src="item.productImg.CarouselImg[0]" alt="">
+                    <p>{{ item.productName }}</p>
                 </div>
             </div>
-            <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="orangeArrowImg orangeArrowNext"
+            <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="CarouselArrow CarouselArrowRight productArrow"
                 @click="nextProductCarouselImg">
         </div>
         <!-- new Infomation -->
-        <div class="newInfo">
+        <div class="newInfo columnCenterContainer">
             <h1 class="newInfoTitle">最新消息</h1>
             <div class="newInfoCardGroup">
                 <div class="newInfoCardItem" @click="changePage('/NewInfo')">
                     <div class="newInfoCardImgContainer">
                         <img src="@/assets/HomePageImg/newInfo-img/info1.png" alt="" class="newInfoCardImg">
                     </div>
-                    <h3 class="newInfoCardTitle">特製沙茶醬汁 | 香滷米血黑輪 | 7-Eleven全國上架</h3>
-                    <p class="newInfoCardcontent">
+                    <h3>特製沙茶醬汁 | 香滷米血黑輪 | 7-Eleven全國上架</h3>
+                    <p>
                         各位還在等什麼~趕快到小七買起來~香滷米血黑輪在滷製過程添加特製的沙茶醬料，以提升香氣和風味，您可以期待著吸飽醬汁的米血柔軟口感和黑輪的彈牙口感的完美結合。</p>
                 </div>
                 <div class="newInfoCardItem" @click="changePage('/NewInfo')">
                     <div class="newInfoCardImgContainer">
                         <img src="@/assets/HomePageImg/newInfo-img/info2.png" alt="" class="newInfoCardImg">
                     </div>
-                    <h3 class="newInfoCardTitle">全新口味!麻辣煮霸氣登場!!!</h3>
-                    <p class="newInfoCardcontent">
+                    <h3>全新口味!麻辣煮霸氣登場!!!</h3>
+                    <p>
                         對於麻辣控我們帶來了一個令人興奮的消息!經過長時間的研發和精心調配我們推出了最新的創新產品『麻辣煮』。麻辣煮的獨特之處在於它融合了麻和辣的完美平衡選用了特級花椒和多種辛香料經過精心爆炒和煉製，無論你是喜歡辣的還是麻的都能滿足你的味蕾。
                     </p>
                 </div>
@@ -91,8 +103,8 @@
                     <div class="newInfoCardImgContainer">
                         <img src="@/assets/HomePageImg/newInfo-img/info3.png" alt="" class="newInfoCardImg">
                     </div>
-                    <h3 class="newInfoCardTitle">7-11超商的關東煮御用米血糕品牌「如記米血糕」上市囉!</h3>
-                    <p class="newInfoCardcontent">
+                    <h3>7-11超商的關東煮御用米血糕品牌「如記米血糕」上市囉!</h3>
+                    <p>
                         你知道平常在7-11超商買的關東煮米血糕是哪個品牌的嗎?將將將將~就是「如記米血糕」啦!如記米血糕不僅用料實在、製程嚴謹。而且口感非常Q彈軟嫩、耐煮性十足，古早好滋味讓你吃過一次就再也停不下來!
                     </p>
                 </div>
@@ -104,193 +116,100 @@
 <script>
 import $ from "jquery";
 
-import Carousel1 from "@/assets/HomePageImg/Carousel-img/Carousel 1.png";
-import Carousel2 from "@/assets/HomePageImg/Carousel-img/Carousel 2.png";
-import Carousel3 from "@/assets/HomePageImg/Carousel-img/Carousel 3.png";
-import Carousel4 from "@/assets/HomePageImg/Carousel-img/Carousel 4.png";
-import Carousel5 from "@/assets/HomePageImg/Carousel-img/Carousel 5.png";
-
-import product1 from "@/assets/HomePageImg/Product-img/1.png"
-import product2 from "@/assets/HomePageImg/Product-img/2.png"
-import product3 from "@/assets/HomePageImg/Product-img/3.png"
-import product4 from "@/assets/HomePageImg/Product-img/4.png"
-import product5 from "@/assets/HomePageImg/Product-img/5.png"
-import product6 from "@/assets/HomePageImg/Product-img/6.png"
-import product7 from "@/assets/HomePageImg/Product-img/7.png"
-import product8 from "@/assets/HomePageImg/Product-img/8.png"
-import product9 from "@/assets/HomePageImg/Product-img/9.png"
-import product10 from "@/assets/HomePageImg/Product-img/10.png"
-
 
 export default {
     data() {
         return {
-            Carousel: [
-                Carousel1,
-                Carousel2,
-                Carousel3,
-                Carousel4,
-                Carousel5
-            ],
-            Product: [
-                {
-                    img: product1,
-                    name: "米血糕",
-                    path:'/Product/米血製品'
-                },
-                {
-                    img: product2,
-                    name: "丸子系列",
-                    path:'/Product/魚漿製品/丸子系列'
-                },
-                {
-                    img: product3,
-                    name: "炭烤系列",
-                    path:'/Product/魚漿製品/炭烤系列'
-                },
-                {
-                    img: product4,
-                    name: "關東煮",
-                    path:'/Product/魚漿製品/關東煮'
-                },
-                {
-                    img: product5,
-                    name: "料理包",
-                    path:'/Product/調理食品/調理包'
-                },
-                {
-                    img: product6,
-                    name: "碗裝食品",
-                    path:'/Product/調理食品/碗裝食品'
-                },
-                {
-                    img: product7,
-                    name: "特製食品",
-                    path:'/Product/調理食品/特製食品'
-                },
-                {
-                    img: product8,
-                    name: "冷凍玉米",
-                    path:'/Product/蔬菜製品/冷凍玉米'
-                },
-                {
-                    img: product9,
-                    name: "即食蔬菜",
-                    path:'/Product/蔬菜製品/即食蔬菜'
-                },
-                {
-                    img: product10,
-                    name: "香蕉",
-                    path:'/Product/香蕉'
-                },
-            ],
-            currentCarouselIndex: 0,
+            currentTitleCarouselIndex: 0,
+        }
+    },
+    computed: {
+        Carousel() {
+            return this.$store.state.homeCarouselImg
+        },
+        Product() {
+            return this.$store.state.productData
         }
     },
     methods: {
         prevCarouselImg() {
             const vm = this;
-            if (vm.currentCarouselIndex === 0) {
-                vm.currentCarouselIndex = vm.Carousel.length - 1;
+            if (vm.currentTitleCarouselIndex === 0) {
+                vm.currentTitleCarouselIndex = vm.Carousel.length - 1;
             } else {
-                vm.currentCarouselIndex -= 1;
+                vm.currentTitleCarouselIndex -= 1;
             }
         },
         nextCarouselImg() {
             const vm = this;
-            if (vm.currentCarouselIndex === vm.Carousel.length - 1) {
-                vm.currentCarouselIndex = 0;
+            if (vm.currentTitleCarouselIndex === vm.Carousel.length - 1) {
+                vm.currentTitleCarouselIndex = 0;
             } else {
-                vm.currentCarouselIndex += 1;
+                vm.currentTitleCarouselIndex += 1;
             }
         },
-        CarouselByCircle(index) {
+        CarouselByIndex(index) {
             $('.CarouselImgGroup').css('--Carouselslide', `-${index * 52}%`)
-            this.currentCarouselIndex = index
+            this.currentTitleCarouselIndex = index
         },
-        aboutUsVideoCarouselByCircle(index) {
-            $('.aboutUsVideo').css('--aboutUsVideoSlide', `calc(-100% - 1.6rem) * ${index}`)
+        aboutUsVideoCarouselByIndex(index) {
+            $('.aboutUsVideo').css('--aboutUsVideoCarouselSlide', `(-100% - 1.6rem) * ${index}`)
 
-            $('.aboutUsVideoIndexGroup > *').css({ 'width': '15px', 'background-color': '#FDE4B4' })
+            $('.aboutUsVideoIndexGroup > div').css({ 'width': '15px', 'background-color': '#FDE4B4' })
             $(`#aboutUsVideoIndexItem${index}`).css({ 'width': '40px', 'background-color': '#F5D18C' })
         },
         prevProductCarouselImg() {
-            $('.productContainer').css('--productCarouselslide', '0%')
+            $('.productItem').css('--productCarouselSlide', '0')
         },
         nextProductCarouselImg() {
-            $('.productContainer').css('--productCarouselslide', '106%')
+            $('.productItem').css('--productCarouselSlide', '-1008px')
         },
-        changePage(page) {
-            this.$router.push(page);
+        changePage(page1, page2 = '', page3 = '', page4 = '') {
+            this.$router.push(page1 + page2 + page3 + page4);
+
             $("html").scrollTop(0);
         }
     },
     watch: {
-        currentCarouselIndex() {
+        currentTitleCarouselIndex() {
             const vm = this;
 
-            $('.CarouselImgGroup').css('--Carouselslide', `-${vm.currentCarouselIndex * 52}%`)
+            $('.CarouselImgGroup').css('--Carouselslide', `-${vm.currentTitleCarouselIndex * 52}%`)
 
 
             $('.CarouselImgGroup > *').css('width', '50%')
-            $(`#CarouselImg${vm.currentCarouselIndex}`).css('width', '64%')
+            $(`#CarouselImg${vm.currentTitleCarouselIndex}`).css('width', '64%')
 
             $('.CarouselIndexGroup > *').css({ 'width': '15px', 'background-color': '#34D687' })
-            $(`#CarouselIndexitem${vm.currentCarouselIndex}`).css({ 'width': '40px', 'background-color': '#00A353' })
+            $(`#CarouselIndexitem${vm.currentTitleCarouselIndex}`).css({ 'width': '40px', 'background-color': '#00A353' })
         }
     },
     mounted() {
-        $('#CarouselImg0').css('width', '64%')
-        $(`#CarouselIndexitem0`).css({ 'width': '40px', 'background-color': '#00A353' })
-
-        $(`#aboutUsVideoIndexItem0`).css({ 'width': '40px', 'background-color': '#F5D18C' })
-
-        this.$store.commit('GETCURRENTPAGEROUTE' , {name: '' , index: 0 , path:''})
+        this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 0, path: '' })
     }
 }
 </script>
 
 <style scoped>
-* {
-    box-sizing: border-box;
+.CarouselBg{
+    background: linear-gradient(96deg, #D5FECB 0%, #6CF6C0 100%);
 }
-
 .CarouselContainer {
     display: flex;
-    position: relative;
     align-items: center;
-    justify-content: flex-start;
-    padding: 1rem 0 0;
-    background: linear-gradient(96deg, #D5FECB 0%, #6CF6C0 100%);
 
     overflow: hidden;
 }
 
-.arrowImg {
-    position: absolute;
-    z-index: 1;
-    height: 70px;
-    opacity: .5;
-}
-
-.arrowImg:hover {
-    cursor: pointer;
-    opacity: 1;
-}
-
-.prev {
+.titleArrowPrev {
     left: 18%;
 }
 
-.next {
-    transform: rotate(180deg);
+.titleArrowNext {
     right: 18%;
 }
 
-
-
 .CarouselImgGroup {
-    --Carouselslide: 0%;
     height: 600px;
     position: relative;
     left: 18%;
@@ -312,41 +231,41 @@ export default {
     transition-duration: .5s;
     transition-timing-function: ease-in-out;
 }
+.CarouselImg:first-child{
+    width: 64%;
+}
 
 .CarouselIndexGroup {
     display: flex;
     gap: 15px;
     justify-content: center;
-    align-items: center;
 
-    background: linear-gradient(96deg, #D5FECB 0%, #6CF6C0 100%);
-
-    padding-bottom: 4rem;
+    padding: 2rem 0 3rem;
 }
 
-.CarouselIndexitem {
-    height: 15px;
-    width: 15px;
+.titleCarouselIndex {
     background-color: #34D687;
-    border-radius: 50px;
-
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
-
-    cursor: pointer;
+}
+.titleCarouselIndex:first-child{
+    width: 40px;
+    background-color: #00A353;
 }
 
-.aboutUs {
+.aboutUsBg {
     background: url('@/assets/HomePageImg/aboutUsbg.png') top center;
-    padding: 3rem 20% 6rem;
+    padding: 3rem 0 6rem;
 }
 
-.aboutUsTitle {
+.aboutUsContainer {
+    width: 990px;
+}
+
+.aboutUsContainer>h1 {
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.aboutUsContent {
+.aboutUsContainer>div {
     display: grid;
     grid-template-columns: 1fr 1.26fr;
     grid-template-rows: 15px auto auto;
@@ -354,17 +273,7 @@ export default {
     position: relative;
 }
 
-
-.aboutUstextContainer {
-    position: relative;
-    background-color: white;
-    border-radius: 20px;
-    padding: 1.5rem 1.5rem 3rem;
-
-    box-shadow: 0px 3px 6px #808080;
-}
-
-.aboutUsLogo {
+.aboutUsContainer>div>img {
     position: relative;
     z-index: 1;
     top: 0;
@@ -373,27 +282,23 @@ export default {
     border-radius: 50%;
 }
 
-.aboutUstext {
-    width: 85%;
-    margin-left: auto;
+.aboutUsTextContainer {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    padding: 1.5rem 1.5rem 2rem;
+
+    box-shadow: 0px 3px 6px #808080;
+
+    align-items: flex-end;
+}
+
+.aboutUsTextContainer>p {
+    width: 88%;
     font-size: 18px;
     font-weight: bold;
 }
-.aboutUstextContainer > button {
-    background-color: #F4DB82;
-    border: none;
-    border-radius: 20px;
-    padding: .2rem 1rem;
-    position: absolute;
-    right: 1.5rem;
-    bottom: .8rem;
 
-    cursor: pointer;
-}
-.aboutUstextContainer > button:hover{
-    transform: scale(1.2,1.2);
-    transition-duration: 300ms;
-}
 
 .aboutUsVideoContainer {
     grid-row: span 2;
@@ -408,17 +313,13 @@ export default {
     gap: 1.6rem;
     justify-content: flex-start;
     overflow: hidden;
-
-
 }
 
 .aboutUsVideo {
     border-radius: 15px;
     min-width: 100%;
 
-    --aboutUsVideoSlide: 0;
-
-    transform: translateX(calc(var(--aboutUsVideoSlide)));
+    transform: translateX(calc(var(--aboutUsVideoCarouselSlide)));
 
     transition-duration: .5s;
     transition-timing-function: ease-in-out;
@@ -430,20 +331,14 @@ export default {
     display: flex;
     gap: 15px;
     justify-content: center;
-    align-items: center;
 }
 
-.aboutUsVideoIndexItem {
-    height: 15px;
-    width: 15px;
-    border-radius: 50px;
-
+.aboutUsCarouselIndex {
     background-color: #FDE4B4;
-
-    cursor: pointer;
-
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
+}
+.aboutUsCarouselIndex:first-child{
+    width: 40px;
+    background-color: #F5D18C;
 }
 
 .product {
@@ -456,7 +351,7 @@ export default {
     padding: 4rem 0;
 }
 
-.productTitle {
+.product>h2 {
     position: absolute;
     top: calc(-1.8rem);
     background-color: #FFD86F;
@@ -465,23 +360,17 @@ export default {
     padding: 0.8rem 2rem;
 }
 
-.productCover {
-    width: 62.5%;
-    overflow: hidden;
+.productArrow {
+    position: static;
 }
 
-.productContainer {
-    --productCarouselslide: 0%;
+.productCover {
+    width: 990px;
+    overflow: hidden;
 
     display: flex;
-    gap: 6%;
+    gap: 18px;
     align-items: center;
-
-    position: relative;
-    right: var(--productCarouselslide);
-
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out;
 }
 
 .productItem {
@@ -492,30 +381,19 @@ export default {
     align-items: center;
 
     cursor: pointer;
+
+    transform: translateX(var(--productCarouselSlide));
+
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
 }
 
-.orangeArrowImg {
-    height: 70px;
-    cursor: pointer;
-    opacity: .5;
-}
-
-.orangeArrowImg:hover {
-    opacity: 1;
-}
-
-.orangeArrowNext {
-    transform: rotate(180deg);
-}
-
-.productImg {
-    height: 150px;
+.productItem>img {
+    width: 150px;
     border-radius: 50%;
-
-    box-shadow: 3px 3px 6px #000000B3;
 }
 
-.producttext {
+.productItem>p {
     font-size: 18px;
     font-weight: bold;
 }
@@ -534,49 +412,13 @@ export default {
     gap: 2rem;
     justify-content: center;
 
+    width: 990px;
+
     padding-bottom: 4rem;
 }
 
 .newInfoCardItem {
-    background-color: #FDF1DA;
-    border-radius: 20px;
-    padding: 1.5rem;
-
     box-shadow: 0px 5px 10px #E29D19;
-
-    cursor: pointer;
 }
 
-.newInfoCardImgContainer {
-    height: 250px;
-    width: 300px;
-    border-radius: 20px;
-
-    overflow: hidden;
-}
-
-.newInfoCardImg {
-    height: 250px;
-    width: 300px;
-    object-fit: cover;
-    object-position: center;
-
-    border-radius: 20px;
-}
-
-.newInfoCardImg:hover {
-    transform: scale(1.2, 1.2);
-
-    transition-duration: .5s;
-}
-
-.newInfoCardTitle {
-    width: 300px;
-    margin: 1rem 0;
-}
-
-.newInfoCardcontent {
-    width: 300px;
-    line-height: 24px;
-}
 </style>

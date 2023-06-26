@@ -26,14 +26,11 @@ export default {
 </script>
 
 <style scoped>
-a {
-    text-decoration: none;
-    color: black;
-
-    font-weight: bold;
-}
 .BreadcrumbMain {
-    margin: 1rem 0 0 10rem;
+    margin: 1rem 0;
+    position: relative;
+    left: calc((100% - 990px)/2);
+    align-self: flex-start;
 }
 
 .BreadcrumbContainer {

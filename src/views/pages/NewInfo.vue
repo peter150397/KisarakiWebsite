@@ -16,8 +16,8 @@
                 <div class="newInfoCardImgContainer">
                     <img :src="item.img" alt="" class="newInfoCardImg">
                 </div>
-                <h3 class="newInfoCardTitle">{{ item.title }}</h3>
-                <p class="newInfoCardcontent">{{ item.content }}</p>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
             </div>
         </div>
     </div>
@@ -132,36 +132,7 @@ export default {
 }
 
 .newInfoCardItem {
-    border-radius: 20px;
-    padding: 1.5rem;
-
     box-shadow: 0px 5px 10px #A3A3A3;
 }
 
-.newInfoCardImgContainer {
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.newInfoCardImg {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-
-    border-radius: 20px;
-}
-
-.newInfoCardImg:hover {
-    transform: scale(1.2, 1.2);
-    transition-duration: .5s;
-}
-
-.newInfoCardTitle {
-    width: 100%;
-    margin: 1rem 0;
-}
-
-.newInfoCardcontent {
-    width: 100%;
-    font-size: 15px;
-}</style>
+</style>

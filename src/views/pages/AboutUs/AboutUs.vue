@@ -1,6 +1,6 @@
 <template>
-  <div class="aboutUsContainer">
-    <h1 class="aboutUsTitle">關於我們</h1>
+  <div class="columnCenterContainer AboutUs">
+    <h1>關於我們</h1>
     <div class="linkGroup">
         <router-link to="/AboutUs/Story" class="link">品牌故事</router-link>
         <div class="line"></div>
@@ -19,18 +19,14 @@
 
 <script>
 export default {
-  
+  mounted() {
+    this.$store.commit('GETCURRENTPAGEROUTE' , {name: '關於我們' , index: 0 , path:'/AboutUs'})
+  }
 }
 </script>
 
 <style scoped>
-.aboutUsContainer{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.aboutUsTitle{
+.columnCenterContainer > h1{
   padding-top: 4rem;
 }
 .linkGroup{
@@ -51,28 +47,26 @@ export default {
 .link{
   padding: 0.5rem 1.5rem;
   border-radius: 10px;
-
-  text-decoration: none;
-  color: black;
 }
 .link:hover{
   background-color: #FFD86F;
   color: white;
 
   transition-duration: .3s;
-
-  cursor: pointer;
 }
 .img{
-  width: 62.5%;
+  width: 100%;
   border-radius: 40px;
   margin-bottom: 3rem;
 
   box-shadow: 0px 3px 10px #464646C9;
 }
 .aboutUsRouterView{
-  width: 62.5%;
+  width: 100%;
   margin-bottom: 6rem;
+}
+.aboutUsRouterView > p {
+  color: red;
 }
 
 </style>

@@ -6,12 +6,12 @@
         <img src="@/assets/ProductImg/OverviewImg/Carousel0.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
         <img src="@/assets/ProductImg/OverviewImg/Carousel1.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
         <img src="@/assets/ProductImg/OverviewImg/Carousel2.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
-        <img src="@/assets/ProductImg/OverviewImg/arrow.png" alt="" class="CarouselArrow rightArrow" @click="nextImg">
+        <img src="@/assets/ProductImg/OverviewImg/arrow.png" alt="" class="CarouselArrow rightArrow CarouselArrowRight" @click="nextImg">
       </div>
       <div class="CarouselIndexContainer">
-        <div class="CarouselIndexItem" id="CarouselIndexItem0" @click="indexImg(0)"></div>
-        <div class="CarouselIndexItem" id="CarouselIndexItem1" @click="indexImg(1)"></div>
-        <div class="CarouselIndexItem" id="CarouselIndexItem2" @click="indexImg(2)"></div>
+        <div class="CarouselIndex" id="CarouselIndexItem0" @click="indexImg(0)"></div>
+        <div class="CarouselIndex" id="CarouselIndexItem1" @click="indexImg(1)"></div>
+        <div class="CarouselIndex" id="CarouselIndexItem2" @click="indexImg(2)"></div>
       </div>
       <div class="productContainer">
         <div class="productItem" @click="changePage('米血製品')">
@@ -87,8 +87,8 @@ export default {
 
       $('.CarouselImg').css('--CarouselSlide', `${vm.currentCarouselImgIndex * -100}%`)
 
-      $('.CarouselIndexItem').css({
-        'width': '12px',
+      $('.CarouselIndex').css({
+        'width': '15px',
         'background-color': '#34D687'
       })
 
@@ -144,20 +144,12 @@ export default {
   transition-duration: 500ms;
 }
 
-.CarouselArrow {
-  height: 60px;
-  position: absolute;
-  z-index: 1;
-  cursor: pointer;
-}
-
 .leftArrow {
   left: 0;
 }
 
 .rightArrow {
   right: 0;
-  transform: rotate(180deg);
 }
 
 .CarouselIndexContainer {
@@ -166,15 +158,8 @@ export default {
   margin: 1.5rem 0;
 }
 
-.CarouselIndexItem {
-  height: 12px;
-  width: 12px;
-  border-radius: 50px;
+.CarouselIndex {
   background-color: #34D687;
-
-  transition-duration: 500ms;
-
-  cursor: pointer;
 }
 
 .productContainer {

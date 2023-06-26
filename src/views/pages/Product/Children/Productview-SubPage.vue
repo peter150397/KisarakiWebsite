@@ -91,24 +91,10 @@ export default {
   width: 80%;
 }
 .buttonGroup{
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.buttonGroup > * {
-  background-color: #F4DB82;
-  border: none;
-  border-radius: 50px;
-  padding: .2rem 0;
-  letter-spacing: -.5px;
-  font-family: '微軟正黑體';
-  width: 70px;
 
-  cursor: pointer;
-}
-.buttonGroup > *:hover{
-  transform: scale(1.2, 1.2);
-  transition-duration: 300ms;
-}
 </style>
