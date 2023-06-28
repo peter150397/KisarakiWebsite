@@ -197,8 +197,6 @@ export default {
 .CarouselContainer {
     display: flex;
     align-items: center;
-
-    overflow: hidden;
 }
 
 .titleArrowPrev {

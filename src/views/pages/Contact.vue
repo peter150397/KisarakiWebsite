@@ -1,8 +1,8 @@
 <template>
-    <div class="ContactContainer">
-        <h1 class="ContactTitle">聯絡我們</h1>
+    <div class="columnCenterContainer">
+        <h1 class="pageTitle">聯絡我們</h1>
         <p class="ContactSubTitle">品質是公司根本，服務是公司生命<br>發揚傳統美食、穩健踏實、積極創新、誠信正直</p>
-        <div>
+        <div class="ContactContainer">
             <div class="companyInfoContainer">
                 <h2>如記食品有限公司</h2>
                 <div>
@@ -25,7 +25,6 @@
                     <img src="@/assets/ContactImg/email.png" alt="">
                     <p>kisaraki@flno1.com.tw / rja@flno1.com.tw</p>
                 </div>
-                <!-- <img src="@/assets/ContactImg/Bg1.png" alt=""> -->
             </div>
             <div class="formContainer">
                 <div>
@@ -84,10 +83,8 @@
                                 </td>
                             </tr>
                         </table>
-                        
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
@@ -105,23 +102,13 @@ export default {
 </script>
 
 <style scoped>
-.ContactContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ContactTitle {
-    padding-top: 4rem;
-}
-
 .ContactSubTitle {
     margin: 2rem 0;
     text-align: center;
 }
 
-.ContactContainer>div {
-    width: 975px;
+.ContactContainer {
+    width: 100%;
     height: 730px;
     display: flex;
     justify-content: flex-end;
@@ -188,43 +175,41 @@ table{
     width: calc(100% - 3.5rem);
     border-collapse: collapse;
 }
+
+td{
+    padding: .5rem 0;
+}
+
 tr > td:first-child{
     color: red;
 }
-tr > td:last-child > input , select{
+input, select, textarea {
     height: 2rem;
     padding: .3rem;
     border: solid 1px #A0A0A0;
     border-radius: 10px;
     font-size: 1rem;
 }
-tr > td:last-child > select , #buyerAddr{
+select , textarea , #buyerAddr{
     display: block;
     width: 100%;
+}
+
+textarea{
+    resize: none;
+    height: 154px;
+    padding: 1rem;
 }
 
 tr:nth-child(7){
     vertical-align: top;
 }
-td{
-    padding: .54rem 0;
-}
-textarea{
-    width: 100%;
-    min-height: 150px;
-    max-height: 250px;
-    resize: vertical;
 
-    border: solid 1px #A0A0A0;
-    border-radius: 10px;
-    padding: 1rem;
-    font-size: 1rem;
-}
-tr:last-child{
+.buttonGroup{
     text-align: end;
 }
 
-tr:last-child > td:last-child > .submitbutton{
+.buttonGroup > .submitbutton{
     background-color: #71CC86;
     color: white;
     border: solid 1px #71CC86;
@@ -234,18 +219,18 @@ tr:last-child > td:last-child > .submitbutton{
     padding: .3rem 1.3rem;
     cursor: pointer;
 }
-tr:last-child > td:last-child > .submitbutton:hover{
+.buttonGroup > .submitbutton:hover{
     background-color: #59a16a;
     border: solid 1px #59a16a;
 
     transition-duration: 300ms;
 }
-tr:last-child > td:last-child > .resetbutton{
+.buttonGroup > .resetbutton{
     background-color: transparent;
     padding: .3rem 1.3rem;
     cursor: pointer;
 }
-tr:last-child > td:last-child > .resetbutton:hover{
+.buttonGroup > .resetbutton:hover{
     background-color: #A0A0A0;
     color: white;
     

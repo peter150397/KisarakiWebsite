@@ -35,6 +35,9 @@ export default {
   margin: 0;
   font-family: '微軟正黑體';
 }
+#app{
+  overflow: hidden;
+}
 
 img {
   display: block;
@@ -64,6 +67,10 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+.pageTitle{
+  margin-top: 4rem;
 }
 
 .CarouselArrow {
@@ -91,6 +98,37 @@ a {
   transition-timing-function: ease-in-out;
 
   cursor: pointer;
+}
+.linkGroup{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  margin: 2rem 0;
+
+  height: 37px;
+}
+.linkGroupLine{
+  height: 50%;
+  width: 1px;
+  background-color: black;
+}
+.link{
+  padding: 0.5rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.link:hover{
+  background-color: #FFD86F;
+  color: white;
+
+  transition-duration: .3s;
+}
+.mainContent{
+  width: 100%;
+  margin-bottom: 6rem;
 }
 
 .AboutUs p {
@@ -151,5 +189,35 @@ a {
 
 .newInfoCardItem>p {
   line-height: 24px;
+}
+.productCardsContainer {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.productCards{
+  padding: 1rem;
+  box-shadow: 0px 5px 10px #B4B4B4;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  cursor: pointer;
+}
+.productCards > img{
+  width: 100%;
+  border-radius: 30px;
+}
+.productCards > h3{
+  margin: 1rem 0;
+  width: 80%;
+}
+.productCardsButtonGroup{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

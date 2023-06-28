@@ -1,11 +1,11 @@
 <template>
   <div>
     <p class="instruction">「{{ SearchPage }}」 搜尋結果如下</p>
-    <div class="SubPageContainer">
-      <div class="SubPageItem" v-for="item in SearchProductData" :key="item.productName" @click="ProductDetailPage(item.category.mainCategory, item.category.subCategory, item.productName)">
-        <img :src="item.productImg.CarouselImg[0]" alt="" class="SubPageItemImg">
-        <h3 class="SubPageItemTitle">{{ item.productName }}</h3>
-        <div class="buttonGroup">
+    <div class="productCardsContainer">
+      <div class="productCards" v-for="item in SearchProductData" :key="item.productName" @click="ProductDetailPage(item.category.mainCategory, item.category.subCategory, item.productName)">
+        <img :src="item.productImg.CarouselImg[0]" alt="">
+        <h3>{{ item.productName }}</h3>
+        <div class="productCardsButtonGroup">
           <button>前往購買</button>
           <button>More</button>
         </div>
@@ -35,12 +35,6 @@ export default {
     }
   },
   watch: {
-    // currentMainPage: {
-    //   handler(MainPage) {
-    //     this.$store.commit('GETCURRENTPAGEROUTE', { name: MainPage, index: 1, path: `/Product/${MainPage}` })
-    //   },
-    //   immediate: true
-    // },
     SearchPage: {
       handler(SearchPage) {
         const vm = this;
@@ -68,50 +62,7 @@ export default {
 <style scoped>
 .instruction{
   margin-bottom: 2rem;
+  width: 990px;
 }
-.SubPageContainer {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.SubPageItem{
-  padding: 1rem;
-  box-shadow: 0px 5px 10px #B4B4B4;
-  border-radius: 30px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  cursor: pointer;
-}
-.SubPageItemImg{
-  height: 190px;
-  border-radius: 30px;
-}
-.SubPageItemTitle{
-  margin: 1rem 0;
-  width: 80%;
-}
-.buttonGroup{
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.buttonGroup > * {
-  background-color: #F4DB82;
-  border: none;
-  border-radius: 50px;
-  padding: .2rem 0;
-  letter-spacing: -.5px;
-  font-family: '微軟正黑體';
-  width: 70px;
-
-  cursor: pointer;
-}
-.buttonGroup > *:hover{
-  transform: scale(1.2, 1.2);
-  transition-duration: 300ms;
-}
 </style>

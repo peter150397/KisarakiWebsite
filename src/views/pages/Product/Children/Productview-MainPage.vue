@@ -1,15 +1,15 @@
 <template>
   <div>
-    <div class="MainPageContainer">
-      <div class="MainPageImgBigContainer">
-        <p class="MainPageImgText">{{ tempMainPage.titleContent }}</p>
+    <div class="columnCenterContainer">
+      <div class="MainPageImgBigContainer" style="--backgroundImg: ;">
+        <p>{{ tempMainPage.titleContent }}</p>
       </div>
       <div class="MainPageLinkContainer">
-        <div class="MainPageLink" v-for="item in tempMainPage.item" :key="item.img" @click="changeSubPage(item.path)">
-          <div class="MainPageLinkImgContainer">
-            <img :src="item.img" alt="" class="MainPageLinkImg">
+        <div v-for="item in tempMainPage.item" :key="item.img" @click="changeSubPage(item.path)">
+          <div class="ImgContainer">
+            <img :src="item.img" alt="">
           </div>
-          <div class="MainPageLinkTextContainer">
+          <div class="TextContainer">
             <p>{{ item.name }}</p>
             <button>More</button>
           </div>
@@ -67,16 +67,9 @@ export default {
 </script>
 
 <style scoped>
-.MainPageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .MainPageImgBigContainer {
   width: 100%;
   height: 300px;
-  --backgroundImg: ;
 
   border-radius: 30px;
   background: linear-gradient(180deg, #FFFFFF00 50%, #000000 100%), var(--backgroundImg);
@@ -88,7 +81,7 @@ export default {
   position: relative;
 }
 
-.MainPageImgText {
+.MainPageImgBigContainer > p {
   width: 50%;
   color: white;
   position: absolute;
@@ -104,7 +97,7 @@ export default {
   margin: 4rem 0 0;
 }
 
-.MainPageLink {
+.MainPageLinkContainer > div {
   display: flex;
   gap: 15px;
   flex-direction: column;
@@ -117,7 +110,7 @@ export default {
   cursor: pointer;
 }
 
-.MainPageLinkImgContainer {
+.ImgContainer {
   width: 100%;
   aspect-ratio: 1.2 / 1;
   border-radius: 20px;
@@ -129,28 +122,28 @@ export default {
   align-items: center;
 }
 
-.MainPageLinkImg {
+.ImgContainer > img {
   width: 100%;
 }
 
-.MainPageLinkImg:hover {
+.ImgContainer > img:hover {
   transform: scale(1.1, 1.1);
   transition-duration: .3s;
 }
 
-.MainPageLinkTextContainer {
+.TextContainer {
   display: flex;
   align-items: center;
   gap: .5rem;
 }
 
-.MainPageLinkTextContainer>p {
+.TextContainer>p {
   font-weight: bold;
   font-size: 18px;
   letter-spacing: 1px;
 }
 
-.MainPageLinkTextContainer>button {
+.TextContainer>button {
   background-color: #F4DB82;
   border: none;
   border-radius: 50px;
@@ -159,7 +152,7 @@ export default {
   cursor: pointer;
 }
 
-.MainPageLinkTextContainer>button:hover {
+.TextContainer>button:hover {
   transform: scale(1.2, 1.2);
   transition-duration: .3s;
 }

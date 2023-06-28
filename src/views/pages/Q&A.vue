@@ -1,25 +1,22 @@
 <template>
-    <div class="QAContainer">
-        <h1 class="QATitle">常見問題</h1>
+    <div class="columnCenterContainer">
+        <h1 class="pageTitle">常見問題</h1>
         <div class="linkGroup">
             <p class="link" @click="changeType('all')">所有問題</p>
-            <div class="line"></div>
+            <div class="linkGroupLine"></div>
             <p class="link" @click="changeType('contact')">如何聯絡我們</p>
-            <div class="line"></div>
+            <div class="linkGroupLine"></div>
             <p class="link" @click="changeType('purchase')">哪裡購買如記產品</p>
         </div>
 
-        <div class="newInfoRouterView">
-            <div class="QAContentContainer">
-                <div :id="'QAContent' + index" @click="slideAnimate(index)" v-for="(item, index) in currentQA"
-                    :key="index">
-                    <div class="QAContentItem">
-                        <img src="@/assets/Q&AImg/question-mark.png" alt="">
-                        <h2>{{ item.title }}</h2>
-                        <img src="@/assets/Q&AImg/plus.png" alt="" class="plusImg">
-                    </div>
-                    <p>{{ item.content }}</p>
+        <div class="QAContainer mainContent">
+            <div :id="'QAContent' + index" @click="slideAnimate(index)" v-for="(item, index) in currentQA" :key="index">
+                <div class="QAContentItem">
+                    <img src="@/assets/Q&AImg/question-mark.png" alt="">
+                    <h2>{{ item.title }}</h2>
+                    <img src="@/assets/Q&AImg/plus.png" alt="" class="plusImg">
                 </div>
+                <p>{{ item.content }}</p>
             </div>
         </div>
     </div>
@@ -32,7 +29,7 @@ export default {
     data() {
         return {
             currentQAType: 'all',
-            currentQA:[]
+            currentQA: []
         }
     },
     computed: {
@@ -42,20 +39,32 @@ export default {
     },
     methods: {
         slideAnimate(index) {
+            $(`#QAContent${index} > p`).slideToggle(300)
+
             if ($(`#QAContent${index} > .QAContentItem`).css('border-radius') == '20px') {
-                $(`#QAContent${index} > p`).slideDown(300)
-                $(`#QAContent${index} > .QAContentItem`).css('transition-delay', '0ms');
-                $(`#QAContent${index} > .QAContentItem`).css('border-radius', '20px 20px 0 0');
-                $(`#QAContent${index} > .QAContentItem > .plusImg`).css('transform', 'rotate(45deg)');
+                $(`#QAContent${index} .plusImg`).css('transform', 'rotate(45deg)');
+                $(`#QAContent${index} > .QAContentItem`).css({
+                    'transition-delay': '0ms',
+                    'border-radius': '20px 20px 0 0'
+                });
             } else {
-                $(`#QAContent${index} > p`).slideUp(300)
-                $(`#QAContent${index} > .QAContentItem`).css('transition-delay', '200ms');
-                $(`#QAContent${index} > .QAContentItem`).css('border-radius', '20px');
-                $(`#QAContent${index} > .QAContentItem > .plusImg`).css('transform', 'rotate(0deg)');
+                $(`#QAContent${index} .plusImg`).css('transform', 'rotate(0deg)');
+                $(`#QAContent${index} > .QAContentItem`).css({
+                    'transition-delay': '200ms',
+                    'border-radius': '20px'
+                });
             }
         },
         changeType(type) {
             this.currentQAType = type
+
+            $('.QAContentItem + p').slideUp(0)
+
+            $('.plusImg').css('transform', 'rotate(0deg)');
+            $('.QAContentItem').css({
+                'transition-delay': '0ms',
+                'border-radius': '20px'
+            });
         },
     },
     watch: {
@@ -65,21 +74,20 @@ export default {
                 vm.currentQA = [];
 
                 vm.QAArray.forEach(item => {
-                    if(type === 'all') {
+                    if (type === 'all') {
                         vm.currentQA.push(item);
-                    }else if(type === item.category ) {
+                    } else if (type === item.category) {
                         vm.currentQA.push(item);
                     }
                 });
 
-                if(type == 'contact'){
+                if (type == 'contact') {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '如何聯絡我們', index: 1, path: '/Q&A' })
-                }else if (type == 'purchase') {
+                } else if (type == 'purchase') {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '哪裡購買如記產品', index: 1, path: '/Q&A' })
-                }else{
+                } else {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '所有問題', index: 1, path: '/Q&A' })
                 }
-
             },
             immediate: true
         }
@@ -96,58 +104,11 @@ export default {
 <style scoped>
 .QAContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.QATitle {
-    padding-top: 4rem;
-}
-
-.linkGroup {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
-    height: 37px;
-}
-
-.line {
-    height: 50%;
-    width: 1px;
-    background-color: black;
-}
-
-.link {
-    padding: 0.5rem 1.5rem;
-    border-radius: 10px;
-
-    text-decoration: none;
-    color: black;
-}
-
-.link:hover {
-    background-color: #FFD86F;
-    color: white;
-
-    transition-duration: .3s;
-
-    cursor: pointer;
-}
-
-.newInfoRouterView {
-    width: 62.5%;
-    margin-bottom: 6rem;
-}
-
-.QAContentContainer {
-    display: flex;
     gap: 1rem;
     flex-direction: column;
 }
 
-.QAContentContainer>div {
+.QAContainer>div {
     position: relative;
 }
 
@@ -163,6 +124,8 @@ export default {
     background-color: #71CC86;
 
     transition-duration: 100ms;
+
+    cursor: pointer;
 }
 
 .QAContentItem>img {
@@ -171,7 +134,6 @@ export default {
 
 .QAContentItem>.plusImg {
     transform: rotate(0deg);
-
     transition-duration: 300ms;
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="columnCenterContainer">
       <div class="CarouselContainer" @mouseenter="removeInterval" @mouseleave="startInterval">
         <img src="@/assets/ProductImg/OverviewImg/arrow.png" alt="" class="CarouselArrow leftArrow" @click="prevImg">
         <img src="@/assets/ProductImg/OverviewImg/Carousel0.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
@@ -118,12 +118,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .CarouselContainer {
   display: flex;
   align-items: center;
@@ -155,7 +149,7 @@ export default {
 .CarouselIndexContainer {
   display: flex;
   gap: 15px;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 5.5rem;
 }
 
 .CarouselIndex {
@@ -167,8 +161,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
-  margin-top: 4rem;
 }
 
 .productItem {
@@ -188,6 +180,6 @@ export default {
 
 .productItem>p {
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 </style>

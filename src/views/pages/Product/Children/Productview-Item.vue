@@ -1,80 +1,83 @@
 <template>
     <div>
         <div class="productDetailContainer">
-            <div class="productDetailContentContainer">
-                <img :src="TitleImg" alt="" class="productDetailTitleImg">
-                <div class="productDetailContentTextContainer">
-                    <h2 class="productDetailTitle">{{ currentProductDetail.productName }}</h2>
-                    <h4 class="productDetailSubtitle">{{ currentProductDetail.subTitle }}</h4>
-                    <p class="productDetailContent">{{ currentProductDetail.content }}</p>
-                    <button class="buyNowButton">前往購買</button>
+            <div class="contentContainer">
+                <img :src="TitleImg" alt="">
+                <div class="contentTextContainer">
+                    <h2>{{ currentProductDetail.productName }}</h2>
+                    <h4>{{ currentProductDetail.subTitle }}</h4>
+                    <p>{{ currentProductDetail.content }}</p>
+                    <button>前往購買</button>
                 </div>
                 <div class="CarouselContainer">
                     <div class="arrowContainer" @click="CarouselSlide(1)">
-                        <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt=""
-                            class="arrow CarouselArrowLeft">
+                        <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="">
                     </div>
+
                     <div class="CarouselImgContainer">
-                        <img :src="img" alt="" class="CarouselImg"
+                        <img :src="img" alt="" class="CarouselImg" style="--CarouselSlide: 0;"
                             v-for="(img, index) in currentProductDetail.productImg.CarouselImg" :key="index"
                             @click="changeTitleImg(img)">
                     </div>
 
                     <div class="arrowContainer" @click="CarouselSlide(-1)">
-                        <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="arrow">
+                        <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrowRight">
                     </div>
                 </div>
             </div>
 
-            <div class="productDetailSpecificationContainer">
-                <div class="productDetailSpecification">
-                    <div class="productDetailSpecificationItem" id="productDetailSpecificationItem0">
+            <div class="specificationContainer">
+                <div class="specification">
+                    <div class="specificationItem" id="specificationItem0">
                         <div @click="openProductDetail(0)">
-                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="">
+                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" style="--rotateDeg: 180deg;">
                             <h3>淨重</h3>
                         </div>
                         <p>{{ currentProductDetail.netWeight }}</p>
                     </div>
-                    <div class="productDetailSpecificationItem" id="productDetailSpecificationItem1">
+                    <div class="specificationItem" id="specificationItem1">
                         <div @click="openProductDetail(1)">
-                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="">
+                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" style="--rotateDeg: 180deg;">
                             <h3>保存期限</h3>
                         </div>
                         <p>{{ currentProductDetail.shelfLife }}</p>
                     </div>
-                    <div class="productDetailSpecificationItem" id="productDetailSpecificationItem2">
+                    <div class="specificationItem" id="specificationItem2">
                         <div @click="openProductDetail(2)">
-                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="">
+                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" style="--rotateDeg: 180deg;">
                             <h3>保存條件</h3>
                         </div>
                         <p>{{ currentProductDetail.storageConditions }}</p>
                     </div>
-                    <div class="productDetailSpecificationItem lastItem"  id="productDetailSpecificationItem3">
+                    <div class="specificationItem lastItem" id="specificationItem3">
                         <div @click="openProductDetail(3)">
-                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="">
+                            <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" style="--rotateDeg: 180deg;">
                             <h3>原產地</h3>
                         </div>
                         <p>{{ currentProductDetail.productionPlace }}</p>
                     </div>
                 </div>
-                <img :src="currentProductDetail.productImg.contentImg" alt="" class="productDetailSpecificationImg">
+                <img :src="currentProductDetail.productImg.contentImg" alt="" class="specificationImg">
             </div>
-
             <div>
-                <h2 class="RelatedProductsTitle">相關產品</h2>
+                <h2>相關產品</h2>
                 <div class="RelatedProductsCarouselContainer">
-                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow CarouselArrowLeft">
+                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow" @click="RelatedProductsCarouselSlide(-1)">
                     <div>
-                        <div v-for="(item,index) in RelatedProducts" :key="index" class="RelatedProductsCarouselItem" @click="RelatedProductPush(item.category.mainCategory, item.category.subCategory, item.productName)">
+                        <div v-for="(item, index) in RelatedProducts" :key="index" class="RelatedProductsCarouselItem"
+                            @click="RelatedProductPush(item.category.mainCategory, item.category.subCategory, item.productName)"
+                            style="--RelatedProductsCarouselSlide: 0; "
+                            >
                             <div>
                                 <img :src="item.productImg.CarouselImg[0]" alt="">
                             </div>
                             <p>{{ item.productName }}</p>
                         </div>
                     </div>
-                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow">
+                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow CarouselArrowRight" @click="RelatedProductsCarouselSlide(1)">
                 </div>
             </div>
+
 
         </div>
     </div>
@@ -89,6 +92,7 @@ export default {
             currentProductDetail: {},
             TitleImg: '',
             RelatedProducts: [],
+            RelatedProductsCarousel: 0
         }
     },
     computed: {
@@ -119,13 +123,18 @@ export default {
             this.TitleImg = img
         },
         openProductDetail(index) {
-            $(`#productDetailSpecificationItem${index} > p`).slideToggle(300)
+            $(`#specificationItem${index} > p`).slideToggle(300)
 
-            if( $(`#productDetailSpecificationItem${index} > div > img`).css('--rotateDeg') == '90deg') {
-                $(`#productDetailSpecificationItem${index} > div > img`).css('--rotateDeg', '0deg')
-            }else{
-                $(`#productDetailSpecificationItem${index} > div > img`).css('--rotateDeg', '90deg')
+            if ($(`#specificationItem${index} > div > img`).css('--rotateDeg') == '270deg') {
+                $(`#specificationItem${index} > div > img`).css('--rotateDeg', '180deg')
+            } else {
+                $(`#specificationItem${index} > div > img`).css('--rotateDeg', '270deg')
             }
+        },
+        RelatedProductsCarouselSlide(num) {
+            this.RelatedProductsCarousel += num
+
+            console.log(num);
         },
         RelatedProductPush(MainPage, SubPage, ProductPage) {
             this.$router.push(`/Product/${MainPage}/${SubPage}/${ProductPage}`);
@@ -158,13 +167,18 @@ export default {
 
                 this.RelatedProducts = [];
                 this.productData.forEach(item => {
-                    if(item.category.mainCategory == this.currentMainPage && item.productName != ProductPage) {
+                    if (item.category.mainCategory == this.currentMainPage && item.productName != ProductPage) {
                         this.RelatedProducts.push(item)
                     }
                 });
             },
             immediate: true
         },
+        RelatedProductsCarousel() {
+            if(this.RelatedProducts.length > 4) {
+                $('.RelatedProductsCarouselItem').css('--RelatedProductsCarouselSlide', `calc((-100% - 40px) * ${this.RelatedProductsCarousel})`)
+            }
+        }
     },
     mounted() {
         this.TitleImg = this.currentProductDetail.productImg.CarouselImg[0]
@@ -179,7 +193,7 @@ export default {
     flex-direction: column;
 }
 
-.productDetailContentContainer {
+.contentContainer {
     display: grid;
     gap: 20px 0;
     grid-template-columns: 37.5% 62.5%;
@@ -187,31 +201,31 @@ export default {
 
 }
 
-.productDetailTitleImg {
+.contentContainer>img {
     width: 100%;
     box-shadow: 0px 3px 6px #222222B3;
     border-radius: 20px;
 }
 
-.productDetailContentTextContainer {
+.contentTextContainer {
     margin-left: 3rem;
     position: relative;
 }
 
 
 
-.productDetailSubtitle {
+.contentTextContainer>h4 {
     color: #969696;
     margin: .8rem 0 1.5rem;
 }
 
-.productDetailContent {
+.contentTextContainer>p {
     width: 70%;
     line-height: 1.5rem;
     letter-spacing: .5px;
 }
 
-.buyNowButton {
+.contentTextContainer>button {
     padding: .6rem 1.5rem;
 
     font-size: 18px;
@@ -230,7 +244,7 @@ export default {
 .arrowContainer {
     background-color: #F5F5F5;
     box-shadow: 0px 3px 6px #222222B3;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 0 .4rem;
 
     display: flex;
@@ -240,12 +254,8 @@ export default {
     cursor: pointer;
 }
 
-.arrow {
+.arrowContainer>img {
     height: 20px;
-}
-
-.CarouselArrowLeft {
-    transform: rotate(180deg);
 }
 
 .CarouselImgContainer {
@@ -263,25 +273,23 @@ export default {
     box-shadow: 3px 3px 3px #222222B3;
     cursor: pointer;
 
-    --CarouselSlide: 0;
-
     transform: translateX(var(--CarouselSlide));
     transition-duration: 300ms;
 }
 
-.productDetailSpecificationContainer {
+.specificationContainer {
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
 }
 
-.productDetailSpecification {
+.specification {
     display: flex;
     flex-direction: column;
 }
 
-.productDetailSpecificationItem {
+.specificationItem {
     border-top: solid 1px black;
     padding: .5rem 0;
 }
@@ -290,7 +298,7 @@ export default {
     border-bottom: solid 1px black;
 }
 
-.productDetailSpecificationItem>div {
+.specificationItem>div {
     display: flex;
     gap: 10px;
     justify-content: flex-start;
@@ -299,64 +307,68 @@ export default {
     cursor: pointer;
 }
 
-.productDetailSpecificationItem>div>img {
+.specificationItem>div>img {
     height: 16px;
-    --rotateDeg: 0deg;
 
     transform: rotate(var(--rotateDeg));
     transition-duration: 300ms;
 }
 
-.productDetailSpecificationItem>div>h3 {
+.specificationItem>div>h3 {
     font-size: 18px;
 }
 
-.productDetailSpecificationItem>p {
+.specificationItem>p {
     font-size: 14px;
-    display: none;
     letter-spacing: 1px;
+    display: none;
 }
 
-.productDetailSpecificationImg {
+.specificationImg {
     width: 100%;
     box-shadow: 0px 3px 6px #000000B3;
     border-radius: 10px;
 }
-.RelatedProductsTitle{
-    margin-left: 70px;
-    margin-bottom: 2rem;
-}
 
-.RelatedProductsCarouselContainer{
+.RelatedProductsCarouselContainer {
+    margin-top: 2rem;
+
     display: flex;
     gap: 40px;
     justify-content: center;
     align-items: center;
 }
-.RelatedProductsCarouselContainer > .CarouselArrow {
-    width: 30px;
-    cursor: pointer;
+
+.RelatedProductsCarouselContainer>.CarouselArrow {
+    position: static;
 }
-.RelatedProductsCarouselContainer > div {
+
+.RelatedProductsCarouselContainer>div {
     display: flex;
     gap: 40px;
     width: 100%;
+    overflow: hidden;
 }
-.RelatedProductsCarouselItem{
+
+.RelatedProductsCarouselItem {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+
+    transform: translateX(var(--RelatedProductsCarouselSlide));
+    transition-duration: 300ms;
 }
-.RelatedProductsCarouselItem > p {
-    margin-top: 1.5rem;
-}
-.RelatedProductsCarouselItem > div{
+
+
+.RelatedProductsCarouselItem>div {
     padding: .5rem;
-    box-shadow: 0px 5px 10px #AFAFAF;
+    margin-bottom: 1rem;
+    box-shadow: 5px 5px 10px #AFAFAF;
     border-radius: 15px;
 }
-.RelatedProductsCarouselItem > div > img{
+
+.RelatedProductsCarouselItem>div>img {
     height: 120px;
     border-radius: inherit;
 }

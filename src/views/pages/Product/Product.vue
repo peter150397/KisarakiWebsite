@@ -1,12 +1,10 @@
 <template>
-    <div class="productContainer">
-        <div class="aboutUsTitleContainer">
-            <h1 class="aboutUsTitle">強檔產品</h1>
+    <div class="columnCenterContainer">
+            <h1 class="pageTitle">強檔產品</h1>
             <button class="searchButton">
                 <img src="@/assets/ProductImg/OverviewImg/search.png" alt="" class="searchImg">
+                <input type="text" placeholder="Search" class="aboutUsSearch" v-model="search" @keyup.enter="searchPage(search)">
             </button>
-            <input type="text" placeholder="Search" class="aboutUsSearch" v-model="search" @keyup.enter="searchPage(search)">
-        </div>
         <div class="linkGroup">
             <div class="linkItem" v-for="mainPage in productNavbarData" @mouseenter="hoverIn(mainPage.index)"
                 :key="mainPage.index" :class="{ 'removeAfter': mainPage.index == productNavbarData.length - 1 }">
@@ -21,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <router-view class="productRouterView"></router-view>
+        <router-view class="mainContent"></router-view>
     </div>
 </template>
 
@@ -100,69 +98,39 @@ export default {
 </script>
 
 <style scoped>
-.productContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-}
-.aboutUsTitleContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-top: 4rem;
-}
 .searchButton{
     border: solid 1px black;
     border-radius: 25px;
-    padding: 8px 138px 8px 12px;
-    background-color: transparent;
+    padding: .5rem;
+    background-color: white;
 
     position: absolute;
-    right: 18.75%;
+    right: 0;
+    top: 4rem;
 
-    cursor: pointer;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.searchButton:hover{
+    transform: scale(1, 1);
+    transition-duration: 0ms;
 }
 .searchImg{
     height: 20px;
 }
 .aboutUsSearch{
-    position: absolute;
-    right: 18.75%;
-    height: 36px;
-    width: 130px;
     border: none;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
     padding: 0;
-
     font-size: 16px;
-
-    background-color: transparent;
 }
 .aboutUsSearch:focus{
     outline: none;
 }
 
-.linkGroup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    height: 38px;
-}
-
 .link {
-    padding: 0.5rem 1.5rem;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-
-    color: black;
-
-    text-decoration: none;
-
-    cursor: pointer;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .linkItem {
@@ -244,9 +212,8 @@ export default {
     content: none;
 }
 
-.productRouterView {
-    width: 62.5%;
-    margin: calc(2rem + 41px) 0 6rem;
+.mainContent {
+    margin: calc(2rem + 9px) 0 6rem;
 }
 
 .subLinkGroupActive {

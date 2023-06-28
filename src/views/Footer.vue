@@ -16,7 +16,7 @@
                 <a href="https://www.instagram.com/kisaraki_food/"><img src="@/assets/FooterImg/instagram.png" alt=""></a>
             </div>
         </div>
-        <div class="linkGroup">
+        <div class="fotterLinkGroup">
             <div class="linkItem">
                 <h3>我們的理念</h3>
                 <router-link to="/">關於如記</router-link>
@@ -59,7 +59,7 @@ export default {
 footer {
     background-color: #B4B4B4;
     color: white;
-    padding: 2rem 15%;
+    padding: 2rem 10rem;
 
     display: flex;
     justify-content: space-between;
@@ -90,9 +90,10 @@ footer {
     height: 30px;
 }
 
-.linkGroup {
-    display: flex;
-    gap: 2rem;
+.fotterLinkGroup {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4 , 1fr);
 }
 
 .linkItem {
@@ -110,5 +111,11 @@ footer {
     padding-left: 10px;
     border-left: solid 1px white;
     margin-left: 10px;
+    font-weight: normal;
+}
+.linkItem>a:hover{
+    color: #FFD86F;
+    transition-duration: 300ms;
+    border-left: solid 1px #FFD86F;
 }
 </style>

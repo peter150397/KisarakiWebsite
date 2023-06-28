@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="SubPageContainer">
-      <div class="SubPageItem" v-for="item in tempProductData" :key="item.productName" @click="ProductDetailPage(item.category.mainCategory, item.category.subCategory, item.productName)">
-        <img :src="item.productImg.CarouselImg[0]" alt="" class="SubPageItemImg">
-        <h3 class="SubPageItemTitle">{{ item.productName }}</h3>
-        <div class="buttonGroup">
+    <div class="productCardsContainer">
+      <div class="productCards" v-for="item in tempProductData" :key="item.productName" @click="ProductDetailPage(item.category.mainCategory, item.category.subCategory, item.productName)">
+        <img :src="item.productImg.CarouselImg[0]" alt="">
+        <h3>{{ item.productName }}</h3>
+        <div class="productCardsButtonGroup">
           <button>前往購買</button>
           <button>More</button>
         </div>
@@ -66,35 +66,5 @@ export default {
 </script>
 
 <style scoped>
-.SubPageContainer {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.SubPageItem{
-  padding: 1rem;
-  box-shadow: 0px 5px 10px #B4B4B4;
-  border-radius: 30px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  cursor: pointer;
-}
-.SubPageItemImg{
-  height: 190px;
-  border-radius: 30px;
-}
-.SubPageItemTitle{
-  margin: 1rem 0;
-  width: 80%;
-}
-.buttonGroup{
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 </style>

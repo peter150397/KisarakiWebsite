@@ -1,17 +1,17 @@
 <template>
-    <div class="newInfoContainer">
-        <h1 class="newInfoTitle">最新消息</h1>
+    <div class="columnCenterContainer">
+        <h1 class="pageTitle">最新消息</h1>
         <div class="linkGroup">
             <p to="/NewInfo/NewProduct" class="link" @click="changeType('all')">所有消息</p>
-            <div class="line"></div>
+            <div class="linkGroupLine"></div>
             <p to="/NewInfo/NewProduct" class="link" @click="changeType('NewProduct')">新品上市</p>
-            <div class="line"></div>
+            <div class="linkGroupLine"></div>
             <p to="/NewInfo/RelateInfo" class="link" @click="changeType('RelateInfo')">如記消息</p>
-            <div class="line"></div>
+            <div class="linkGroupLine"></div>
             <p to="/NewInfo/ProductRelate" class="link" @click="changeType('ProductRelate')">產品相關</p>
         </div>
 
-        <div class="newInfoRouterView">
+        <div class="newInfoContainer mainContent">
             <div class="newInfoCardItem" v-for="(item , index) in currentNewInfo" :key="index">
                 <div class="newInfoCardImgContainer">
                     <img :src="item.img" alt="" class="newInfoCardImg">
@@ -80,51 +80,6 @@ export default {
 
 <style scoped>
 .newInfoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.newInfoTitle {
-    padding-top: 4rem;
-}
-
-.linkGroup {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
-    height: 37px;
-}
-
-.line {
-    height: 50%;
-    width: 1px;
-    background-color: black;
-}
-
-.link {
-    padding: 0.5rem 1.5rem;
-    border-radius: 10px;
-
-    text-decoration: none;
-    color: black;
-}
-
-.link:hover {
-    background-color: #FFD86F;
-    color: white;
-
-    transition-duration: .3s;
-
-    cursor: pointer;
-}
-
-.newInfoRouterView {
-    width: 62.5%;
-    margin-bottom: 6rem;
-
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr 1fr 1fr;
