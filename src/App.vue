@@ -21,6 +21,17 @@ export default {
     Footer,
     Breadcrumb
   },
+  beforeUpdate() {
+    $('.nav-icon-menu').css('--menuIconRotate', '0deg');
+    $('.slide-nav-link-group').css('top', 'calc(-100% + 104px)');
+    // $('.nav').css('position', 'static');
+    // $('#MainContent').css('margin-top', '0');
+
+    setTimeout(function () {
+      $('.nav').css('position', 'static');
+      $('#MainContent').css('margin-top', '0');
+    }, 500)
+  },
   updated() {
     if (this.$route.fullPath != '/') {
       $('#MainContent').css('width', '990px')
@@ -35,8 +46,14 @@ export default {
   margin: 0;
   font-family: '微軟正黑體';
 }
-#app{
+
+#app {
   overflow: hidden;
+}
+
+#MainContent {
+  display: flex;
+  flex-direction: column;
 }
 
 img {
@@ -54,7 +71,7 @@ button {
 
 button:hover {
   transform: scale(1.2, 1.2);
-  transition-duration: 300ms;
+  transition-duration: .3s;
 }
 
 a {
@@ -69,14 +86,15 @@ a {
   align-items: center;
   position: relative;
 }
-.pageTitle{
+
+.pageTitle {
   margin-top: 4rem;
 }
 
 .CarouselArrow {
   position: absolute;
   z-index: 1;
-  height: 70px;
+  width: 5vw;
   opacity: .5;
   cursor: pointer;
 }
@@ -90,16 +108,16 @@ a {
 }
 
 .CarouselIndex {
-  height: 15px;
-  width: 15px;
+  height: 10px;
+  width: 10px;
   border-radius: 50px;
 
-  transition-duration: .5s;
-  transition-timing-function: ease-in-out;
+  transition: width ease-in-out .5s 0s, background-color ease-in-out .5s 0s;
 
   cursor: pointer;
 }
-.linkGroup{
+
+.linkGroup {
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -109,24 +127,28 @@ a {
 
   height: 37px;
 }
-.linkGroupLine{
+
+.linkGroupLine {
   height: 50%;
   width: 1px;
   background-color: black;
 }
-.link{
+
+.link {
   padding: 0.5rem 1.5rem;
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
 }
-.link:hover{
+
+.link:hover {
   background-color: #FFD86F;
   color: white;
 
   transition-duration: .3s;
 }
-.mainContent{
+
+.mainContent {
   width: 100%;
   margin-bottom: 6rem;
 }
@@ -185,17 +207,20 @@ a {
 
 .newInfoCardItem>h3 {
   margin: 1rem 0;
+  text-align: justify;
 }
 
 .newInfoCardItem>p {
   line-height: 24px;
 }
+
 .productCardsContainer {
   display: grid;
   gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.productCards{
+
+.productCards {
   padding: 1rem;
   box-shadow: 0px 5px 10px #B4B4B4;
   border-radius: 30px;
@@ -206,18 +231,34 @@ a {
 
   cursor: pointer;
 }
-.productCards > img{
+
+.productCards>img {
   width: 100%;
   border-radius: 30px;
 }
-.productCards > h3{
+
+.productCards>h3 {
   margin: 1rem 0;
   width: 80%;
 }
-.productCardsButtonGroup{
+
+.productCardsButtonGroup {
   width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-</style>
+
+@media (max-width: 1022px) {
+  .newInfoCardItem {
+    padding: 1rem;
+  }
+
+  .newInfoCardItem>h3 {
+    font-size: 17px;
+  }
+
+  .newInfoCardItem>p {
+    display: none;
+  }
+}</style>

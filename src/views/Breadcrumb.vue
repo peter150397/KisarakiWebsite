@@ -51,4 +51,9 @@ export default {
 .BreadcrumbLink {
     font-size: 14px;
 }
+@media (max-width: 1022px) {
+    .BreadcrumbMain{
+        left: 1rem;
+    }
+}
 </style>

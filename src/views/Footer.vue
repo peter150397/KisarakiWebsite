@@ -59,10 +59,10 @@ export default {
 footer {
     background-color: #B4B4B4;
     color: white;
-    padding: 2rem 10rem;
+    padding: 2rem 0;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     font-size: 14px;
 
@@ -74,11 +74,11 @@ footer {
     gap: 20px;
     flex-direction: column;
     align-items: flex-start;
-
+    flex: 0 0 auto;
 }
 
 .FooterLogo {
-    height: 50px;
+    width: 200px;
 }
 
 .FooterIconGroup {
@@ -92,8 +92,9 @@ footer {
 
 .fotterLinkGroup {
     display: grid;
-    gap: 1.5rem;
     grid-template-columns: repeat(4 , 1fr);
+    margin-left: 1rem;
+    flex: 0 0 auto;
 }
 
 .linkItem {
@@ -117,5 +118,21 @@ footer {
     color: #FFD86F;
     transition-duration: 300ms;
     border-left: solid 1px #FFD86F;
+}
+@media (max-width: 853px) {
+    footer{
+        flex-direction: column;
+        padding: 2rem;
+    }
+    .corporationInfo{
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    .corporationInfo p{
+        text-align: center;
+    }
+    .fotterLinkGroup{
+        margin: 0;
+    }
 }
 </style>

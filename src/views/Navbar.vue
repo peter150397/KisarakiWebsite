@@ -49,14 +49,20 @@ export default {
             this.$router.push('/')
         },
         linkGroupSlide() {
-            $('.slide-nav-link-group').css('top', '104px');
-            
             if ($('.nav-icon-menu').css('--menuIconRotate') === '0deg') {
                 $('.nav-icon-menu').css('--menuIconRotate', '90deg');
                 $('.slide-nav-link-group').css('top', '104px');
+                $('.nav').css('position', 'fixed');
+                $('#MainContent').css('margin-top', '104px');
+                
             } else {
                 $('.nav-icon-menu').css('--menuIconRotate', '0deg');
-                $('.slide-nav-link-group').css('top', '-100%');
+                $('.slide-nav-link-group').css('top', 'calc(-100% + 104px)');
+                
+                setTimeout(function () {
+                    $('.nav').css('position', 'static');
+                    $('#MainContent').css('margin-top', '0');
+                },500)
             }
         }
     },
@@ -74,6 +80,7 @@ nav{
     align-items: center;
     width: 100%;
     background: linear-gradient(96deg, #D5FECB 0%, #6CF6C0 100%) no-repeat;
+
 }
 
 .nav-logo {
@@ -134,19 +141,15 @@ nav{
 .nav-icon {
     height: 30px;
 }
-
-.nav-icon-menu {
+.slide-nav-link-group , .nav-icon-menu{
     display: none;
-    transform: rotate(var(--menuIconRotate));
-    transition-duration: 500ms;
-    cursor: pointer;
 }
 
-@media (max-width: 1025px) {
-    nav {
+@media (max-width: 1022px) {
+    .nav{
         justify-content: space-between;
-        position: fixed;
-        z-index: 3;
+        position: static;
+        z-index: 4;
     }
 
     .normal-nav-link-group,
@@ -155,8 +158,11 @@ nav{
     }
 
     .slide-nav-link-group {
+        display: block;
+
         position: fixed;
         top: -100%;
+        z-index: 3;
         width: 100%;
         height: calc(100% - 104px);
         background-color: white;
@@ -185,5 +191,8 @@ nav{
 
     .nav-icon-menu {
         display: block;
+        transform: rotate(var(--menuIconRotate));
+        transition-duration: 500ms;
+        cursor: pointer;
     }
 }</style>

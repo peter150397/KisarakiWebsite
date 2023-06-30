@@ -67,10 +67,9 @@
             <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="CarouselArrow productArrow"
                 @click="prevProductCarouselImg">
 
-            <div class="productCover">
+            <div class="productCover" @mouseenter="scrollProductList">
                 <div class="productItem" v-for="(item, index) in Product" :key="index"
-                    @click="changePage('/Product', '/' + item.category.mainCategory, '/' + item.category.subCategory, '/' + item.productName)"
-                    style="--productCarouselSlide: 0%;">
+                    @click="changePage('/Product', '/' + item.category.mainCategory, '/' + item.category.subCategory, '/' + item.productName)">
                     <img :src="item.productImg.CarouselImg[0]" alt="">
                     <p>{{ item.productName }}</p>
                 </div>
@@ -155,20 +154,30 @@ export default {
         aboutUsVideoCarouselByIndex(index) {
             $('.aboutUsVideo').css('--aboutUsVideoCarouselSlide', `(-100% - 1.6rem) * ${index}`)
 
-            $('.aboutUsVideoIndexGroup > div').css({ 'width': '15px', 'background-color': '#FDE4B4' })
-            $(`#aboutUsVideoIndexItem${index}`).css({ 'width': '40px', 'background-color': '#F5D18C' })
+            $('.aboutUsVideoIndexGroup > div').css({ 'width': '10px', 'background-color': '#FDE4B4' })
+            $(`#aboutUsVideoIndexItem${index}`).css({ 'width': '30px', 'background-color': '#F5D18C' })
         },
         prevProductCarouselImg() {
-            $('.productItem').css('--productCarouselSlide', '0')
+            const productCover = document.querySelector('.productCover');
+            productCover.scrollLeft = 0;
         },
         nextProductCarouselImg() {
-            $('.productItem').css('--productCarouselSlide', '-1008px')
+            const productCover = document.querySelector('.productCover');
+            productCover.scrollLeft = 100000;
+        },
+        scrollProductList() {
+            const productCover = document.querySelector('.productCover');
+
+            productCover.addEventListener('wheel', (event) => {
+                event.preventDefault();
+                productCover.scrollLeft += event.deltaY * 3;
+            });
         },
         changePage(page1, page2 = '', page3 = '', page4 = '') {
             this.$router.push(page1 + page2 + page3 + page4);
 
             $("html").scrollTop(0);
-        }
+        },
     },
     watch: {
         currentTitleCarouselIndex() {
@@ -176,13 +185,12 @@ export default {
 
             $('.CarouselImgGroup').css('--Carouselslide', `-${vm.currentTitleCarouselIndex * 52}%`)
 
-
             $('.CarouselImgGroup > *').css('width', '50%')
             $(`#CarouselImg${vm.currentTitleCarouselIndex}`).css('width', '64%')
 
-            $('.CarouselIndexGroup > *').css({ 'width': '15px', 'background-color': '#34D687' })
-            $(`#CarouselIndexitem${vm.currentTitleCarouselIndex}`).css({ 'width': '40px', 'background-color': '#00A353' })
-        }
+            $('.CarouselIndexGroup > *').css({ 'width': '10px', 'background-color': '#34D687' })
+            $(`#CarouselIndexitem${vm.currentTitleCarouselIndex}`).css({ 'width': '30px', 'background-color': '#00A353' })
+        },
     },
     mounted() {
         this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 0, path: '' })
@@ -191,12 +199,17 @@ export default {
 </script>
 
 <style scoped>
-.CarouselBg{
+.CarouselBg {
     background: linear-gradient(96deg, #D5FECB 0%, #6CF6C0 100%);
+    align-self: center;
+    width: 100vw;
 }
+
 .CarouselContainer {
     display: flex;
     align-items: center;
+    position: relative;
+    padding-top: 2rem;
 }
 
 .titleArrowPrev {
@@ -208,7 +221,7 @@ export default {
 }
 
 .CarouselImgGroup {
-    height: 600px;
+    height: 30vw;
     position: relative;
     left: 18%;
 
@@ -217,25 +230,24 @@ export default {
     gap: 2%;
     transform: translateX(var(--Carouselslide));
 
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
+    transition: transform ease-in-out .5s 0s;
 }
 
 .CarouselImg {
-    border-radius: 50px;
+    border-radius: 5vw;
     width: 50%;
     box-shadow: 0px 3px 8px #000000CC;
 
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
+    transition: width ease-in-out .5s 0s;
 }
-.CarouselImg:first-child{
+
+.CarouselImg:first-child {
     width: 64%;
 }
 
 .CarouselIndexGroup {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
 
     padding: 2rem 0 3rem;
@@ -244,8 +256,9 @@ export default {
 .titleCarouselIndex {
     background-color: #34D687;
 }
-.titleCarouselIndex:first-child{
-    width: 40px;
+
+.titleCarouselIndex:first-child {
+    width: 30px;
     background-color: #00A353;
 }
 
@@ -266,7 +279,7 @@ export default {
 .aboutUsContainer>div {
     display: grid;
     grid-template-columns: 1fr 1.26fr;
-    grid-template-rows: 15px auto auto;
+    grid-template-rows: 15px;
 
     position: relative;
 }
@@ -281,7 +294,6 @@ export default {
 }
 
 .aboutUsTextContainer {
-    position: relative;
     background-color: white;
     border-radius: 20px;
     padding: 1.5rem 1.5rem 2rem;
@@ -319,23 +331,23 @@ export default {
 
     transform: translateX(calc(var(--aboutUsVideoCarouselSlide)));
 
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
+    transition: transform ease-in-out .5s 0s;
 }
 
 .aboutUsVideoIndexGroup {
     grid-area: 3/2/4/3;
     margin-top: 30px;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     justify-content: center;
 }
 
 .aboutUsCarouselIndex {
     background-color: #FDE4B4;
 }
-.aboutUsCarouselIndex:first-child{
-    width: 40px;
+
+.aboutUsCarouselIndex:first-child {
+    width: 30px;
     background-color: #F5D18C;
 }
 
@@ -363,27 +375,28 @@ export default {
 }
 
 .productCover {
-    width: 990px;
-    overflow: hidden;
+    width: 62vw;
+    overflow-x: scroll;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
 
     display: flex;
     gap: 18px;
-    align-items: center;
+    justify-content: flex-start;
+}
+
+.productCover::-webkit-scrollbar {
+    display: none;
 }
 
 .productItem {
     display: flex;
     gap: 10px;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     cursor: pointer;
-
-    transform: translateX(var(--productCarouselSlide));
-
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out;
 }
 
 .productItem>img {
@@ -402,12 +415,11 @@ export default {
 
 .newInfoTitle {
     padding: 2rem 0;
-    text-align: center;
 }
 
 .newInfoCardGroup {
     display: flex;
-    gap: 2rem;
+    gap: 2vw;
     justify-content: center;
 
     width: 990px;
@@ -419,4 +431,48 @@ export default {
     box-shadow: 0px 5px 10px #E29D19;
 }
 
-</style>
+@media (max-width: 1022px) {
+    .aboutUsBg {
+        padding: 3rem 0;
+    }
+
+    .aboutUsContainer {
+        width: 80vw;
+    }
+
+    .aboutUsContainer>div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aboutUsContainer>div>img {
+        display: none;
+    }
+
+    .aboutUsTextContainer {
+        order: -1;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+    }
+
+    .aboutUsTextContainer>button {
+        margin-top: 1.5rem;
+    }
+
+    .aboutUsVideoContainer {
+        margin: 0;
+        padding: 1.5rem;
+        aspect-ratio: 1.6 / 1;
+    }
+    .productItem>img{
+        width: 100px;
+    }
+    .productItem>p{
+        font-size: 15px;
+    }
+    .newInfoCardGroup{
+        width: 80vw;
+    }
+
+}</style>
