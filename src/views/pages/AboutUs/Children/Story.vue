@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="columnCenterContainer">
-            <h2>老爸打主意 全家出力氣</h2>
+            <h2 class="subTitle">老爸打主意 全家出力氣</h2>
             <div class="line"></div>
             <p>
                 1982年於鳳山開漳聖王廟附近市場展開鴨血糕的家庭式經營，五個兄弟和爸爸齊力打拼，並銷售到傳統市場。<br><br>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="columnCenterContainer">
-            <h2>通過政府CAS優良食品認證之食品加工廠</h2>
+            <h2 class="subTitle">通過政府CAS優良食品認證之食品加工廠</h2>
             <div class="line"></div>
             <p>
                 如記食品有限公司創立於1982年，工廠座落於屏東縣竹田鄉，主要產品為米血糕，在創立後的三十年當中，發展多元多樣各式產品，包含冷藏調理食品、點心類食品、冷凍食品類及4℃鮮食類...多元多樣各式產品。

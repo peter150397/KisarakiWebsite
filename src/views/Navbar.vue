@@ -1,10 +1,10 @@
 <template>
     <nav>
         <div class="nav">
-            <img src="@/assets/NavbarImg/logo.png" alt="" class="nav-logo" @click="backToHome">
+            <img src="@/assets/NavbarImg/logo.png" alt="" class="navLogo" @click="backToHome">
 
-            <div class="normal-nav-link-group">
-                <div class="nav-link-group">
+            <div class="normalNavLinkGroup">
+                <div class="navLinkGroup">
                     <router-link to="/AboutUs">關於我們</router-link>
                     <router-link to="/NewInfo">最新消息</router-link>
                     <router-link to="/Product">強檔產品</router-link>
@@ -13,18 +13,18 @@
                 </div>
             </div>
 
-            <div class="nav-icon-group">
-                <div class="nav-onlineStore">
+            <div class="navIconGroup">
+                <div class="navOnlineStore">
                     <a href="#"><img src="@/assets/NavbarImg/shopping-bag.png">線上商城</a>
                 </div>
-                <img src="@/assets/NavbarImg/bell.png" alt="" class="nav-icon">
-                <img src="@/assets/NavbarImg/menu.png" alt="" class="nav-icon nav-icon-menu" @click="linkGroupSlide" style="--menuIconRotate: 0deg;">
+                <img src="@/assets/NavbarImg/bell.png" alt="" class="navIcon">
+                <img src="@/assets/NavbarImg/menu.png" alt="" class="navIcon RWDNavMenu" @click="linkGroupSlide" style="--menuIconRotate: 0deg;">
             </div>
         </div>
 
 
-        <div class="slide-nav-link-group">
-            <div class="nav-link-group">
+        <div class="RWDNavLinkGroup">
+            <div class="navLinkGroup">
                 <router-link to="/AboutUs">關於我們</router-link>
                 <router-link to="/NewInfo">最新消息</router-link>
                 <router-link to="/Product">強檔產品</router-link>
@@ -49,19 +49,19 @@ export default {
             this.$router.push('/')
         },
         linkGroupSlide() {
-            if ($('.nav-icon-menu').css('--menuIconRotate') === '0deg') {
-                $('.nav-icon-menu').css('--menuIconRotate', '90deg');
-                $('.slide-nav-link-group').css('top', '104px');
+            if ($('.RWDNavMenu').css('--menuIconRotate') === '0deg') {
+                $('.RWDNavMenu').css('--menuIconRotate', '90deg');
+                $('.RWDNavLinkGroup').css('top', '104px');
                 $('.nav').css('position', 'fixed');
-                $('#MainContent').css('margin-top', '104px');
+                $('#RouterViewContent').css('margin-top', '104px');
                 
             } else {
-                $('.nav-icon-menu').css('--menuIconRotate', '0deg');
-                $('.slide-nav-link-group').css('top', 'calc(-100% + 104px)');
+                $('.RWDNavMenu').css('--menuIconRotate', '0deg');
+                $('.RWDNavLinkGroup').css('top', 'calc(-100% + 104px)');
                 
                 setTimeout(function () {
                     $('.nav').css('position', 'static');
-                    $('#MainContent').css('margin-top', '0');
+                    $('#RouterViewContent').css('margin-top', '0');
                 },500)
             }
         }
@@ -83,47 +83,47 @@ nav{
 
 }
 
-.nav-logo {
+.navLogo {
     height: 40px;
     margin: 0 1rem;
     cursor: pointer;
 }
 
-.nav-link-group {
+.navLinkGroup {
     display: flex;
     align-items: center;
 }
 
-.nav-link-group>* {
+.navLinkGroup>* {
     padding: 0 1.5rem;
     font-size: 18px;
     line-height: 22px;
     border-right: solid black 1px;
 }
 
-.nav-link-group>*:last-child {
+.navLinkGroup>*:last-child {
     border: none;
 }
 
-.nav-link-group>*:hover {
+.navLinkGroup>*:hover {
     color: #FDCE00;
     transition-duration: .3s;
 }
 
-.nav-icon-group {
+.navIconGroup {
     display: flex;
     gap: 20px;
     align-items: center;
     margin: 0 1rem;
 }
 
-.nav-onlineStore {
+.navOnlineStore {
     padding: 0.1rem 1rem;
     border-radius: 50px;
     background: linear-gradient(115deg, #E5985F 0%, #D32D2D 100%);
 }
 
-.nav-onlineStore>a {
+.navOnlineStore>a {
     display: flex;
     gap: 5px;
     justify-content: center;
@@ -134,14 +134,14 @@ nav{
     color: white;
 }
 
-.nav-onlineStore>a>img {
+.navOnlineStore>a>img {
     height: 18px;
 }
 
-.nav-icon {
+.navIcon {
     height: 30px;
 }
-.slide-nav-link-group , .nav-icon-menu{
+.RWDNavLinkGroup , .RWDNavMenu{
     display: none;
 }
 
@@ -152,12 +152,12 @@ nav{
         z-index: 4;
     }
 
-    .normal-nav-link-group,
-    .nav-onlineStore {
+    .normalNavLinkGroup,
+    .navOnlineStore {
         display: none;
     }
 
-    .slide-nav-link-group {
+    .RWDNavLinkGroup {
         display: block;
 
         position: fixed;
@@ -171,25 +171,25 @@ nav{
         transition-duration: 500ms;
     }
 
-    .nav-link-group {
+    .navLinkGroup {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: stretch;
         height: 100%;
     }
 
-    .nav-link-group>* {
+    .navLinkGroup>* {
         padding: 0;
         font-size: 24px;
         border-right: none;
     }
 
-    .nav-link-group>*:hover {
+    .navLinkGroup>*:hover {
         color: #FDCE00;
         transition-duration: .3s;
     }
 
-    .nav-icon-menu {
+    .RWDNavMenu {
         display: block;
         transform: rotate(var(--menuIconRotate));
         transition-duration: 500ms;

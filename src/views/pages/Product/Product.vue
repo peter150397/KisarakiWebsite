@@ -19,6 +19,18 @@
                 </div>
             </div>
         </div>
+
+        <select class="RWDSelectLinkGroup" v-model="currentProductPage">
+            <option value="">請選擇分類</option>
+            <optgroup v-for="mainPage in productNavbarData" :key="mainPage.index" label="-------------------------------">
+                <option :value="mainPage.name">類別 : {{ mainPage.name }}</option>
+                <option :value="mainPage.name + '/' + subPage.name" v-for="subPage in mainPage.subName" :key="subPage.index">
+                    {{ subPage.index + 1 }} : {{ subPage.name }}
+                </option>
+            </optgroup>
+            
+        </select>
+
         <router-view class="mainContent"></router-view>
     </div>
 </template>
@@ -29,7 +41,8 @@ import $ from "jquery";
 export default {
     data() {
         return {
-            search:''
+            search:'',
+            currentProductPage:''
         }
     },
     computed: {
@@ -55,10 +68,10 @@ export default {
             $(`#${MainPageIndex}subLink${SubPageIndex}`).addClass('subLinkActive');
         },
         changeMainPage(MainPage) {
-            this.$router.push(`/Product/${MainPage}`);
+            this.currentProductPage = MainPage
         },
         changeSubPage(MainPage, SubPage) {
-            this.$router.push(`/Product/${MainPage}/${SubPage}`)
+            this.currentProductPage = `${MainPage}/${SubPage}`
         },
         searchPage(search) {
             this.$router.push(`/Search/${search}`);
@@ -89,6 +102,16 @@ export default {
             },
             deep: true,
             immediate: true
+        },
+        currentProductPage(value) {
+            let mainPage = value.split('/')[0];
+            let subPage = '';
+
+            if(value.split('/')[1]) {
+                subPage = `/${value.split('/')[1]}`;
+            }
+            
+            this.$router.push(`/Product/${mainPage}${subPage}`);
         }
     },
     mounted() {
@@ -123,6 +146,7 @@ export default {
     border: none;
     padding: 0;
     font-size: 16px;
+    width: 12vw;
 }
 .aboutUsSearch:focus{
     outline: none;
@@ -235,4 +259,10 @@ export default {
 
 .subLinkActive {
     color: white;
-}</style>
+}
+@media (max-width: 1022px){
+    .mainContent{
+        margin: 0 0 6rem;
+    }
+}
+</style>

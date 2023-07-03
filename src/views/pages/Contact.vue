@@ -29,38 +29,38 @@
             <div class="formContainer">
                 <div>
                     <h2>聯絡我們</h2>
-                    <form action="">
+                    <form action="" id="ContactForm">
                         <table>
                             <tr>
                                 <td style="width: 2%;"><p>*</p></td>
                                 <td style="width: 20%;"><label for="buyerName">姓名</label></td>
-                                <td><input name="buyerName" type="text" placeholder="請輸入姓名" id="buyerName" required></td>
+                                <td><input name="buyerName" type="name" placeholder="請輸入姓名" id="buyerName" form="ContactForm" required></td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
-                                <td><label for="buyerCell">手機</label></td>
-                                <td><input name="buyerCell" type="tel" placeholder="請輸入手機" id="buyerCell"></td>
+                                <td><label for="buyerCellphone">手機</label></td>
+                                <td><input name="buyerCellphone" type="tel" placeholder="請輸入手機" id="buyerCellphone" form="ContactForm" required></td>
                             </tr>
                             <tr>
-                                <td><p></p></td>
-                                <td><label for="buyerTel">電話</label></td>
-                                <td><input name="buyerTel" type="tel" placeholder="請輸入電話" id="buyerTel" required></td>
+                                <td><p>*</p></td>
+                                <td><label for="buyerEmail">電子信箱</label></td>
+                                <td><input name="buyerEmail" type="email" placeholder="請輸入電子信箱" id="buyerEmail" form="ContactForm" required></td>
                             </tr>
                             <tr>
                                 <td><p></p></td>
                                 <td><label for="buyerComp">統編</label></td>
-                                <td><input name="buyerComp" type="text" placeholder="請輸入統編" id="buyerComp"></td>
+                                <td><input name="buyerComp" type="text" placeholder="請輸入統編" id="buyerComp" form="ContactForm"></td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
                                 <td><label for="buyerAddr">地址</label></td>
-                                <td><input name="buyerAddr" type="text" placeholder="請輸入地址" id="buyerAddr" required></td>
+                                <td><input name="buyerAddr" type="text" placeholder="請輸入地址" id="buyerAddr" form="ContactForm" required></td>
                             </tr>
                             <tr>
                                 <td><p>*</p></td>
                                 <td><label for="Topic">詢問主題</label></td>
                                 <td>
-                                    <select name="topic" id="topic" required>
+                                    <select name="topic" id="topic" form="ContactForm" required>
                                         <option value="">請選擇主題分類</option>
                                         <option value="Cooperation">異業合作</option>
                                         <option value="ProductProblem">產品問題</option>
@@ -72,14 +72,14 @@
                             <tr>
                                 <td><p>*</p></td>
                                 <td><p>內容</p></td>
-                                <td><textarea name="content" id="content" required></textarea></td>
+                                <td><textarea name="content" id="content" form="ContactForm" required></textarea></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td class="buttonGroup">
-                                    <input type="reset" value="取消" class="resetbutton button">
-                                    <input type="submit" value="確認" class="submitbutton button">
+                                    <input type="reset" value="取消" form="ContactForm" class="resetbutton button">
+                                    <input type="submit" value="確認" form="ContactForm" class="submitbutton button">
                                 </td>
                             </tr>
                         </table>
@@ -235,5 +235,39 @@ tr:nth-child(7){
     color: white;
     
     transition-duration: 300ms;
+}
+
+@media (max-width: 1022px){
+    .ContactContainer{
+        height: auto;
+    }
+    .companyInfoContainer{
+        display: none;
+    }
+    .formContainer{
+        width: 100%;
+        height: auto;
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .formContainer > div{
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+    .formContainer > div > h2{
+        display: none;
+    }
+    table{
+        width: 100%;
+    }
+    input, select, textarea{
+        height: auto;
+        width: 100%;
+    }
+    .buttonGroup > *{
+        width: 80px;
+    }
 }
 </style>

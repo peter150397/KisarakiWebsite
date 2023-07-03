@@ -11,8 +11,15 @@
             <p to="/NewInfo/ProductRelate" class="link" @click="changeType('ProductRelate')">產品相關</p>
         </div>
 
+        <select class="RWDSelectLinkGroup" v-model="currentNewInfoType">
+            <option value="all">所有消息</option>
+            <option value="NewProduct">新品上市</option>
+            <option value="RelateInfo">如記消息</option>
+            <option value="ProductRelate">產品相關</option>
+        </select>
+
         <div class="newInfoContainer mainContent">
-            <div class="newInfoCardItem" v-for="(item , index) in currentNewInfo" :key="index">
+            <div class="newInfoCardItem" v-for="(item, index) in currentNewInfo" :key="index">
                 <div class="newInfoCardImgContainer">
                     <img :src="item.img" alt="" class="newInfoCardImg">
                 </div>
@@ -28,7 +35,7 @@ export default {
     data() {
         return {
             currentNewInfoType: 'all',
-            currentNewInfo:[]
+            currentNewInfo: []
         }
     },
     computed: {
@@ -48,20 +55,20 @@ export default {
                 vm.currentNewInfo = [];
 
                 vm.newInfoArray.forEach(item => {
-                    if(type === 'all') {
+                    if (type === 'all') {
                         vm.currentNewInfo.push(item);
-                    }else if(type === item.category ) {
+                    } else if (type === item.category) {
                         vm.currentNewInfo.push(item);
                     }
                 });
 
-                if(type == 'NewProduct'){
+                if (type == 'NewProduct') {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '新品上市', index: 1, path: '/NewInfo' })
-                }else if (type == 'RelateInfo') {
+                } else if (type == 'RelateInfo') {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '如記消息', index: 1, path: '/NewInfo' })
-                }else if (type == 'ProductRelate') {
+                } else if (type == 'ProductRelate') {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '產品相關', index: 1, path: '/NewInfo' })
-                }else{
+                } else {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '所有消息', index: 1, path: '/NewInfo' })
                 }
 
@@ -81,7 +88,7 @@ export default {
 <style scoped>
 .newInfoContainer {
     display: grid;
-    gap: 2rem;
+    gap: 2vw;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
@@ -89,5 +96,4 @@ export default {
 .newInfoCardItem {
     box-shadow: 0px 5px 10px #A3A3A3;
 }
-
 </style>

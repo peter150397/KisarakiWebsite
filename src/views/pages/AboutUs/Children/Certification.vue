@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="columnCenterContainer">
-            <h2>國際驗證證書</h2>
+            <h2 class="subTitle">國際驗證證書</h2>
             <div class="line"></div>
             <img src="@/assets/AboutUsImg/Certification.png" alt="">
         </div>

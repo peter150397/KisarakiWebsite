@@ -6,7 +6,8 @@
         <img src="@/assets/ProductImg/OverviewImg/Carousel0.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
         <img src="@/assets/ProductImg/OverviewImg/Carousel1.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
         <img src="@/assets/ProductImg/OverviewImg/Carousel2.png" alt="" class="CarouselImg" style="--CarouselSlide: 0%;">
-        <img src="@/assets/ProductImg/OverviewImg/arrow.png" alt="" class="CarouselArrow rightArrow CarouselArrowRight" @click="nextImg">
+        <img src="@/assets/ProductImg/OverviewImg/arrow.png" alt="" class="CarouselArrow rightArrow CarouselArrowRight"
+          @click="nextImg">
       </div>
       <div class="CarouselIndexContainer">
         <div class="CarouselIndex" id="CarouselIndexItem0" @click="indexImg(0)"></div>
@@ -88,12 +89,12 @@ export default {
       $('.CarouselImg').css('--CarouselSlide', `${vm.currentCarouselImgIndex * -100}%`)
 
       $('.CarouselIndex').css({
-        'width': '15px',
+        'width': '10px',
         'background-color': '#34D687'
       })
 
       $(`#CarouselIndexItem${vm.currentCarouselImgIndex}`).css({
-        'width': '35px',
+        'width': '30px',
         'background-color': '#00A353'
       })
     }
@@ -102,7 +103,7 @@ export default {
     this.startInterval()
 
     $('#CarouselIndexItem0').css({
-      'width': '35px',
+      'width': '30px',
       'background-color': '#00A353'
     })
 
@@ -124,7 +125,6 @@ export default {
   justify-content: flex-start;
 
   position: relative;
-  height: 320px;
 
   border-radius: 60px;
 
@@ -149,7 +149,7 @@ export default {
 .CarouselIndexContainer {
   display: flex;
   gap: 15px;
-  margin: 1.5rem 0 5.5rem;
+  margin: 1.5rem 0 5rem;
 }
 
 .CarouselIndex {
@@ -173,7 +173,7 @@ export default {
 }
 
 .productImg {
-  height: 153px;
+  width: 10vw;
   border-radius: 50%;
   box-shadow: 3px 3px 6px #000000B3;
 }
@@ -181,5 +181,17 @@ export default {
 .productItem>p {
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+@media (max-width: 1022px) {
+  .CarouselIndexContainer {
+    display: flex;
+    gap: 15px;
+    margin: 2rem 0;
+  }
+
+  .productImg {
+    width: 14vw;
+  }
 }
 </style>

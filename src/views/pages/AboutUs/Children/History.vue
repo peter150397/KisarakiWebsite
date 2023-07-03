@@ -1,6 +1,6 @@
 <template>
     <div class="columnCenterContainer">
-        <h2>公司沿革</h2>
+        <h2 class="subTitle">公司沿革</h2>
         <div class="line"></div>
         <table>
             <tbody>
@@ -126,6 +126,7 @@ export default {
 <style scoped>
 table{
     border-collapse: collapse;
+    max-width: 990px;
 }
 
 td {
@@ -149,8 +150,8 @@ td:first-child {
 }
 
 td > h2 {
-    border: none;
-    padding: 0;
+    color: #71CC86;
+    letter-spacing: 2px;
 }
 
 h3 {

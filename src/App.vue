@@ -2,7 +2,7 @@
   <div id="app" class="columnCenterContainer">
     <Navbar></Navbar>
     <Breadcrumb></Breadcrumb>
-    <router-view id="MainContent"></router-view>
+    <router-view id="RouterViewContent"></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -22,19 +22,17 @@ export default {
     Breadcrumb
   },
   beforeUpdate() {
-    $('.nav-icon-menu').css('--menuIconRotate', '0deg');
-    $('.slide-nav-link-group').css('top', 'calc(-100% + 104px)');
-    // $('.nav').css('position', 'static');
-    // $('#MainContent').css('margin-top', '0');
+    $('.RWDNavMenu').css('--menuIconRotate', '0deg');
+    $('.RWDNavLinkGroup').css('top', 'calc(-100% + 104px)');
 
     setTimeout(function () {
       $('.nav').css('position', 'static');
-      $('#MainContent').css('margin-top', '0');
+      $('#RouterViewContent').css('margin-top', '0');
     }, 500)
   },
   updated() {
     if (this.$route.fullPath != '/') {
-      $('#MainContent').css('width', '990px')
+      $('#RouterViewContent').addClass('RouterViewContentWidth')
     }
   }
 }
@@ -51,9 +49,12 @@ export default {
   overflow: hidden;
 }
 
-#MainContent {
+#RouterViewContent {
   display: flex;
   flex-direction: column;
+}
+.RouterViewContentWidth{
+  width: 65vw;
 }
 
 img {
@@ -147,24 +148,26 @@ a {
 
   transition-duration: .3s;
 }
+.RWDSelectLinkGroup{
+  display: none;
+}
 
 .mainContent {
   width: 100%;
   margin-bottom: 6rem;
 }
-
-.AboutUs p {
-  color: gray;
-  line-height: 1.5rem;
-  font-size: 14px;
-}
-
-.AboutUs h2 {
+.AboutUs .subTitle{
   color: #71CC86;
   letter-spacing: 2px;
   border-left: solid 2px #71CC86;
   border-right: solid 2px #71CC86;
   padding: 0 1.5rem;
+  text-align: center;
+}
+.AboutUs p {
+  color: gray;
+  line-height: 1.5rem;
+  font-size: 14px;
 }
 
 .AboutUs .line {
@@ -216,7 +219,7 @@ a {
 
 .productCardsContainer {
   display: grid;
-  gap: 2rem;
+  gap: 2vw;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
@@ -228,6 +231,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   cursor: pointer;
 }
@@ -245,20 +249,56 @@ a {
 .productCardsButtonGroup {
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  gap: .5rem;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1022px) {
+  .RouterViewContentWidth{
+    width: 80vw;
+  }
+  .linkGroup{
+    display: none;
+  }
+  .RWDSelectLinkGroup{
+    display: block;
+    margin: 2rem 0;
+    padding: .5rem;
+    width: 100%;
+    font-size: 16px;
+    border: solid 1px darkgray;
+    border-radius: 10px;
+    color: darkgray;
+  }
+  .RWDSelectLinkGroup:focus-visible{
+    outline: none;
+  }
   .newInfoCardItem {
     padding: 1rem;
   }
 
   .newInfoCardItem>h3 {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .newInfoCardItem>p {
     display: none;
   }
-}</style>
+}
+
+
+
+
+@media (max-width: 1233px){
+  .productCardsContainer{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 719px){
+  .productCardsContainer{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>

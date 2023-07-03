@@ -9,6 +9,12 @@
             <p class="link" @click="changeType('purchase')">哪裡購買如記產品</p>
         </div>
 
+        <select class="RWDSelectLinkGroup" v-model="currentQAType">
+            <option value="all">所有問題</option>
+            <option value="contact">如何聯絡我們</option>
+            <option value="purchase">哪裡購買如記產品</option>
+        </select>
+
         <div class="QAContainer mainContent">
             <div :id="'QAContent' + index" @click="slideAnimate(index)" v-for="(item, index) in currentQA" :key="index">
                 <div class="QAContentItem">

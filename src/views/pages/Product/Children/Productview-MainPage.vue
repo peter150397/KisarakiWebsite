@@ -91,8 +91,8 @@ export default {
 
 .MainPageLinkContainer {
   display: flex;
-  gap: 4rem;
   justify-content: space-between;
+  width: 100%;
 
   margin: 4rem 0 0;
 }
@@ -111,7 +111,7 @@ export default {
 }
 
 .ImgContainer {
-  width: 100%;
+  width: 16vw;
   aspect-ratio: 1.2 / 1;
   border-radius: 20px;
 
@@ -143,17 +143,15 @@ export default {
   letter-spacing: 1px;
 }
 
-.TextContainer>button {
-  background-color: #F4DB82;
-  border: none;
-  border-radius: 50px;
-  padding: .2rem .8rem;
-
-  cursor: pointer;
-}
-
-.TextContainer>button:hover {
-  transform: scale(1.2, 1.2);
-  transition-duration: .3s;
+@media (max-width: 1022px){
+  .ImgContainer{
+    width: 19vw;
+  }
+  .MainPageLinkContainer > div{
+    padding: 1rem;
+  }
+  .TextContainer{
+    flex-direction: column;
+  }
 }
 </style>

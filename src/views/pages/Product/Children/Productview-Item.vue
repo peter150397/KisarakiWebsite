@@ -4,9 +4,11 @@
             <div class="contentContainer">
                 <img :src="TitleImg" alt="">
                 <div class="contentTextContainer">
-                    <h2>{{ currentProductDetail.productName }}</h2>
-                    <h4>{{ currentProductDetail.subTitle }}</h4>
-                    <p>{{ currentProductDetail.content }}</p>
+                    <div>
+                        <h2>{{ currentProductDetail.productName }}</h2>
+                        <h4>{{ currentProductDetail.subTitle }}</h4>
+                        <p>{{ currentProductDetail.content }}</p>
+                    </div>
                     <button>前往購買</button>
                 </div>
                 <div class="CarouselContainer">
@@ -49,7 +51,7 @@
                         </div>
                         <p>{{ currentProductDetail.storageConditions }}</p>
                     </div>
-                    <div class="specificationItem lastItem" id="specificationItem3">
+                    <div class="specificationItem" id="specificationItem3">
                         <div @click="openProductDetail(3)">
                             <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" style="--rotateDeg: 180deg;">
                             <h3>原產地</h3>
@@ -62,19 +64,20 @@
             <div>
                 <h2>相關產品</h2>
                 <div class="RelatedProductsCarouselContainer">
-                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow" @click="RelatedProductsCarouselSlide(-1)">
+                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow"
+                        @click="RelatedProductsCarouselSlide(-1)">
                     <div>
                         <div v-for="(item, index) in RelatedProducts" :key="index" class="RelatedProductsCarouselItem"
                             @click="RelatedProductPush(item.category.mainCategory, item.category.subCategory, item.productName)"
-                            style="--RelatedProductsCarouselSlide: 0; "
-                            >
+                            style="--RelatedProductsCarouselSlide: 0; ">
                             <div>
                                 <img :src="item.productImg.CarouselImg[0]" alt="">
                             </div>
                             <p>{{ item.productName }}</p>
                         </div>
                     </div>
-                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow CarouselArrowRight" @click="RelatedProductsCarouselSlide(1)">
+                    <img src="@/assets/ProductImg/ProductDataImg/arrow.png" alt="" class="CarouselArrow CarouselArrowRight"
+                        @click="RelatedProductsCarouselSlide(1)">
                 </div>
             </div>
 
@@ -123,7 +126,7 @@ export default {
             this.TitleImg = img
         },
         openProductDetail(index) {
-            $(`#specificationItem${index} > p`).slideToggle(300)
+            $(`#specificationItem${index} > p`).slideToggle(150)
 
             if ($(`#specificationItem${index} > div > img`).css('--rotateDeg') == '270deg') {
                 $(`#specificationItem${index} > div > img`).css('--rotateDeg', '180deg')
@@ -175,7 +178,7 @@ export default {
             immediate: true
         },
         RelatedProductsCarousel() {
-            if(this.RelatedProducts.length > 4) {
+            if (this.RelatedProducts.length > 4) {
                 $('.RelatedProductsCarouselItem').css('--RelatedProductsCarouselSlide', `calc((-100% - 40px) * ${this.RelatedProductsCarousel})`)
             }
         }
@@ -195,7 +198,7 @@ export default {
 
 .contentContainer {
     display: grid;
-    gap: 20px 0;
+    gap: 1.5rem 0;
     grid-template-columns: 37.5% 62.5%;
     grid-template-rows: auto 90px;
 
@@ -209,30 +212,30 @@ export default {
 
 .contentTextContainer {
     margin-left: 3rem;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 
 
-.contentTextContainer>h4 {
+.contentTextContainer>div>h4 {
     color: #969696;
     margin: .8rem 0 1.5rem;
 }
 
-.contentTextContainer>p {
+.contentTextContainer>div>p {
     width: 70%;
     line-height: 1.5rem;
     letter-spacing: .5px;
 }
 
 .contentTextContainer>button {
-    padding: .6rem 1.5rem;
+    padding: .6rem 2rem;
 
     font-size: 18px;
     font-weight: bold;
-
-    position: absolute;
-    bottom: 0;
 }
 
 .CarouselContainer {
@@ -279,7 +282,7 @@ export default {
 
 .specificationContainer {
     display: grid;
-    gap: 20px;
+    gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
 }
@@ -294,7 +297,7 @@ export default {
     padding: .5rem 0;
 }
 
-.lastItem {
+.specificationItem:last-child {
     border-bottom: solid 1px black;
 }
 
@@ -311,7 +314,7 @@ export default {
     height: 16px;
 
     transform: rotate(var(--rotateDeg));
-    transition-duration: 300ms;
+    transition-duration: 150ms;
 }
 
 .specificationItem>div>h3 {
@@ -372,4 +375,56 @@ export default {
     height: 120px;
     border-radius: inherit;
 }
-</style>
+
+@media (max-width: 1022px) {
+    .productDetailContainer{
+        gap: 4rem;
+    }
+    .contentContainer {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 100%;
+        grid-template-rows: auto 90px auto;
+    }
+
+    .contentContainer>img {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .contentTextContainer {
+        margin: 0;
+        text-align: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .contentTextContainer>div>p {
+        margin: 0 auto;
+    }
+
+    .CarouselContainer {
+        grid-area: 2;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+
+    .specificationContainer {
+        grid-template-columns: 100%;
+        gap: 2.5rem;
+    }
+
+    .specificationImg {
+        grid-area: 1;
+        border-radius: 35px;
+    }
+    .specificationItem>p {
+        margin: .5rem 0;
+    }
+
+
+    .RelatedProductsCarouselContainer , .RelatedProductsCarouselContainer>div{
+        gap: 1rem;
+    }
+}</style>

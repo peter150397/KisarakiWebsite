@@ -1,6 +1,6 @@
 <template>
   <div class="columnCenterContainer">
-    <h2>經營理念</h2>
+    <h2 class="subTitle">經營理念</h2>
     <div class="line"></div>
 
     <div class="container">
@@ -45,6 +45,7 @@ export default {
 <style scoped>
 .container {
   width: 60%;
+  min-width: 400px;
   margin: 0 auto;
 
   display: grid;
@@ -52,7 +53,8 @@ export default {
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr 1fr 1fr;
 }
-.imgContainer{
+
+.imgContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +63,10 @@ export default {
   border-radius: 20px 0 0 20px;
 
   box-shadow: 8px 8px 0 #E29D19;
+}
+
+.imgContainer>img {
+  width: 50%;
 }
 
 .item {
@@ -74,9 +80,15 @@ export default {
   background-color: white;
 }
 
-.item > h2 {
+
+.item>h2 {
   border: none;
   padding: 0;
   margin-bottom: 1rem;
 }
-</style>
+
+@media (max-width: 850px) {
+  .container {
+    grid-template-columns: 25% 75%;
+  }
+}</style>
