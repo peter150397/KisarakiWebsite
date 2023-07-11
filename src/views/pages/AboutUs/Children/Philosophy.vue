@@ -45,7 +45,7 @@ export default {
 <style scoped>
 .container {
   width: 60%;
-  min-width: 400px;
+  min-width: 220px;
   margin: 0 auto;
 
   display: grid;
@@ -66,7 +66,7 @@ export default {
 }
 
 .imgContainer>img {
-  width: 50%;
+  width: 5vw;
 }
 
 .item {
@@ -89,6 +89,12 @@ export default {
 
 @media (max-width: 850px) {
   .container {
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 25% auto;
+    width: 80%;
   }
-}</style>
+
+  .imgContainer>img {
+    width: 10vw;
+  }
+}
+</style>

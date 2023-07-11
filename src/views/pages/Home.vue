@@ -453,7 +453,7 @@ export default {
         order: -1;
         align-items: center;
         margin-bottom: 2rem;
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .aboutUsTextContainer>button {

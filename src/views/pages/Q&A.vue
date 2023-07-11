@@ -63,14 +63,6 @@ export default {
         },
         changeType(type) {
             this.currentQAType = type
-
-            $('.QAContentItem + p').slideUp(0)
-
-            $('.plusImg').css('transform', 'rotate(0deg)');
-            $('.QAContentItem').css({
-                'transition-delay': '0ms',
-                'border-radius': '20px'
-            });
         },
     },
     watch: {
@@ -94,6 +86,14 @@ export default {
                 } else {
                     this.$store.commit('GETCURRENTPAGEROUTE', { name: '所有問題', index: 1, path: '/Q&A' })
                 }
+
+                $('.QAContentItem + p').slideUp(0)
+
+                $('.plusImg').css('transform', 'rotate(0deg)');
+                $('.QAContentItem').css({
+                    'transition-delay': '0ms',
+                    'border-radius': '20px'
+                });
             },
             immediate: true
         }

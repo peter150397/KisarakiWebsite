@@ -193,5 +193,9 @@ export default {
   .productImg {
     width: 14vw;
   }
+
+  .productItem>p{
+    letter-spacing: 0;
+  }
 }
 </style>

@@ -183,6 +183,9 @@ td{
 tr > td:first-child{
     color: red;
 }
+tr > td:nth-child(2){
+    padding-right: 1rem;
+}
 input, select, textarea {
     height: 2rem;
     padding: .3rem;
@@ -197,7 +200,7 @@ select , textarea , #buyerAddr{
 
 textarea{
     resize: none;
-    height: 154px;
+    height: 150px;
     padding: 1rem;
 }
 
@@ -262,7 +265,7 @@ tr:nth-child(7){
     table{
         width: 100%;
     }
-    input, select, textarea{
+    input, select{
         height: auto;
         width: 100%;
     }
@@ -270,4 +273,14 @@ tr:nth-child(7){
         width: 80px;
     }
 }
+
+@media (max-width: 520px){
+    p ,label ,input ,select ,textarea{
+        font-size: 12px;
+    }
+    textarea{
+        padding: .4rem;
+    }
+}
+
 </style>

@@ -101,6 +101,7 @@ export default {
   display: flex;
   gap: 15px;
   flex-direction: column;
+  width: 30%;
   align-items: center;
   padding: 1.5rem;
 
@@ -111,7 +112,7 @@ export default {
 }
 
 .ImgContainer {
-  width: 16vw;
+  width: 100%;
   aspect-ratio: 1.2 / 1;
   border-radius: 20px;
 
@@ -144,14 +145,25 @@ export default {
 }
 
 @media (max-width: 1022px){
-  .ImgContainer{
-    width: 19vw;
-  }
   .MainPageLinkContainer > div{
     padding: 1rem;
   }
   .TextContainer{
     flex-direction: column;
+  }
+}
+
+@media (max-width: 520px){
+  .MainPageImgBigContainer > p{
+    width: calc(100% - 2rem);
+  }
+  .MainPageLinkContainer{
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  .MainPageLinkContainer>div{
+    width: 250px;
   }
 }
 </style>
