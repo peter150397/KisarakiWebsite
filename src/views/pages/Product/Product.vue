@@ -2,7 +2,7 @@
     <div class="columnCenterContainer">
             <h1 class="pageTitle">強檔產品</h1>
             <button class="searchButton">
-                <img src="@/assets/ProductImg/OverviewImg/search.png" alt="" class="searchImg">
+                <img src="@/assets/ProductImg/OverviewImg/search.png" alt="" class="searchImg" @click="searchPage(search)">
                 <input type="text" placeholder="Search" class="aboutUsSearch" v-model="search" @keyup.enter="searchPage(search)">
             </button>
         <div class="linkGroup">
@@ -263,6 +263,16 @@ export default {
 @media (max-width: 1022px){
     .mainContent{
         margin: 0 0 6rem;
+    }
+}
+@media (max-width: 500px){
+    .searchButton{
+        position: static;
+        width: 100%;
+        margin-top: 2rem;
+    }
+    .aboutUsSearch{
+        width: 100%;
     }
 }
 </style>

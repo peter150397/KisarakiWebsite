@@ -31,10 +31,12 @@ export default {
     position: relative;
     left: calc((100% - 990px)/2);
     align-self: flex-start;
+    width: calc(100vw - 2rem);
 }
 
 .BreadcrumbContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     align-items: center;
 }

@@ -65,9 +65,9 @@
         <div class="product">
             <h2>強檔產品</h2>
             <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="CarouselArrow productArrow"
-                @click="prevProductCarouselImg">
+                @click="arrowScrollProductCarousel(0)">
 
-            <div class="productCover" @mouseenter="scrollProductList">
+            <div class="productCover">
                 <div class="productItem" v-for="(item, index) in Product" :key="index"
                     @click="changePage('/Product', '/' + item.category.mainCategory, '/' + item.category.subCategory, '/' + item.productName)">
                     <img :src="item.productImg.CarouselImg[0]" alt="">
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <img src="@/assets/HomePageImg/arrow-orange.png" alt="" class="CarouselArrow CarouselArrowRight productArrow"
-                @click="nextProductCarouselImg">
+                @click="arrowScrollProductCarousel(1006)">
         </div>
         <!-- new Infomation -->
         <div class="newInfo columnCenterContainer">
@@ -157,21 +157,9 @@ export default {
             $('.aboutUsVideoIndexGroup > div').css({ 'width': '10px', 'background-color': '#FDE4B4' })
             $(`#aboutUsVideoIndexItem${index}`).css({ 'width': '30px', 'background-color': '#F5D18C' })
         },
-        prevProductCarouselImg() {
+        arrowScrollProductCarousel(scroll) {
             const productCover = document.querySelector('.productCover');
-            productCover.scrollLeft = 0;
-        },
-        nextProductCarouselImg() {
-            const productCover = document.querySelector('.productCover');
-            productCover.scrollLeft = 100000;
-        },
-        scrollProductList() {
-            const productCover = document.querySelector('.productCover');
-
-            productCover.addEventListener('wheel', (event) => {
-                event.preventDefault();
-                productCover.scrollLeft += event.deltaY * 3;
-            });
+            productCover.scrollLeft = scroll;
         },
         changePage(page1, page2 = '', page3 = '', page4 = '') {
             this.$router.push(page1 + page2 + page3 + page4);
@@ -194,6 +182,12 @@ export default {
     },
     mounted() {
         this.$store.commit('GETCURRENTPAGEROUTE', { name: '', index: 0, path: '' })
+
+        const productCover = document.querySelector('.productCover');
+        productCover.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            productCover.scrollLeft += event.deltaY * 3;
+        });
     }
 }
 </script>
@@ -465,13 +459,16 @@ export default {
         padding: 1.5rem;
         aspect-ratio: 1.6 / 1;
     }
-    .productItem>img{
+
+    .productItem>img {
         width: 100px;
     }
-    .productItem>p{
+
+    .productItem>p {
         font-size: 15px;
     }
-    .newInfoCardGroup{
+
+    .newInfoCardGroup {
         width: 80vw;
     }
 
