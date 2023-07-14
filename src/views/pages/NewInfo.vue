@@ -90,10 +90,22 @@ export default {
     display: grid;
     gap: 2vw;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
 }
 
 .newInfoCardItem {
     box-shadow: 0px 5px 10px #A3A3A3;
+}
+
+@media (max-width: 500px){
+    .newInfoContainer{
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+@media (max-width: 300px){
+    .newInfoContainer{
+        grid-template-columns: 1fr;
+    }
 }
 </style>

@@ -158,8 +158,10 @@ export default {
 
 .productContainer {
   display: flex;
-  justify-content: space-between;
+  gap: .5rem;
+  justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -192,6 +194,7 @@ export default {
 
   .productImg {
     width: 14vw;
+    min-width: 80px;
   }
 
   .productItem>p{

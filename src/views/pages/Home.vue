@@ -471,5 +471,14 @@ export default {
     .newInfoCardGroup {
         width: 80vw;
     }
+}
 
-}</style>
+@media (max-width: 500px){
+    .newInfoCardGroup{
+        flex-direction: column;
+        width: 60vw;
+        gap: 2rem;
+    }
+}
+
+</style>
