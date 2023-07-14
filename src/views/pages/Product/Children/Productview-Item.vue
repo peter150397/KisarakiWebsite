@@ -358,6 +358,8 @@ export default {
     gap: 40px;
     width: 100%;
     overflow-x: scroll;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
 }
 .RelatedProductsCarouselImgContainer::-webkit-scrollbar {
     display: none;
