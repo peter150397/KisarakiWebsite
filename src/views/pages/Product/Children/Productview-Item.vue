@@ -379,7 +379,6 @@ export default {
 .RelatedProductsCarouselItem>div {
     padding: .5rem;
     margin-bottom: 1rem;
-    box-shadow: 5px 5px 10px #AFAFAF;
     border-radius: 15px;
 }
 
@@ -417,7 +416,7 @@ export default {
 
     .CarouselContainer {
         grid-area: 2;
-        width: 50%;
+        width: 80%;
         margin: 0 auto;
     }
 
